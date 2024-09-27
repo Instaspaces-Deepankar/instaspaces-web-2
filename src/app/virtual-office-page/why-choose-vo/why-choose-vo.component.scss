@@ -1,0 +1,141 @@
+body {
+    font-family: "Nunito", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff3f3;
+  }
+  
+  .why-choose-us {
+    width: 80%;
+    margin: 0 auto;
+    padding: 2em 0;
+    text-align: center;
+  }
+  
+  .why-choose-us h2 {
+    color: #333;
+    font-size: 1.5rem;
+    font-family: "Nunito", sans-serif;
+    margin-bottom: 15px;
+  }
+  
+  .divider {
+    width: 70%;
+    border: 1px solid #ff5e72;
+    margin: 20px auto;
+  }
+  
+  .why-choose-us h2 span {
+    display: block;
+    color: #ed6666;
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-top: 10px;
+  }
+  
+  .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    flex-wrap: wrap; /* Allow flex items to wrap */
+  }
+  
+  .column {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: space-between;
+    align-items: center;
+  }
+  
+
+  
+  .column.image img {
+    max-width: 70%;
+    height: 250px;
+    border-radius: 10px;
+  }
+  
+  .column h2 {
+    color: #ed6666;
+    font-size: 1.8em;
+    margin-bottom: 0.5em;
+  }
+  
+  .column p {
+    color: #555;
+    font-size: 16px;
+  }
+
+  
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .row {
+      flex-direction: column; /* Stack columns on smaller screens */
+      text-align: center; /* Center align text */
+      margin-bottom: 20px; /* Add more margin for better spacing */
+    }
+  
+    .column {
+      flex: 1 1 100%; /* Ensure full width for stacked items */
+      padding: 1em 0; /* Add padding */
+    }
+  
+    .column.image img {
+      max-width: 90%; /* Increase image size to full width */
+      margin-bottom: 20px; /* Add spacing below images */
+    }
+  
+    .why-choose-us h2 {
+      font-size: 1.3rem; /* Slightly reduce font size for headings */
+    }
+  
+    .why-choose-us h2 span {
+      font-size: 2rem; /* Adjust font size for span */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .why-choose-us h2 {
+      font-size: 1.2rem; /* Further reduce font size for smaller screens */
+    }
+  
+    .why-choose-us h2 span {
+      font-size: 1.8rem; /* Adjust font size for span */
+    }
+  
+    .column p {
+      font-size: 14px; /* Reduce paragraph font size for better readability */
+    }
+  
+    .column.image img {
+      margin: 0 auto 20px; /* Center the image and add bottom margin */
+    }
+  }
+  
+  /* Specific Styles for Row 2 */
+  .row-2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  @media (max-width: 768px) {
+    .row-2 {
+      flex-direction: column-reverse; /* Reverse columns for the second row */
+      text-align: center; /* Center align text */
+      margin-bottom: 20px; /* Add more margin for better spacing */
+    }
+  
+    .column.image img {
+      max-width: 100%; /* Increase image size to full width */
+      margin: 0 auto;
+      padding: 0;
+    }
+  }
+  

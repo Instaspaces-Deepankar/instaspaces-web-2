@@ -1,0 +1,346 @@
+.container1 {
+    position: relative;
+    width: 100%;
+    height: 90vh;
+    margin: 0;
+    padding: 0;
+    font-family: "Nunito", sans-serif;
+    display: flex;
+    justify-content: center;
+    background-color: #ffffff;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+  }
+  
+  .slider {
+    position: relative;
+    width: 100%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 80px;
+    border-radius: 30px;
+    background-image: url("https://instaspaceweb.s3.ap-southeast-1.amazonaws.com/webimage/images/banner1.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.59);
+    border-radius: 30px;
+  }
+  
+  .content {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0 40px;
+    z-index: 1;
+    box-sizing: border-box;
+  }
+  
+  .text-section {
+    flex: 1;
+    padding: 20px;
+    color: #ffffff;
+    text-align: left;
+    box-sizing: border-box;
+  }
+  
+  .text-section h1 {
+    font-size: 45px;
+    line-height: 45px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #ed6666;
+  }
+  
+  .text-section p {
+    font-size: 18px;
+    letter-spacing: 1px;
+    width: 70%;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #f0f0f0;
+  }
+  
+  .form-section {
+    flex: 1;
+    padding: 30px;
+    margin-right: 40px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    box-sizing: border-box;
+  }
+  
+  .form-section h2 {
+    font-size: 26px;
+    text-align: center;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    color: #000;
+  }
+  
+  .form-section p {
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #777;
+  }
+  
+  .form-section form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .form-section input,
+  .form-section select {
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .form-section button {
+    padding: 12px;
+    border: none;
+    max-width: 250px;
+    border-radius: 10px;
+    background-color: #e65c5d;
+    box-shadow: 0px 0px 15px #ed6666a7;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: center;
+  }
+  
+  .form-section button:hover {
+    background-color: #d54a4a;
+  }
+  
+  .error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+  }
+  
+  /* New Styles Added */
+  
+  /* Submit Button Styles */
+  .form-section .submit-btn {
+    background-color: #ed6666;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+  }
+  
+  .form-section .submit-btn:hover {
+    background-color: #d55555;
+  }
+  
+  /* Submitted Section Styles */
+.form-section .submitted-section {
+    background-color: #fff3f3;
+    border: 2px solid #ed6666;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .form-section .submitted-section:hover {
+    transform: scale(1.02);
+  }
+  
+  .form-section .submitted-section .success-icon {
+    font-size: 50px;
+    color: #ed6666;
+    margin-bottom: 10px;
+  }
+  
+  .form-section .submitted-section h3 {
+    margin-top: 10px;
+    color: #333;
+    font-size: 24px;
+    font-weight: 600;
+  }
+  
+  .form-section .submitted-section .submitted-details {
+    text-align: center;
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    margin-left: 0;  /* Ensure no automatic centering occurs */
+  }
+  
+  .form-section .submitted-section .submitted-details p {
+    margin: 8px 0;
+    font-size: 14px;
+    color: #555;
+    text-align: center;  /* Ensure text within paragraphs is left-aligned */
+  }
+  
+  .form-section .submitted-section .submitted-details p strong {
+    color: #ed6666;
+    font-size: 15px;
+  }
+  
+
+  .spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .spinner-border {
+    width: 3rem; /* Adjust size */
+    height: 3rem; /* Adjust size */
+    border: 0.3rem solid #ed6666; /* Border color */
+    border-top: 0.3rem solid transparent; /* Top border transparent */
+    border-radius: 50%; /* Circular shape */
+    animation: spin 1s linear infinite; /* Spin animation */
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  
+  /* Responsive Styles */
+  @media screen and (max-width: 1200px) {
+    .container1 {
+      height: 820px;
+    }
+  
+    .content {
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+  
+    .text-section,
+    .form-section {
+      width: 100%;
+      margin-right: 0;
+    }
+  
+    .text-section h1 {
+      text-align: center;
+      font-size: 36px;
+    }
+  
+    .text-section p {
+      text-align: center;
+      font-size: 18px;
+      width: 90%;
+    }
+  }
+  
+  @media screen and (max-width: 992px) {
+    .slider {
+      margin: 0 20px;
+    }
+  
+    .text-section h1 {
+      text-align: center;
+      font-size: 32px;
+    }
+  
+    .overlay {
+      border-radius: 10px;
+    }
+  
+    .text-section p {
+      text-align: center;
+      font-size: 16px;
+      width: 90%;
+    }
+  
+    .form-section {
+      padding: 20px;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .slider {
+      margin: 0; /* Remove margins on smaller screens */
+      border-radius: 0; /* Remove border-radius on smaller screens */
+      background-attachment: scroll;
+    }
+  
+    .content {
+      padding: 10px;
+    }
+  
+    .text-section h1 {
+      font-size: 28px;
+    }
+  
+    .text-section p {
+      font-size: 16px;
+      width: 100%;
+    }
+  
+    .form-section {
+      padding: 10px 20px;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .container1 {
+      margin: 0;
+      padding: 0;
+    }
+  
+    .text-section {
+      padding: 5px;
+    }
+  
+    .text-section h1 {
+      font-size: 24px;
+    }
+  
+    .text-section p {
+      font-size: 14px;
+      padding-bottom: 10px;
+    }
+  
+    .form-section input,
+    .form-section select {
+      padding: 10px;
+      font-size: 14px;
+    }
+  
+    .form-section button {
+      font-size: 14px;
+    }
+  }
+  

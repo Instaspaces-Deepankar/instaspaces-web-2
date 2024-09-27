@@ -1,0 +1,123 @@
+/* styles.css */
+
+body {
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff3f3; /* Light background color */
+}
+
+.header {
+    text-align: center;
+    padding: 20px 0 0 0;
+}
+
+.header h2 {
+    font-size: 1.5rem;
+    font-family: 'Nunito', sans-serif;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.header h2 span {
+    display: block;
+    font-size: 2.5rem;
+    margin-top: 10px;
+    font-weight: 600;
+    color: #ed6666;
+}
+
+.divider {
+    width: 70%; /* Adjusted width to 80% */
+    border: 1px solid #ff5e72;
+    margin: 20px auto;
+}
+
+.virtual-office {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 10px 20px 40px 20px;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    text-align: center; /* Center align all content */
+}
+
+.text-container {
+    text-align: left; /* Center text */
+    margin-bottom: 30px; /* Space between text and images */
+    padding: 0 20px;
+    max-width: 800px; /* Limit the width for better readability */
+    margin: 0 auto; /* Center horizontally */
+    display: flex; /* Flexbox for centering */
+    flex-direction: column; /* Column direction */
+    align-items: center; /* Center align items */
+    justify-content: center; /* Center vertically */
+}
+
+.text-container p {
+    font-size: 15px;
+    color: #333;
+    text-align: left;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.text-container .highlight {
+    color: #ff5e72;
+}
+
+.images-container {
+    position: relative;
+    display: flex;
+    flex-direction: column; /* Stack images vertically on smaller screens */
+    align-items: center; /* Center images */
+    gap: 20px;
+    max-width: 100%;
+    margin: 0 0 30px auto;
+}
+
+.image {
+    position: relative;
+    width: 90%;
+    max-width: 500px; /* Limit the image width */
+    margin: 0 auto; /* Center images */
+}
+
+.image img {
+    width: 90%;
+}
+
+@media (min-width: 768px) {
+    .virtual-office {
+        flex-direction: row;
+        align-items: center; /* Center align vertically */
+        justify-content: center; /* Center align horizontally */
+        text-align: left; /* Align text to the left on larger screens */
+    }
+
+    .text-container {
+        flex: 1;
+        text-align: center; /* Center text for smaller screens */
+        padding: 0 30px;
+        max-width: 500px; /* Limit width */
+    }
+
+    .images-container {
+        flex: 1;
+        display: block; /* Place images side by side on larger screens */
+        max-width: 500px;
+    }
+
+    .image {
+        margin: 0;
+    }
+
+    .overlay-image {
+        width: 60%;
+        top: 50%;
+        left: 70%;
+    }
+
+}

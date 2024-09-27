@@ -1,0 +1,119 @@
+.virtual-office-container {
+    display: flex;
+    flex-wrap: wrap; /* Ensure responsiveness */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    gap: 20px;
+    padding: 60px 20px;
+    font-family: 'nunito', sans-serif;
+    max-width: 1200px; /* Constrain width for larger screens */
+    margin: 0 auto; /* Center the container */
+  }
+  
+  .images-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 100%; /* Allow images section to be responsive */
+    justify-content: center; /* Center images */
+  }
+  
+  .image {
+    flex: 1 1 300px; /* Ensure images scale properly */
+    position: relative;
+  }
+  
+  .image img {
+    width: 80%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .text-section {
+    max-width: 500px; /* Control width for text */
+    flex: 1 1 300px; /* Allow text section to be responsive */
+    text-align: center; /* Center text content */
+  }
+  
+  .text-section h2 {
+    color: #333;
+    font-size: 1.5rem;
+    font-family: 'nunito', sans-serif;
+    margin-bottom: 15px;
+  }
+  
+  .text-section span {
+    display: block;
+    color: #ed6666;
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-top: 10px;
+  }
+  
+  .text-section ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: left; /* Align list items to the left */
+  }
+  
+  .text-section ul li {
+    position: relative;
+    padding-left: 30px;
+    font-size: 15px;
+    margin-bottom: 15px;
+    line-height: 1.6;
+  }
+  
+  .text-section ul li::before {
+    content: '↳';
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 25px;
+    color: #ff5c5c;
+  }
+  
+  /* Media Queries for Responsiveness */
+  
+  /* Tablet and smaller screens */
+  @media (max-width: 768px) {
+    .virtual-office-container {
+      flex-direction: column; /* Stack content vertically */
+      padding: 40px 20px;
+    }
+  
+    .text-section {
+      max-width: 100%; /* Make text section full width */
+      text-align: center; /* Center text */
+    }
+  
+    .images-section{
+        display: none; /* Hide images on mobile */
+    }
+  }
+  
+  /* Mobile screens */
+  @media (max-width: 480px) {
+    .images-section {
+      display: none; /* Hide images on mobile */
+    }
+  
+    .text-section h2 {
+      font-size: 1.2rem; /* Adjust font size */
+    }
+  
+    .text-section span {
+      font-size: 2rem; /* Adjust font size */
+    }
+  
+    .text-section ul li {
+      font-size: 14px; /* Adjust list font size */
+      padding-left: 20px; /* Adjust padding */
+    }
+  
+    .text-section ul li::before {
+      font-size: 20px; /* Adjust icon size */
+    }
+  }
+  

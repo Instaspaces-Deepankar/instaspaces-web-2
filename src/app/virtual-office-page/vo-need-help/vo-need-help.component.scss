@@ -1,0 +1,109 @@
+.vo-help{
+  background-color: #fff;
+}
+
+.gst-registration-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
+    background: #fff;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .divider {
+    width: 80%;
+    border: 1px solid #ff5e72;
+    margin: 20px auto;
+    margin-left: 0;
+  }
+  
+  .text-content {
+    width: 60%;
+  
+    h1 {
+        font-size: 1.6rem;
+        font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      color: #333;
+  
+      span {
+        color: #ed6666;
+      }
+    }
+  
+    p {
+        font-size: 14px;
+        color: #333;
+        text-align: left;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+  
+  }
+  
+  .image-content {
+    width: 45%;
+    position: relative;
+  
+    img {
+      width: 100%;
+      border-radius: 20px;
+    }
+  }
+  
+  /* Media queries for responsiveness */
+  
+  /* Large screens (desktops) */
+  @media only screen and (min-width: 1200px) {
+    .gst-registration-section {
+      padding: 40px;
+    }
+    .divider {
+      margin: 30px auto;
+      margin-left: 0;
+    }
+    .text-content {
+      width: 50%;
+    }
+    .image-content {
+      width: 40%;
+    }
+  }
+  
+  /* Medium screens (tablets) */
+  @media only screen and (min-width: 768px) and (max-width: 1199px) {
+    .gst-registration-section {
+        flex-direction: column;
+      padding: 30px;
+    }
+    .divider {
+      margin: 20px auto;
+    }
+    .text-content {
+      width: 55%;
+    }
+    .image-content {
+      width: 35%;
+    }
+  }
+  
+  /* Small screens (mobiles) */
+  @media only screen and (max-width: 767px) {
+    .gst-registration-section {
+      flex-direction: column;
+      padding: 20px;
+    }
+    .divider {
+      margin: 10px auto;
+    }
+    .text-content {
+      width: 100%;
+    }
+    .image-content {
+      width: 100%;
+      margin-top: 20px;
+    }
+  }

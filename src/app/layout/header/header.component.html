@@ -1,0 +1,107 @@
+<!-- <ng-template #contact>
+  <app-request-call-back></app-request-call-back>
+  <button mat-icon-button (click)="closeDialog()" class="close-button">
+    <mat-icon>close</mat-icon>
+  </button>
+</ng-template> -->
+
+<header class="header" id="header" style="background-color: white">
+  <nav class="nav container">
+    <!-- Logo -->
+    <div class="lg:hidden">
+      <a 
+      
+        class="flex items-center space-x-3 rtl:space-x-reverse transition duration-500 hover:scale-110">
+        <img src="https://instaspaceweb.s3.ap-southeast-1.amazonaws.com/webimage/favicon.png" alt="Instaspaces Logo"
+          style="width: 80px" />
+      </a>
+    </div>
+
+    <div class="hidden lg:block">
+      <a 
+        class="flex items-center space-x-3 rtl:space-x-reverse transition duration-500 hover:scale-110">
+        <img src="https://isicons.gumlet.io/logo/is_logo.png?&mode=crop&width=200&height=auto" style="width: 240px"
+          alt="Instaspaces Logo" />
+      </a>
+    </div>
+
+    <!-- Navigation Menu -->
+    <div class="nav__menu" [class.show-menu]="showMenu" style="background-color: white">
+      <!-- Menu Items -->
+      <ul class="nav__list">
+
+        <li class="nav__item">
+          <a  routerLinkActive="active" class="nav__link">Book Business Address</a>
+        </li>
+
+        <li class="nav__item">
+          <a  routerLinkActive="active" class="nav__link">Partner With Us</a>
+        </li>
+
+        <li class="nav__item cursor-pointer">
+          <a (click)="navigateToRouteWithGetDesk()" routerLinkActive="active" class="nav__link">Desk Address</a>
+        </li>
+
+        <li class="nav__item">
+          <a  routerLinkActive="active" class="nav__link">Get Quote</a>
+        </li>
+      </ul>
+
+      <div class="nav__close" id="nav-close" (click)="toggleMenu()">
+        <i class="ri-close-line"></i>
+      </div>
+    </div>
+
+    <div class="nav__actions">
+      <i class="ri-search-line nav__search" id="search-btn" (click)="toggleSearch()"></i>
+      <i  class="ri-user-line nav__login" id="login-btn"
+        (click)="toggleLogin()"></i>
+      <i class="ri-user-line nav__login"  mat-button
+        data-popover-target="popover-company-profile" type="button"
+        class="rounded-lg bg-blue-700 px-5 text-center text-sm font-medium text-white py-2.5 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        routerLinkActive="bg-gray-100" class="px-5 py-2 text-lg">
+        <!-- <ng-container>
+          <app-profile-notification-dropdown></app-profile-notification-dropdown>
+        </ng-container> -->
+      </i>
+      <i class="ri-phone-fill nav__phone" aria-hidden="true" id="phone-btn" (click)="toggleContact()"></i>
+      <button class="nav__button" (click)="toggleHelp()">Help</button>
+
+      <!-- <button class="nav__button" (click)="contactDialog(contact)" >Help</button> -->
+
+      <div class="nav__toggle" id="nav-toggle" (click)="toggleMenu()">
+        <i class="ri-menu-line"></i>
+      </div>
+    </div>
+  </nav>
+
+  <div class="search" id="search" [class.show-search]="showSearch">
+    <!-- <div class="search_container">
+      <app-dynamic-search (searchEvent)="handleSearch($event)"></app-dynamic-search>
+    </div> -->
+    <i class="ri-close-line search__close" id="search-close" (click)="toggleSearch()"></i>
+  </div>
+
+  <div class="search" id="help" [class.show-help]="showHelp">
+    <!-- <div class="search_container2">
+      <app-request-call-back></app-request-call-back>
+    </div> -->
+    <i class="ri-close-line search__close" id="search-close" (click)="toggleHelp()"></i>
+  </div>
+
+  <div class="search" id="contact" [class.show-help]="showContact">
+    <!-- <div class="search_container">
+      <app-contact-pop-over (toggleContactEvent)="handletoggleContactEvent($event)"></app-contact-pop-over>
+    </div> -->
+    <i class="ri-close-line search__close" id="search-close" (click)="toggleContact()"></i>
+  </div>
+
+  <!-- Login Form -->
+  <div class="login" id="login" [class.show-login]="showLogin">
+    <!-- <div class="search_container2">
+      <app-sign-in-button (valueChanged)="handleValueChange($event)"></app-sign-in-button>
+    </div> -->
+
+    <i class="ri-close-line login__close" id="login-close" (click)="toggleLogin()"></i>
+  </div>
+</header>

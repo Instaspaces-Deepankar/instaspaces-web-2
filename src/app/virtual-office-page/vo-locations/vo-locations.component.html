@@ -1,0 +1,81 @@
+<main class="main">
+    <section class="backgroundContainer">
+      <div class="cardSliderContainer">
+        <!-- Card 1 -->
+        <div class="card">
+          <img src="https://instaspaceweb.s3.ap-southeast-1.amazonaws.com/webimage/images/list1.png" alt="Office Space 1" class="cardImg" />
+          <div class="cardBody">
+            <p class="cardTitle">Virtual Office Address in Gurgaon for GST Registration</p>
+            <div class="cardFooter">
+              <p>Starting from <span class="cardPrice">₹ 1000/-</span> per Month</p>
+              <button class="cardBtn" (click)="openPopup($event)">Explore</button>
+            </div>
+          </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="card">
+          <img src="https://instaspaceweb.s3.ap-southeast-1.amazonaws.com/webimage/images/list2.png" alt="Office Space 2" class="cardImg" />
+          <div class="cardBody">
+            <p class="cardTitle">Virtual Office in Delhi with Registered Address</p>
+            <div class="cardFooter">
+              <p>Starting from <span class="cardPrice">₹ 1250/-</span> per Month</p>
+              <button class="cardBtn" (click)="openPopup($event)">Explore</button>
+            </div>
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="card">
+          <img src="https://instaspaceweb.s3.ap-southeast-1.amazonaws.com/webimage/images/list3.png" alt="Office Space 3" class="cardImg" />
+          <div class="cardBody">
+            <p class="cardTitle">Virtual Office in Noida with GST Registration Addres</p>
+            <div class="cardFooter">
+              <p>Starting from <span class="cardPrice">₹ 1250/-</span> per Month</p>
+              <button class="cardBtn" (click)="openPopup($event)">Explore</button>
+            </div>
+          </div>
+        </div>
+        <!-- Card 4 -->
+        <div class="card">
+          <img src="https://instaspaceweb.s3.ap-southeast-1.amazonaws.com/webimage/images/list4.png" alt="Office Space 4" class="cardImg" />
+          <div class="cardBody">
+            <p class="cardTitle">Virtual Office in Mumbai with GST Registration</p>
+            <div class="cardFooter">
+              <p>Starting from <span class="cardPrice">₹ 1250/-</span> per Month</p>
+              <button class="cardBtn" (click)="openPopup($event)">Explore</button>
+            </div>
+          </div>
+        </div>
+        <!-- Card 5 -->
+        <div class="card">
+          <img src="https://instaspaceweb.s3.ap-southeast-1.amazonaws.com/webimage/images/list5.png" alt="Office Space 5" class="cardImg" />
+          <div class="cardBody">
+            <p class="cardTitle">Virtual Office Space in Bangalore with GST Registration</p>
+            <div class="cardFooter">
+              <p>Starting from <span class="cardPrice">₹ 1500/-</span> per Month</p>
+              <button class="cardBtn" (click)="openPopup($event)">Explore</button>
+            </div>
+          </div>
+        </div>
+        <!-- Card 6 -->
+        <div class="card">
+          <img src="https://instaspaceweb.s3.ap-southeast-1.amazonaws.com/webimage/images/list6.png" alt="Office Space 6" class="cardImg" />
+          <div class="cardBody">
+            <p class="cardTitle">Virtual Office Address in Kolkata with GST Registration</p>
+            <div class="cardFooter">
+              <p>Starting from <span class="cardPrice">₹ 1250/-</span> per Month</p>
+              <button class="cardBtn" (click)="openPopup($event)">Explore</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Popup -->
+  <div class="popup" *ngIf="isPopupOpen">
+    <div class="popupContent">
+      <button class="closeBtn" (click)="closePopup()">×</button>
+      <!-- <app-reveal-number></app-reveal-number> -->
+    </div>
+  </div> 
+  </main>
+  
