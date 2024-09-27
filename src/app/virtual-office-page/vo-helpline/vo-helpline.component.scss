@@ -1,98 +1,105 @@
+/* Global Styles */
 .vo-helpline {
-    font-family: 'Nunito', sans-serif;
-    background-color: #fff;
-    margin: 0;
-    padding: 30px 0;
-    display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    box-sizing: border-box;
-  }
-  
+  font-family: 'Nunito', sans-serif;
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  box-sizing: border-box;
+}
+
+/* Container */
+.vo-helpline-container {
+  display: flex;
+  flex-direction: row; /* Default row layout */
+  align-items: stretch; /* Ensures cards stretch to container height */
+  border-radius: 10px;
+  background-color: #fff;
+  width: 90%; /* Adjust width for the container */
+  max-width: 1200px; /* Max width for large screens */
+  margin-left: auto; /* Center the container */
+  margin-right: auto; /* Center the container */
+  box-sizing: border-box;
+}
+
+/* Cards */
+.vo-helpline-card {
+  flex: 1; /* This makes both cards take up 50% of the width */
+  padding: 40px; /* Increase padding for a better look */
+  text-align: center;
+  box-sizing: border-box; /* Ensures padding is included in width */
+}
+
+.vo-helpline-left-card {
+  border-right: 2px solid #ed6666; /* Change divider color */
+  margin: 20px 65px;
+}
+
+/* Typography */
+.vo-helpline-small-text {
+  font-size: 16px; /* Increase font size */
+  color: #333;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 24px; /* Increase font size */
+  color: #ed6666;
+  margin: 20px 0;
+}
+
+p {
+  font-size: 16px; /* Increase font size */
+  color: #333;
+  margin: 20px 0;
+}
+
+/* Call to Action Button */
+.vo-helpline-cta-button {
+  padding: 15px;
+  border: none;
+  max-width: 250px;
+  border-radius: 10px;
+  background-color: #ed6666;
+  box-shadow: 0px 0px 15px rgba(237, 102, 102, 0.6549019608);
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  align-self: center;
+}
+
+.vo-helpline-cta-button:hover {
+  background-color: #e63946;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
   .vo-helpline-container {
-    display: flex;
-    flex-direction: row; /* Default row layout */
-    align-items: stretch; /* Ensures cards stretch to container height */
-    border-radius: 10px;
-    background-color: #fff;
-    width: 90%; /* Adjust width for the container */
-    max-width: 1200px; /* Max width for large screens */
-    overflow: hidden; /* Prevents content overflow */
+    flex-direction: column; /* Stack cards vertically on smaller screens */
+    width: 100%; /* Full width for smaller screens */
+    max-width: 100%; /* Max width adjustment */
   }
-  
-  .vo-helpline-card {
-    flex: 1; /* This makes both cards take up 50% of the width */
-    padding: 40px; /* Increase padding for a better look */
-    text-align: center;
-    box-sizing: border-box; /* Ensures padding is included in width */
-  }
-  
+
   .vo-helpline-left-card {
-    border-right: 2px solid #ed6666; /* Change divider color */
+    border-right: none; /* Remove border on smaller screens */
+    border-bottom: 2px solid #ed6666; /* Add bottom border as a divider */
   }
-  
-  .vo-helpline-small-text {
-    font-size: 16px; /* Increase font size */
-    color: #333;
-    margin-bottom: 20px;
+}
+
+@media (max-width: 480px) {
+  .vo-helpline-card {
+    padding: 20px; /* Reduce padding for very small screens */
   }
-  
+
   h2 {
-    font-size: 24px; /* Increase font size */
-    color: #ed6666;
-    margin: 20px 0;
+    font-size: 20px; /* Decrease font size */
   }
-  
-  p {
-    font-size: 16px; /* Increase font size */
-    color: #333;
-    margin: 20px 0;
-  }
-  
+
   .vo-helpline-cta-button {
-    padding: 15px;
-    border: none;
-    max-width: 250px;
-    border-radius: 10px;
-    background-color: #ed6666;
-    box-shadow: 0px 0px 15px rgba(237, 102, 102, 0.6549019608);
-    color: #fff;
-    font-size: 15px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    align-self: center;
+    padding: 12px 20px; /* Reduce button padding */
+    font-size: 14px; /* Reduce button font size */
   }
-  
-  .vo-helpline-cta-button:hover {
-    background-color: #e63946;
-  }
-  
-  /* Media Queries for Responsiveness */
-  @media (max-width: 768px) {
-    .vo-helpline-container {
-      flex-direction: column; /* Stack cards vertically on smaller screens */
-      width: 100%; /* Full width for smaller screens */
-      max-width: 100%; /* Max width adjustment */
-    }
-  
-    .vo-helpline-left-card {
-      border-right: none; /* Remove border on smaller screens */
-      border-bottom: 2px solid #ed6666; /* Add bottom border as a divider */
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .vo-helpline-card {
-      padding: 20px; /* Reduce padding for very small screens */
-    }
-  
-    h2 {
-      font-size: 20px; /* Decrease font size */
-    }
-  
-    .vo-helpline-cta-button {
-      padding: 12px 20px; /* Reduce button padding */
-      font-size: 14px; /* Reduce button font size */
-    }
-  }
-  
+}

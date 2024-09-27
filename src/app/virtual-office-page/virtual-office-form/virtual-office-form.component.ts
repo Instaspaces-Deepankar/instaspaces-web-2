@@ -1,23 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
-
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-virtual-office-form',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],  // Import required modules
+  imports: [CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './virtual-office-form.component.html',
   styleUrls: ['./virtual-office-form.component.scss']
 })
 export class VirtualOfficeFormComponent implements OnInit {
   virtualOfficeForm!: FormGroup;
   formSubmitted = false;
-  isSubmitting = false; // State to manage the spinner
+  isSubmitting = false;
 
-
-  constructor(private fb: FormBuilder,) {}
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
     this.virtualOfficeForm = this.fb.group({
@@ -40,19 +38,16 @@ export class VirtualOfficeFormComponent implements OnInit {
 
   onSubmit() {
     if (this.virtualOfficeForm.valid) {
-      this.isSubmitting = true;  // Show spinner when submitting
+      this.isSubmitting = true;
 
-     // Simulate a delay to mimic form submission (e.g., 2 seconds)
-     setTimeout(() => {
-      this.formSubmitted = true;  // Show success message and hide form
-      this.isSubmitting = false;  // Hide spinner after submission
-      alert("Successfully submitted");
-      console.log(this.virtualOfficeForm.value);
-    }, 2000);  // Simulating a 2-second delay
-
-  } else {
-    this.virtualOfficeForm.markAllAsTouched();  // Show validation errors
-  }
+      setTimeout(() => {
+        this.formSubmitted = true;
+        this.isSubmitting = false;
+        console.log(this.virtualOfficeForm.value);
+      }, 2000);
+    } else {
+      this.virtualOfficeForm.markAllAsTouched();
+    }
   }
 
   get email() {
