@@ -1,91 +1,129 @@
 :root {
-    --soft-red: #ed6666;
-    --very-dark-blue: #222;
-    --light-grayish-blue: #fff;
-    --dark-grayish-blue: hsl(240, 6%, 50%);
-  }
+  --soft-red: #ed6666;
+  --very-dark-blue: #222;
+  --light-grayish-blue: #fff;
+  --dark-grayish-blue: hsl(240, 6%, 50%);
+}
 
-  body {
-    height: 100%;
-    font-family: 'Nunito', sans-serif;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #ffff;
-  }
+.faq-main {
+  font-family: 'Nunito', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* Ensure it takes full width */
+}
 
-  .container {
-    margin-bottom: 50px;
-    width: 95%;
-    max-width: 80.25rem;
-  }
+.container {
+  margin-bottom: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem; /* Add padding for small screens */
+}
 
-  .faq {
-    background-color: #fff;
+.faq {
+  background-color: #fff;
     border-radius: 1.25rem;
-    padding: 0.7rem;
+    padding: 1.5rem;
+    width: 100vw;
+    max-width: 70rem;
+    text-align: center;
+}
+
+.faq h2 {
+  color: var(--very-dark-blue);
+  font-weight: 700;
+  font-size: 2rem; /* Slightly increase for better readability */
+  letter-spacing: 2px;
+  margin-bottom: 2.5rem;
+}
+
+h5 {
+  font-size: 14px; /* Slightly larger for readability */
+  color: #505050;
+  letter-spacing: 1px;
+  text-align: left; /* Align answer text to the left */
+}
+
+.q-wrapper {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+}
+
+.q-wrapper h3 {
+  color: var(--dark-grayish-blue);
+  font-weight: 500;
+  font-size: 17px; /* Slightly larger for better readability */
+  letter-spacing: 1px;
+  flex: 1;
+  margin: 0;
+  text-align: left;
+}
+
+.q-wrapper h3:hover {
+  color: var(--soft-red);
+}
+
+.svg-animation {
+  transform: rotate(180deg);
+}
+
+.faq p {
+  color: var(--dark-grayish-blue);
+  margin-top: 1.2rem;
+  display: none;
+  text-align: left;
+}
+
+.p-visible {
+  display: block;
+}
+
+.faq svg {
+  margin-left: auto;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.faq svg.svg-animation {
+  transform: rotate(180deg);
+}
+
+@media (max-width: 768px) {
+  .faq {
+    padding: 1.2rem;
+    max-width: 95%; /* Adjust to ensure it fits smaller screens */
+    border-radius: 1rem;
   }
 
   .faq h2 {
-    color: var(--very-dark-blue);
-    font-family: 'Nunito', sans-serif;
-    font-weight: 700;
-    font-size: 1.8rem;
-    text-align: center;
-    letter-spacing: 2px;
-    margin-bottom: 2.5rem;
-  }
-
-  h5{
-    font-size: 13px;
-    color: #505050;
-    font-family: 'Nunito', sans-serif;
-    letter-spacing: 1px;
-
-  }
-
-  .q-wrapper {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    margin-bottom: 1.2rem;
+    font-size: 1.7rem; /* Adjust font size for better fit */
   }
 
   .q-wrapper h3 {
-    color: var(--dark-grayish-blue);
-    font-weight: 500;
     font-size: 16px;
-    letter-spacing: 1px;
-    flex: 1;
-    margin: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 0.5rem; /* Add padding for mobile view */
   }
 
-  .q-wrapper h3:hover {
-    color: var(--soft-red);
+  .faq h2 {
+    font-size: 1.5rem;
   }
 
-  .svg-animation {
-    transform: rotate(180deg);
+  h5, .q-wrapper h3 {
+    font-size: 15px; /* Adjust for mobile readability */
   }
 
-  .faq p {
-    color: var(--dark-grayish-blue);
-    margin-top: 1.2rem;
-    display: none;
+  .faq {
+    padding: 1rem;
+    max-width: 100%; /* Use full width on mobile */
+    box-shadow: none; /* Remove shadow for smaller screens */
   }
-
-  .p-visible {
-    display: block;
-  }
-
-  .faq svg {
-    margin-left: auto;
-    cursor: pointer;
-    transition: transform 0.2s;
-  }
-
-  .faq svg.svg-animation {
-    transform: rotate(180deg);
-  }
-
+}
