@@ -44,6 +44,13 @@
           <a href="https://www.instaspaces.in/virtual-office/" class="nav__link" target="_blank" rel="noopener noreferrer">
           Get Quote</a>
         </li>
+        <li class="nav__item">
+          <a class="nav__link"  (click)="toggleContact()">
+            <fa-icon class="footer-icon" [icon]="faPhone"></fa-icon>
+          </a>
+
+
+        </li>
       </ul>
     </nav>
 
@@ -71,7 +78,7 @@
 
   <!-- Mobile Menu -->
   <div
-    class="md:hidden bg-white text-black w-full transition-all duration-300"
+    class="md:hidden bg-white text-black w-full transition-all duration-300 p-4"
     [ngClass]="{ hidden: !isMenuOpen, block: isMenuOpen }"
   >
     <nav class="flex flex-col space-y-4 p-4">
@@ -96,8 +103,17 @@
 
         <li class="nav__item">
           <a href="https://www.instaspaces.in/virtual-office/" class="nav__link" target="_blank" rel="noopener noreferrer">
-            Get Quote</a>        </li>
+            Get Quote</a> </li>
       </ul>
+
     </nav>
+
+
   </div>
 </header>
+<div class="search" id="contact" [class.show-help]="showContact">
+  <div class="search_container">
+    <app-contact-pop-over (toggleContactEvent)="handletoggleContactEvent($event)"></app-contact-pop-over>
+  </div>
+  <fa-icon class="footer-icon search__close" id="search-close" [icon]="faTimes" (click)="toggleContact()"></fa-icon>
+</div>

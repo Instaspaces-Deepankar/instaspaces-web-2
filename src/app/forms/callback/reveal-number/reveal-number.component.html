@@ -1,0 +1,124 @@
+<div class="sales-advisor-card">
+  <div *ngIf="!showForm && !formSubmitted && !isSuccess">
+    <h2>Connect Instantly With Our Sales Advisor</h2>
+    <p>
+      Our expert professionals are available from Monday to Saturday between 10 AM and 7 PM
+      to address your queries and provide comprehensive solutions tailored to your needs.
+    </p>
+    <div class="phone-btn" (click)="toggleForm()">
+      <i class="fa fa-phone"></i>
+      <span class="visible-part">
+        {{ selectedCoordinator?.callerId ? (selectedCoordinator?.callerId | slice:0:7) : 'Request a Call' }}
+      </span>
+      <span class="blurred-part">
+        {{ selectedCoordinator?.callerId ? (selectedCoordinator?.callerId | slice:7:10) : '' }}
+      </span>
+    </div>
+  </div>
+
+  <!-- Form content -->
+  <div *ngIf="showForm && !formSubmitted && !isSuccess" class="callback-form">
+    <h3>Get a Callback Now</h3>
+    <form [formGroup]="callbackForm" (ngSubmit)="onSubmit()">
+      <input
+        type="text"
+        placeholder="Enter your Name"
+        formControlName="userName"
+      />
+      <input
+        type="tel"
+        placeholder="Enter your Phone Number"
+        formControlName="userPhone"
+        maxlength="10"
+      />
+      <div class="time-buttons">
+        <button
+          class="time-btn"
+          [class.selected]="selectedTime1 === 1"
+          (click)="selectTime(1)"
+          type="button"
+        >
+          Now
+        </button>
+        <button
+          class="time-btn"
+          [class.selected]="selectedTime1 === 15"
+          (click)="selectTime(15)"
+          type="button"
+        >
+          +15 min
+        </button>
+        <button
+          class="time-btn"
+          [class.selected]="selectedTime1 === 60"
+          (click)="selectTime(60)"
+          type="button"
+        >
+          +1 Hr
+        </button>
+      </div>
+      <button
+        class="schedule-call-btn"
+        type="submit"
+        [disabled]="isLoading"
+      >
+        Schedule Call
+      </button>
+    </form>
+  </div>
+
+  <!-- Details display after form submission -->
+  <div *ngIf="formSubmitted && !isSuccess" class="submitted-details">
+    <h3>Consultation Scheduled</h3>
+    <p><strong>Name:</strong> {{ callbackForm.get('userName')?.value }}</p>
+    <p><strong>Phone:</strong> {{ callbackForm.get('userPhone')?.value }}</p>
+    <p *ngIf="selectedTime1 === 1"><strong>Preferred Time:</strong> Just Now</p>
+    <p *ngIf="selectedTime1 === 15"><strong>Preferred Time:</strong> {{ exactTime15Min }}</p>
+    <p *ngIf="selectedTime1 === 60"><strong>Preferred Time:</strong> {{ exactTime60Min }}</p>
+
+    <div class="button-row" *ngIf="!isLoading">
+      <button class="edit-btn" (click)="editDetails()" [disabled]="isLoading">Edit Details</button>
+      <button class="cnf-call-btn" (click)="confirmSchedule()" [disabled]="isLoading">Confirm Schedule</button>
+    </div>
+
+    <div class="loading-container" *ngIf="isLoading">
+      <div class="loading-spinner"></div>
+    </div>
+  </div>
+
+  <!-- Success message after confirmation -->
+  <div *ngIf="isSuccess">
+    <!-- If Business Solution Specialist is available -->
+    <div *ngIf="selectedCoordinator; else noCoordinator" class="success-message-container text-center">
+      <div class="icon-container mb-4">
+        <i class="fas fa-check-circle text-green-500 text-4xl animate-bounce"></i>
+      </div>
+      <h2 class="text-3xl font-bold text-green-800 mb-4">Thank You!</h2>
+      <p class="text-lg text-gray-700">
+        You will receive a callback from <br> Our Business Solution Specialist
+        <strong class="text-green-800">
+          {{ selectedCoordinator.name === 'mac' ? 'Manisha' :
+          selectedCoordinator.name === 'mat' ? 'Manisha' :
+            selectedCoordinator.name === 'rupal' ? 'Rupal' : 'Not Available' }}
+        </strong>
+        at the selected time.<br> Feel free to reach out to them at
+        <strong class="text-green-800">{{ selectedCoordinator.callerId || 'Not Available' }}</strong> during working hours.
+      </p>
+    </div>
+
+    <!-- If Business Solution Specialist is not available -->
+    <ng-template #noCoordinator>
+      <div class="success-message-container text-center">
+        <div class="icon-container mb-4">
+          <i class="fas fa-check-circle text-green-500 text-4xl animate-bounce"></i>
+        </div>
+        <h2 class="text-3xl font-bold text-green-800 mb-4">Thank You!</h2>
+        <p class="text-lg text-gray-700">
+          We couldn't connect you with a Business Solution Specialist at the moment.
+          Your query has been saved, and we will arrange a call during the upcoming business hours.
+        </p>
+      </div>
+    </ng-template>
+  </div>
+
+</div>

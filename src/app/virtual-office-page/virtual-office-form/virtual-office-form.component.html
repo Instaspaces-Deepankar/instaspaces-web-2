@@ -10,11 +10,13 @@
       <div class="form-section">
         <h2>Fill Your <br> <span style="color: #ed6666; font-weight: 700;">Requirements</span></h2>
         <p>We will get back to you right away</p>
+
+        <!-- Form for virtual office submission -->
         <form [formGroup]="virtualOfficeForm" (ngSubmit)="onSubmit()">
           <div *ngIf="!formSubmitted">
             <input type="text" formControlName="fullName" placeholder="Full Name">
             <div *ngIf="virtualOfficeForm.get('fullName')?.touched && virtualOfficeForm.get('fullName')?.invalid"
-              class="error-message">
+                 class="error-message">
               Full Name is required.
             </div>
 
@@ -25,7 +27,7 @@
             </div>
 
             <input type="text" formControlName="phoneNumber" placeholder="Phone Number" maxlength="10"
-              (input)="validateNumber($event)">
+                   (input)="validateNumber($event)">
             <div *ngIf="phoneNumber?.touched && phoneNumber?.invalid" class="error-message">
               <div *ngIf="phoneNumber?.errors?.['required']">Phone Number is required.</div>
               <div *ngIf="phoneNumber?.errors?.['pattern']">Please enter a valid 10-digit phone number.</div>
@@ -41,18 +43,19 @@
               <option value="Please Help. Need Clarity.">Please Help. Need Clarity.</option>
             </select>
             <div *ngIf="virtualOfficeForm.get('planType')?.touched && virtualOfficeForm.get('planType')?.invalid"
-              class="error-message">
+                 class="error-message">
               Please select a plan type.
             </div>
           </div>
 
           <button *ngIf="!isSubmitting && !formSubmitted" type="submit" class="submit-btn">Request Quote</button>
           <!-- Show spinner during form submission -->
-          <div *ngIf="isSubmitting" class="spinner">
+          <div *ngIf="isSubmitting && !formSubmitted" class="spinner">
             <div class="spinner-border" role="status"></div>
           </div>
         </form>
 
+        <!-- Show success message after form submission -->
         <div *ngIf="formSubmitted" class="submitted-section">
           <div class="success-icon">&#10003;</div>
           <h3>Form Submitted Successfully!</h3>

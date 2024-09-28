@@ -1,0 +1,40 @@
+
+
+
+<body class="flex items-center justify-center ">
+
+<div class="bg-white p-8 rounded-lg shadow-lg max-w-sm w-full text-center">
+
+<!-- If Business Solution Specialist is available -->
+<div *ngIf="selectedCoordinator; else noCoordinator" class="success-message-container text-center">
+  <div class="icon-container mb-4">
+    <i class="fas fa-check-circle text-green-500 text-4xl animate-bounce"></i>
+  </div>
+  <h2 class="text-3xl font-bold text-green-800 mb-4">Thank You!</h2>
+  <p class="text-lg text-gray-700">
+    You will receive a callback from <br> Our Business Solution Specialist
+    <strong class="text-green-800">
+      {{ selectedCoordinator?.name === 'mac' ? 'Manisha' :
+      selectedCoordinator?.name === 'mat' ? 'Manisha' :
+        selectedCoordinator?.name === 'rupal' ? 'Rupal' : 'Not Available' }}
+    </strong>
+    .<br> Feel free to reach out to them at
+    <strong class="text-green-800">{{ selectedCoordinator?.callerId || 'Not Available' }}</strong> during working hours.
+  </p>
+</div>
+
+<!-- If Business Solution Specialist is not available -->
+<ng-template #noCoordinator>
+  <div class="success-message-container text-center">
+    <div class="icon-container mb-4">
+      <i class="fas fa-check-circle text-green-500 text-4xl animate-bounce"></i>
+    </div>
+    <h2 class="text-3xl font-bold text-green-800 mb-4">Thank You!</h2>
+    <p class="text-lg text-gray-700">
+      We couldn't connect you with a Business Solution Specialist at the moment.
+      Your query has been saved, and we will arrange a call during the upcoming business hours.
+    </p>
+  </div>
+</ng-template>
+</div>
+</body>

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import {ContactService} from "../../services/contact.service";
 
 @Component({
   selector: 'app-virtual-office-form',
@@ -14,8 +15,10 @@ export class VirtualOfficeFormComponent implements OnInit {
   virtualOfficeForm!: FormGroup;
   formSubmitted = false;
   isSubmitting = false;
+  errorMessage = '';  // Capture error messages
+  successMessage = ''; // Capture success messages
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private virtualOfficeService: ContactService) {}  // Inject the service
 
   ngOnInit() {
     this.virtualOfficeForm = this.fb.group({
@@ -39,14 +42,30 @@ export class VirtualOfficeFormComponent implements OnInit {
   onSubmit() {
     if (this.virtualOfficeForm.valid) {
       this.isSubmitting = true;
+      this.errorMessage = '';  // Reset error message
+      this.successMessage = ''; // Reset success message
 
-      setTimeout(() => {
-        this.formSubmitted = true;
-        this.isSubmitting = false;
-        console.log(this.virtualOfficeForm.value);
-      }, 2000);
+      // Get the individual form values
+      const { fullName, email, phoneNumber, preferredLocation, planType } = this.virtualOfficeForm.value;
+
+      // Call the service method with individual parameters
+      this.virtualOfficeService.submitForm(fullName, email, phoneNumber,"", preferredLocation, planType,"")
+        .subscribe(
+          (response: any) => {
+            this.isSubmitting = false;
+            this.successMessage = 'Form submitted successfully!';
+            this.formSubmitted = true;
+            console.log(response);
+          },
+          (error) => {
+            this.isSubmitting = false;
+            this.errorMessage = 'An error occurred while submitting the form. Please try again.';
+            console.error(error); // Optional: Logging the error
+          }
+        );
+
     } else {
-      this.virtualOfficeForm.markAllAsTouched();
+      this.virtualOfficeForm.markAllAsTouched(); // Mark all fields as touched to show validation errors
     }
   }
 

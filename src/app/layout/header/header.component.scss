@@ -1,7 +1,16 @@
 /* Add extra styles for the header */
 header {
   transition: background-color 0.3s ease;
+  padding-left: 20px;
+  padding-right: 20px;
 }
+
+::ng-deep .dialog-center .mat-dialog-container {
+  transform: translate(-50%, -50%) !important;
+  top: 50% !important;
+  left: 50% !important;
+}
+
 .translated {
   margin-top: 40px;
 }
@@ -140,10 +149,10 @@ img {
 .login {
   position: fixed;
   left: 0;
-  top: 0;
+  top: 56px;
   width: 100%;
   height: 100%;
-  z-index: var(--z-modal);
+  z-index: 2;
   background-color: hsla(230, 75%, 15%, .1);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);

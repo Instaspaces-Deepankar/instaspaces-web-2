@@ -1,0 +1,105 @@
+<div class="form m-5" *ngIf="!sendData">
+  <div class="flex flex-col items-center justify-center text-center space-y-4">
+    <div class="w-28 h-28 border-4 border-dashed rounded-full animate-spin border-red-800"></div>
+    <h2 class="text-zinc-900 dark:text-white text-2xl font-semibold">Please Wait...</h2>
+    <p class="text-zinc-600 dark:text-zinc-400 text-lg">
+      Your data is being securely processed.
+    </p>
+  </div>
+</div>
+
+<app-success *ngIf="success && sendData"></app-success>
+
+<form class="form" [formGroup]="userForm" (ngSubmit)="onSubmit()" *ngIf="!success && sendData">
+  <p class="title">Let's get in touch?</p>
+  <p class="message">
+    Instaspaces Expert will get in touch to help you with your virtual office / business address requirement.
+  </p>
+  <ul class="list-inside text-gray-600">
+    <li class="mb-1">
+      <svg
+        class="w-5 h-5 mr-2 inline-block text-red-600"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M5 13l4 4L19 7"></path>
+      </svg>
+      9 Minute Average Response Time
+    </li>
+  </ul>
+  <label class="block text-gray-700 text-sm font-bold mb-2">
+    Your Name:
+    <input
+      required
+      placeholder="Enter your name"
+      class="form-input mt-1 block w-full rounded-[0.5rem]"
+      type="text"
+      id="fullName"
+      formControlName="name"
+    />
+  </label>
+  <span
+    class="text-red-500 text-xs italic"
+    *ngIf="
+      userForm.get('name')?.invalid &&
+      (userForm.get('name')?.dirty || userForm.get('name')?.touched)
+    "
+  >
+    Please enter your name.
+  </span>
+
+  <label class="block text-gray-700 text-sm font-bold mb-2">
+    Mobile Number:
+    <input
+      required
+      placeholder="Enter your mobile number"
+      class="form-input mt-1 block w-full rounded-[0.5rem]"
+      type="text"
+      id="mobile"
+      formControlName="telephone"
+      (input)="onMobileInput($event)"
+    />
+  </label>
+
+  <span
+    class="text-red-500 text-xs italic"
+    *ngIf="
+      userForm.get('telephone')?.invalid &&
+      (userForm.get('telephone')?.dirty || userForm.get('telephone')?.touched)
+    "
+  >
+    Invalid Mobile Number
+  </span>
+
+  <label class="block text-gray-700 text-sm font-bold mb-2">
+    Email Address:
+    <input
+      required
+      placeholder="Enter your email"
+      class="form-input mt-1 block w-full rounded-[0.5rem]"
+      type="email"
+      id="email"
+      formControlName="email"
+    />
+  </label>
+  <span
+    class="text-red-500 text-xs italic"
+    *ngIf="
+      userForm.get('email')?.invalid &&
+      (userForm.get('email')?.dirty || userForm.get('email')?.touched) ||   userForm.get('email')?.errors?.['pattern']
+    "
+  >
+    Please enter a valid email address.
+  </span>
+
+
+
+
+  <button class="submit" [disabled]="userForm.invalid || isLoading">
+    {{ isLoading ? 'Loading...' : 'Request Call' }}
+  </button>
+
+<!--  <app-confetti-button [isFormValid]="userForm.valid"></app-confetti-button>-->
+</form>

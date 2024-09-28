@@ -6,8 +6,11 @@ import {
   HostListener,
   OnInit,
 } from '@angular/core';
-import {CommonModule} from "@angular/common";
-import {RouterLinkActive} from "@angular/router";
+import { CommonModule } from '@angular/common';
+import { RouterLinkActive } from '@angular/router';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+import {faPhone, faTimes} from '@fortawesome/free-solid-svg-icons';
+import {ContactPopOverComponent} from "../../forms/callback/contact-pop-over.component";  // Import the phone icon
 
 @Component({
   selector: 'instaspaces-header',
@@ -16,7 +19,10 @@ import {RouterLinkActive} from "@angular/router";
   styleUrls: ['./header.component.scss'],
   imports: [
     CommonModule,
-    RouterLinkActive
+    RouterLinkActive,
+    FaIconComponent,
+    ContactPopOverComponent,
+    // Import MatDialogModule
   ]
 })
 export class HeaderComponent implements OnInit {
@@ -25,7 +31,10 @@ export class HeaderComponent implements OnInit {
   isScrolled: boolean = false;
   isMenuOpen: boolean = false;
 
-  constructor() {}
+  public faPhone = faPhone; // Phone icon from FontAwesome
+  public faTimes = faTimes; // Phone icon from FontAwesome
+
+  constructor() {} // Inject MatDialog
 
   ngOnInit(): void {}
 
@@ -34,14 +43,14 @@ export class HeaderComponent implements OnInit {
     this.toggleMenu.emit();
   }
 
-  @HostListener('window:scroll', ['$event'])
-  onScroll(event: any) {
-    const scrollPosition =
-      window.pageYOffset ||
-      document.documentElement.scrollTop ||
-      document.body.scrollTop ||
-      0;
+  showContact = false;
 
-    this.isScrolled = scrollPosition !== 0;
+  toggleContact() {
+    this.showContact = !this.showContact;
   }
+  handletoggleContactEvent(term: string){
+    console.log('Search term:', term);
+    this.toggleContact();
+  }
+
 }

@@ -7,7 +7,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
-
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RX7C5J05CN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'G-RX7C5J05CN');
+  </script>
+  <!-- Invite Referrals -->
+  <script async>
+    var ir = ir || function() {
+      (window.ir.q = window.ir.q || []).push(arguments);
+    };
+    var invite_referrals = window.invite_referrals || {};
+    (function() {
+      invite_referrals.auth = {
+        bid_e: 'C703583516EFBB546F723BE0F4664C5A',
+        bid: '67979',
+        t: '420',
+        email: '',
+        userParams: { fname: '' },
+      };
+      invite_referrals.async = true;
+      var script = document.createElement('script');
+      script.src = '//cdn.invitereferrals.com/js/invite-referrals-1.0.js';
+      var entry = document.getElementsByTagName('script')[0];
+      entry.parentNode.insertBefore(script, entry);
+    })();
+  </script>
 </head>
 <body>
   <app-root></app-root>

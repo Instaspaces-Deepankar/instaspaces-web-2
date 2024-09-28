@@ -1,0 +1,191 @@
+
+
+  <div class="container">
+
+      <div class="wrapper">
+
+          <div class="company-info">
+              <h3>Let's talk on something <span>great</span> together</h3>
+
+              <ul>
+                  <li><i class="fa fa-envelope icon"></i> virtualoffices&#64;instaspaces.in</li>
+                  <li><i class="fa fa-phone icon"></i> +91-888-270-2020</li>
+              </ul>
+              <div class="social-icons">
+                  <a href="https://www.facebook.com/InstaSpaces/?ref=h"><i class="fab fa-facebook-f"></i></a>
+                  <a href="https://twitter.com/InstaSpaces"><i class="fab fa-twitter"></i></a>
+                  <a href="https://www.instagram.com/instaspaces.india/"><i class="fab fa-instagram"></i></a>
+                  <a href="https://www.linkedin.com/company/instaspaces"><i class="fab fa-linkedin-in"></i></a>
+              </div>
+
+          </div>
+        <div class="contact m-5" *ngIf="!sendData">
+          <div class="flex flex-col items-center justify-center text-center space-y-4">
+            <div class="w-28 h-28 border-4 border-dashed rounded-full animate-spin border-red-800"></div>
+            <h2 class="text-zinc-900 dark:text-white text-2xl font-semibold">Please Wait...</h2>
+            <p class="text-zinc-600 dark:text-zinc-400 text-lg">
+              Your data is being securely processed.
+            </p>
+          </div>
+        </div>
+
+
+        <app-success *ngIf="success && sendData"></app-success>
+
+          <div class="contact" *ngIf="!success && sendData">
+              <h3>I’m interested in:</h3>
+
+              <input type="radio" [(ngModel)]="selectedType" id="myCheckbox" name="radiogroup" value="GST Registration"/>
+              <label for="myCheckbox">GST Registration</label>
+
+              <input type="radio" [(ngModel)]="selectedType" id="myCheckbox2" name="radiogroup" value="Business Registration"/>
+              <label for="myCheckbox2">Business Registration</label>
+
+              <input type="radio" [(ngModel)]="selectedType" id="myCheckbox3" name="radiogroup" value="Mailing Address"/>
+              <label for="myCheckbox3">Mailing Address</label>
+
+            <input type="radio" [(ngModel)]="selectedType" id="myCheckbox8" name="radiogroup" value="Desk Address for Registration"/>
+            <label for="myCheckbox8">Desk Address for Registration</label>
+
+              <input type="radio" [(ngModel)]="selectedType" id="myCheckbox4" name="radiogroup" value="Bank Account Registration"/>
+              <label for="myCheckbox4">Bank Account Registration</label>
+
+              <input type="radio" [(ngModel)]="selectedType" id="myCheckbox5" name="radiogroup" value="Ecommerce Registration"/>
+              <label for="myCheckbox5">Ecommerce Registration</label>
+
+            <input type="radio" [(ngModel)]="selectedType" id="myCheckbox6" name="radiogroup" value="Transferring Address"/>
+              <label for="myCheckbox6">Transferring Address</label>
+
+            <input type="radio" [(ngModel)]="selectedType" id="myCheckbox7" name="radiogroup" value="Please Help. Need Clarity."/>
+            <label for="myCheckbox7">Please Help. Need Clarity.</label>
+              <!-- <p *ngIf="selectedType === 'Ecommerce Registration'">You selected: Ecommerce Registration</p>
+              <p *ngIf="selectedType !== 'Ecommerce Registration'">You selected: Other</p> -->
+
+
+
+              <form id="contact-form" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+
+                  <p>
+                      <label>Your Name</label>
+                      <input
+                      type="text"
+                      formControlName="fullName"
+                      (focusout)="contactForm.get('fullName')?.markAsTouched()"
+                      >
+                      <mat-error
+                      class="text-red-500 text-xs italic"
+                      *ngIf="
+                        contactForm.get('fullName')?.hasError('required') &&
+                        contactForm.get('fullName')?.touched
+                      "
+                    >
+                      Full Name is required.
+                    </mat-error>
+                  </p>
+
+                  <p>
+                      <label>Mobile</label>
+                      <input
+                      type="number"
+                      formControlName="mobile"
+                      (focusout)="contactForm.get('mobile')?.markAllAsTouched()"
+                    />
+                    <mat-error
+                    class="text-red-500 text-xs italic"
+                    *ngIf="
+                    contactForm.get('mobile')?.invalid &&
+                      (contactForm.get('mobile')?.dirty ||
+                      contactForm.get('mobile')?.touched)
+                    "
+                  >
+                    Invalid Mobile Number
+                  </mat-error>
+                  </p>
+
+                  <p>
+                      <label>Your Email</label>
+                      <input
+                      type="email"
+                      formControlName="email"
+                      (focusout)="contactForm.get('email')?.markAsTouched()"
+                    />
+                    <mat-error
+                    class="text-red-500 text-xs italic"
+                      *ngIf="
+                        contactForm.get('email')?.hasError('required') &&
+                        contactForm.get('email')?.touched
+                      "
+                    >
+                      Email is required.
+                    </mat-error>
+<!--                    <mat-error-->
+
+<!--                      *ngIf="-->
+<!--                        contactForm.get('email').hasError('email') &&-->
+<!--                        contactForm.get('email').touched-->
+<!--                      "-->
+<!--                    >-->
+<!--                      Invalid email format.-->
+<!--                    </mat-error>-->
+                    <mat-error class="text-red-500 text-xs italic"
+                      *ngIf="contactForm.get('email')?.hasError('pattern')
+                      "
+                    >
+                      Please enter a valid email address
+                    </mat-error>
+                  </p>
+
+                  <p>
+                      <label>Preferred State/City</label>
+                      <input
+                  type="text"
+                  formControlName="preferredLocation"
+                  (focusout)="
+                    contactForm.get('preferredLocation')?.markAllAsTouched()
+                  "
+                />
+                  </p>
+
+                  <div class="full">
+                      <label>Your Message</label>
+                      <textarea
+                      placeholder="Write your message here..."
+                      formControlName="message"
+                      class="relative z-10"
+                    ></textarea>
+                    <div class="chips-container">
+                      <mat-chip
+                        *ngFor="let chip of chips"
+                        class="chip mr-3"
+                        style="cursor: pointer"
+                        (click)="selectChip(chip.text)"
+                        matTooltip="Trending Queries"
+                      >
+                        <mat-icon>{{ chip.icon }}</mat-icon>
+                        <span style="color: #524c4c; font-style: italic">
+                          {{ chip.text }}
+                        </span>
+                      </mat-chip>
+                    </div>
+
+                  </div>
+
+                  <p class="full">
+                      <button  >Send Message</button>
+<!--                    <app-confetti-button [isFormValid]="contactForm.valid"></app-confetti-button>-->
+
+                  </p>
+                  <!-- <app-confetti-button
+                  [isFormValid]="contactForm.valid"
+                  [x]="0.4"
+                  [y]="0.8"
+                ></app-confetti-button> -->
+              </form>
+              <!-- End #contact-form -->
+          </div>
+          <!-- End .contact -->
+
+      </div>
+      <!-- End .wrapper -->
+  </div>
+
