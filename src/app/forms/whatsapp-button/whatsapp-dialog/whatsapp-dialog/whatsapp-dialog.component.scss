@@ -1,0 +1,212 @@
+.wrapper {
+  background-color: #fff; /* Semi-transparent white */
+  display: flex;
+  justify-content: center; /* Center the container horizontally */
+  align-items: center; /* Center the container vertically */
+  min-height: 100vh; /* Full height of the viewport */
+}
+
+.container {
+  padding: 0;
+  width: fit-content;
+  height: fit-content;
+  overflow: hidden;
+  background-color: white; /* Background color for the actual content */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25); /* Optional: Add a subtle shadow */
+  border-radius: 10px; /* Optional: add some border-radius for a smoother look */
+}
+
+.header {
+  background-color: transparent;
+  color: black;
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #25d366;
+}
+
+.header-title {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.whatsapp-icon {
+  width: 34px;
+  font-size: 27px;
+  height: 34px;
+  display: flex;
+  color: green;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.close-icon {
+  cursor: pointer;
+}
+
+.content {
+  padding: 15px;
+}
+
+.suggested-questions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two columns */
+  gap: 10px; /* Spacing between items */
+  margin-bottom: 15px;
+}
+
+.question {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 20px;
+  padding: 5px 10px;
+  display: flex;
+  line-height: 13px;
+  align-items: center;
+  cursor: pointer;
+  font-size: 10px;
+  transition: all 0.3s ease;
+  color: black;
+  text-align: left;
+  outline: none;
+}
+
+.question-icon {
+  color: #ed6666;
+  margin-right: 10px;
+}
+
+.question.active {
+  background-color: #ed6666;
+  color: white;
+}
+
+.question.active .question-icon {
+  color: white;
+}
+
+.comment-box {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.comment-box textarea {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  outline: none;
+  font-size: 11px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  resize: vertical;
+}
+
+.comment-box textarea:focus {
+  outline: none; /* Ensure focus outline stays removed */
+  box-shadow: none; /* Remove any box-shadow if present */
+}
+
+.phone-container {
+  display: flex;
+  align-items: center;
+}
+
+.phone-input {
+  display: flex;
+  align-items: center;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.name-input {
+  display: flex;
+  align-items: center;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+  flex-grow: 1;
+}
+
+.phone-icon {
+  padding: 10px;
+  color: #ed6666;
+}
+
+.custom-input {
+  border: none; /* Remove default border */
+  outline: none; /* Remove default focus outline */
+  padding: 8px;
+  font-size: 11px;
+  border-radius: 4px; /* Optional: add border radius */
+}
+
+.custom-input:focus {
+  border: none; /* Ensure border stays removed on focus */
+  outline: none; /* Ensure focus outline stays removed */
+  box-shadow: none; /* Remove any box-shadow if present */
+}
+
+input[type="text"] {
+  flex-grow: 1;
+  border: none;
+  padding: 10px;
+  outline: none;
+}
+
+.submit-button {
+  background-color: #ed6666;
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 15px;
+  padding: 0;
+  margin-left: 10px;
+}
+
+.submit-button i {
+  margin: 0;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.toast-success {
+  background-color: #4caf50; /* Green color for success */
+  color: white;
+}
+
+.toast-error {
+  background-color: #f44336; /* Red color for error */
+  color: white;
+}
+
+.success-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: green;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.success-message i {
+  font-size: 36px;
+  margin-bottom: 10px;
+}

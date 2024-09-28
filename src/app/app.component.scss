@@ -1,0 +1,14 @@
+.whatsapp-button {
+  display: none; /* Hide by default */
+  position: fixed;
+  bottom: 20px; /* Adjust as needed */
+  right: 20px; /* Adjust as needed */
+  z-index: 1000; /* Ensures it stays on top of other elements */
+}
+
+/* Show only on mobile devices */
+@media (max-width: 768px) {
+  .whatsapp-button {
+    display: block; /* Show on screens smaller than 768px */
+  }
+}

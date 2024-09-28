@@ -1,0 +1,113 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="header">
+      <div class="header-title">
+        <span class="whatsapp-icon">
+          <!-- <i class="fa fa-whatsapp" aria-hidden="true"></i> -->
+           <img src="https://instaspaceweb.s3.ap-southeast-1.amazonaws.com/www-image-icons/benefits/whatsapp.png" alt="whatsapp support">
+        </span>
+        <span>Whatsapp Support</span>
+      </div>
+    </div>
+    <div class="content">
+      <div *ngIf="!isSubmitted">
+        <p class="suggested-text">I’m interested in:</p>
+        <div class="suggested-questions">
+          <button class="question" [ngClass]="{'active': selectedQuestion === 'GST Registration'}" (click)="selectQuestion('GST Registration')">
+            <span class="question-icon">
+              <i class="fa-solid fa-paper-plane"></i>
+            </span>
+            GST Registration
+          </button>
+          <button class="question" [ngClass]="{'active': selectedQuestion === 'Business Registration'}" (click)="selectQuestion('Business Registration')">
+            <span class="question-icon">
+              <i class="fa-solid fa-paper-plane"></i>
+            </span>
+            Business Registration
+          </button>
+          <button class="question" [ngClass]="{'active': selectedQuestion === 'Mailing Address'}" (click)="selectQuestion('Mailing Address')">
+            <span class="question-icon">
+              <i class="fa-solid fa-paper-plane"></i>
+            </span>
+            Mailing Address
+          </button>
+          <button class="question" [ngClass]="{'active': selectedQuestion === 'Desk Address for Registration'}" (click)="selectQuestion('Desk Address for Registration')">
+            <span class="question-icon">
+              <i class="fa-solid fa-paper-plane"></i>
+            </span>
+            Desk Address for Registration
+          </button>
+          <button class="question" [ngClass]="{'active': selectedQuestion === 'Bank Account Registration'}" (click)="selectQuestion('Bank Account Registration')">
+            <span class="question-icon">
+              <i class="fa-solid fa-paper-plane"></i>
+            </span>
+            Bank Account Registration
+          </button>
+          <button class="question" [ngClass]="{'active': selectedQuestion === 'Ecommerce Registration'}" (click)="selectQuestion('Ecommerce Registration')">
+            <span class="question-icon">
+              <i class="fa-solid fa-paper-plane"></i>
+            </span>
+            Ecommerce Registration
+          </button>
+          <button class="question" [ngClass]="{'active': selectedQuestion === 'Transferring Address'}" (click)="selectQuestion('Transferring Address')">
+            <span class="question-icon">
+              <i class="fa-solid fa-paper-plane"></i>
+            </span>
+            Transferring Address
+          </button>
+
+          <button class="question" [ngClass]="{'active': selectedQuestion === 'Please Help. Need Clarity.'}" (click)="selectQuestion('Please Help. Need Clarity.')">
+            <span class="question-icon">
+              <i class="fa-solid fa-paper-plane"></i>
+            </span>
+            Please Help. Need Clarity.
+          </button>
+        </div>
+        <div class="name-input">
+          <input
+            type="text"
+            placeholder="Enter Your Name"
+            class="custom-input"
+            [(ngModel)]="name"
+          />
+        </div>
+        <div class="comment-box mt-2">
+          <textarea [(ngModel)]="comment" placeholder="Enter your comments here or Select from above..." name="comment"></textarea>
+        </div>
+        <form [formGroup]="phoneForm" (ngSubmit)="onSubmit()">
+          <div class="phone-container">
+            <div class="phone-input">
+              <span class="phone-icon"><i class="fa fa-phone" aria-hidden="true"></i></span>
+              <input
+                type="number"
+                formControlName="phoneNumber"
+                placeholder="Enter Your Phone Number"
+                (input)="onPhoneNumberInput($event)"
+                [(ngModel)]="userNumber"
+                class="custom-input"
+              />
+            </div>
+            <button type="submit" class="submit-button">
+              <i class="fa-solid fa-paper-plane"></i>
+            </button>
+          </div>
+          <div *ngIf="phoneForm.get('phoneNumber')?.invalid && phoneForm.get('phoneNumber')?.touched">
+            <p class="error-message" *ngIf="phoneForm.get('phoneNumber')?.errors?.['required']">
+              Phone number is required.
+            </p>
+            <p class="error-message" *ngIf="phoneForm.get('phoneNumber')?.errors?.['pattern']">
+              Please enter a valid 10-digit phone number.
+            </p>
+            <p class="error-message" *ngIf="phoneForm.get('phoneNumber')?.errors?.['maxlength']">
+              Phone number must be exactly 10 digits long.
+            </p>
+          </div>
+        </form>
+      </div>
+      <div *ngIf="isSubmitted" class="success-message">
+        <i class="fa fa-check-circle" aria-hidden="true"></i>
+        <p>Form Submitted Successfully!</p>
+      </div>
+    </div>
+  </div>
+</div>
