@@ -8,15 +8,31 @@
               <h3>Let's talk on something <span>great</span> together</h3>
 
               <ul>
-                  <li><i class="fa fa-envelope icon"></i> virtualoffices&#64;instaspaces.in</li>
-                  <li><i class="fa fa-phone icon"></i> +91-888-270-2020</li>
+                  <li><fa-icon class="footer-icon" [icon]="faEnvelope"></fa-icon> virtualoffices&#64;instaspaces.in</li>
+                  <li><fa-icon class="footer-icon" [icon]="faPhone"></fa-icon> +91-888-270-2020</li>
               </ul>
-              <div class="social-icons">
-                  <a href="https://www.facebook.com/InstaSpaces/?ref=h"><i class="fab fa-facebook-f"></i></a>
-                  <a href="https://twitter.com/InstaSpaces"><i class="fab fa-twitter"></i></a>
-                  <a href="https://www.instagram.com/instaspaces.india/"><i class="fab fa-instagram"></i></a>
-                  <a href="https://www.linkedin.com/company/instaspaces"><i class="fab fa-linkedin-in"></i></a>
-              </div>
+            <ul class="socials">
+              <li>
+                <a href="https://www.facebook.com/InstaSpaces/?ref=h" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                  <fa-icon class="footer-icon" [icon]="faFacebookF"></fa-icon>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/InstaSpaces" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                  <fa-icon class="footer-icon" [icon]="faTwitter"></fa-icon>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/instaspaces.india/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                  <fa-icon class="footer-icon" [icon]="faInstagram"></fa-icon>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/company/instaspaces" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                  <fa-icon class="footer-icon" [icon]="faLinkedinIn"></fa-icon>
+                </a>
+              </li>
+            </ul>
 
           </div>
         <div class="contact m-5" *ngIf="!sendData">
@@ -118,15 +134,7 @@
                     >
                       Email is required.
                     </mat-error>
-<!--                    <mat-error-->
 
-<!--                      *ngIf="-->
-<!--                        contactForm.get('email').hasError('email') &&-->
-<!--                        contactForm.get('email').touched-->
-<!--                      "-->
-<!--                    >-->
-<!--                      Invalid email format.-->
-<!--                    </mat-error>-->
                     <mat-error class="text-red-500 text-xs italic"
                       *ngIf="contactForm.get('email')?.hasError('pattern')
                       "
@@ -154,18 +162,19 @@
                       class="relative z-10"
                     ></textarea>
                     <div class="chips-container">
-                      <mat-chip
+                      <div
                         *ngFor="let chip of chips"
                         class="chip mr-3"
                         style="cursor: pointer"
                         (click)="selectChip(chip.text)"
                         matTooltip="Trending Queries"
                       >
-                        <mat-icon>{{ chip.icon }}</mat-icon>
+<!--                        <mat-icon>{{ chip.icon }}</mat-icon>-->
+                        <fa-icon class="footer-icon" [icon]="faComment"></fa-icon>
                         <span style="color: #524c4c; font-style: italic">
                           {{ chip.text }}
                         </span>
-                      </mat-chip>
+                      </div>
                     </div>
 
                   </div>
@@ -175,11 +184,7 @@
 <!--                    <app-confetti-button [isFormValid]="contactForm.valid"></app-confetti-button>-->
 
                   </p>
-                  <!-- <app-confetti-button
-                  [isFormValid]="contactForm.valid"
-                  [x]="0.4"
-                  [y]="0.8"
-                ></app-confetti-button> -->
+
               </form>
               <!-- End #contact-form -->
           </div>

@@ -1,185 +1,146 @@
 .form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    max-width: 350px;
-    background-color: #fff;
-    padding: 20px;
-    overflow-y: auto;
-    max-height: 88vh;
-    border-radius: 20px;
-    position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 410px;
+  width: 100%;
+  background-color: #fff;
+  padding: 20px;
+  overflow-y: auto;
+  max-height: 88vh;
+  border-radius: 20px;
+  position: relative;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 28px;
+  color: #ed6666;
+  font-weight: 600;
+  letter-spacing: -1px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+}
+
+.title::before,
+.title::after {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  left: 0px;
+  background-color: #ed6666;
+}
+
+.title::before {
+  width: 18px;
+  height: 18px;
+  background-color: #ed6666;
+}
+
+.title::after {
+  width: 18px;
+  height: 18px;
+  animation: pulse 1s linear infinite;
+}
+
+.message,
+.signin {
+  color: rgba(88, 87, 87, 0.822);
+  font-size: 14px;
+}
+
+.signin {
+  text-align: center;
+}
+
+.signin a {
+  color: #ed6666;
+}
+
+.signin a:hover {
+  text-decoration: underline #ed6666;
+}
+
+.flex {
+  display: flex;
+  width: 100%;
+  gap: 6px;
+}
+
+.form label {
+  position: relative;
+  margin-bottom: 6px;
+  font-size: 16px;
+  color: #333;
+}
+
+.form input {
+  border: 1px solid #ccc;
+  padding: 8px;
+  border-radius: 0.5rem;
+  width: 100%;
+}
+
+.form input:focus {
+  outline: none;
+  border-color: #ed6666;
+}
+
+.form input:valid {
+  border-color: green;
+}
+
+.form span {
+  color: red;
+  font-size: 12px;
+  margin-top: -4px;
+}
+
+.submit {
+  border: none;
+  outline: none;
+  background-color: #ed6666;
+  padding: 10px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 16px;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.submit:hover {
+  background-color: rgb(56, 90, 194);
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .form {
+    max-width: 300px;
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px;
   }
 
   .title {
-    font-size: 28px;
-    color: #ed6666;
-    font-weight: 600;
-    letter-spacing: -1px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    padding-left: 30px;
+    font-size: 24px;
   }
 
-  .title::before,
-  .title::after {
-    position: absolute;
-    content: "";
-    height: 16px;
-    width: 16px;
-    border-radius: 50%;
-    left: 0px;
-    background-color: #ed6666;
+  .message {
+    font-size: 13px;
   }
-
-  .title::before {
-    width: 18px;
-    height: 18px;
-    background-color: #ed6666;
-  }
-
-  .title::after {
-    width: 18px;
-    height: 18px;
-    animation: pulse 1s linear infinite;
-  }
-
-  .message,
-  .signin {
-    color: rgba(88, 87, 87, 0.822);
-    font-size: 14px;
-  }
-
-  .signin {
-    text-align: center;
-  }
-
-  .signin a {
-    color: #ed6666;
-  }
-
-  .signin a:hover {
-    text-decoration: underline #ed6666;
-  }
-
-  .flex {
-    display: flex;
-    width: 100%;
-    gap: 6px;
-  }
-
-  .form label {
-    position: relative;
-  }
-
-  .form span {
-    color: red; /* Set the color to your desired error color */
-    font-size: 12px;
-    margin-top: -4px;
-  }
-
-  /* Style for labels */
-  .form label {
-    margin-bottom: 6px;
-    font-size: 16px; /* Adjust the font size as needed */
-    color: #333; /* Set the color to your desired label color */
-  }
-
-  /* Style for focused input labels */
-  .form label input:focus {
-    outline: none;
-    border-color: #ed6666; /* Set the color to your desired focus color */
-  }
-
-  /* Style for valid inputs */
-  .form label input:valid {
-    border-color: green; /* Set the color to your desired valid input color */
-  }
-
-  .submit {
-    border: none;
-    outline: none;
-    background-color: #ed6666;
-    padding: 10px;
-    border-radius: 10px;
-    color: #fff;
-    font-size: 16px;
-    transform: 0.3s ease;
-  }
-
-  .submit:hover {
-    background-color: rgb(56, 90, 194);
-  }
-
-  // .form label .input {
-  //   width: 100%;
-  //   padding: 10px 10px 20px 10px;
-  //   outline: 0;
-  //   border: 1px solid rgba(105, 105, 105, 0.397);
-  //   border-radius: 10px;
-  // }
-
-  // .form label .input + span {
-  //   position: absolute;
-  //   left: 10px;
-  //   top: 15px;
-  //   color: grey;
-  //   font-size: 0.9em;
-  //   cursor: text;
-  //   transition: 0.3s ease;
-  // }
-
-  // .form label .input:placeholder-shown + span {
-  //   top: 15px;
-  //   font-size: 0.9em;
-  // }
-
-  // .form label .input:focus + span,.form label .input:valid + span {
-  //   top: 30px;
-  //   font-size: 0.7em;
-  //   font-weight: 600;
-  // }
-
-  // .form label .input:valid + span {
-  //   color: green;
-  // }
-
-  // .submit {
-  //   border: none;
-  //   outline: none;
-  //   background-color: royalblue;
-  //   padding: 10px;
-  //   border-radius: 10px;
-  //   color: #fff;
-  //   font-size: 16px;
-  //   transform: .3s ease;
-  // }
-
-  // .submit:hover {
-  //   background-color: rgb(56, 90, 194);
-  // }
-
-  // @keyframes pulse {
-  //   from {
-  //     transform: scale(0.9);
-  //     opacity: 1;
-  //   }
-
-  //   to {
-  //     transform: scale(1.8);
-  //     opacity: 0;
-  //   }
-  // }
-
-  @keyframes pulse {
-    from {
-      transform: scale(0.9);
-      opacity: 1;
-    }
-
-    to {
-      transform: scale(1.8);
-      opacity: 0;
-    }
-  }
+}

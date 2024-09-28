@@ -15,8 +15,8 @@ export class VirtualOfficeFormComponent implements OnInit {
   virtualOfficeForm!: FormGroup;
   formSubmitted = false;
   isSubmitting = false;
-  errorMessage = '';  // Capture error messages
-  successMessage = ''; // Capture success messages
+  errorMessage = '';
+  successMessage = '';
 
   constructor(private fb: FormBuilder, private virtualOfficeService: ContactService) {}  // Inject the service
 

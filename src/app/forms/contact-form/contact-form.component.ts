@@ -11,7 +11,10 @@ import {CommonModule, isPlatformBrowser} from '@angular/common';
 import {MatError} from "@angular/material/form-field";
 import {MatIcon} from "@angular/material/icon";
 import {MatChip} from "@angular/material/chips";
-import {MatTooltip} from "@angular/material/tooltip"; // Import this function to check if it's running in the browser
+import {MatTooltip} from "@angular/material/tooltip";
+import {FaIconComponent} from "@fortawesome/angular-fontawesome";
+import {faFacebookF, faInstagram, faLinkedinIn, faTwitter} from "@fortawesome/free-brands-svg-icons";
+import {faComment, faEnvelope, faPhone} from "@fortawesome/free-solid-svg-icons"; // Import this function to check if it's running in the browser
 declare var gtag: Function;
 declare var ir: Function;
 
@@ -29,7 +32,7 @@ interface DecodedToken {
   styleUrls: ['./contact-form.component.scss'],
   imports: [
     Success,
-    FormsModule, ReactiveFormsModule, CommonModule, MatError, MatIcon, MatChip, MatTooltip
+    FormsModule, ReactiveFormsModule, CommonModule, MatError, MatIcon, MatChip, MatTooltip, FaIconComponent
   ]
 })
 export class ContactFormComponent implements OnInit {
@@ -227,6 +230,14 @@ export class ContactFormComponent implements OnInit {
       }
     });
   }
+
+  public faFacebookF = faFacebookF;
+  public faTwitter = faTwitter;
+  public faInstagram = faInstagram;
+  public faLinkedinIn = faLinkedinIn;
+  public faEnvelope = faEnvelope;
+  public faPhone = faPhone;
+  public faComment = faComment;
 }
 
 interface Plan {

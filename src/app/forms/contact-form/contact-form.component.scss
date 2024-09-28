@@ -1,38 +1,31 @@
 
-@import url('https://fonts.googleapis.com/css?family=Yantramanav:100,300');
 
 * {
     box-sizing: border-box;
 }
+//
+//.icon {
+//    color: #F84B4B;
+//    margin-right: 15px;
+//    font-size: 1.5em;
+//    vertical-align: middle;
+//    /* Add padding between icon and text */
+//}
+//
+//.social-icons {
+//    text-align: left;
+//    margin-top: 60px;
+//    /* Center-align the social icons */
+//}
+//
+//.social-icons a {
+//    color: #F84B4B;
+//    /* Set the color of the icons */
+//    font-size: 2em;
+//    /* Increase the size of the icons */
+//    margin-right: 10px;
+//}
 
-.icon {
-    color: #F84B4B;
-    margin-right: 15px;
-    font-size: 1.5em;
-    vertical-align: middle;
-    /* Add padding between icon and text */
-}
-
-.social-icons {
-    text-align: left;
-    margin-top: 60px;
-    /* Center-align the social icons */
-}
-
-.social-icons a {
-    color: #F84B4B;
-    /* Set the color of the icons */
-    font-size: 2em;
-    /* Increase the size of the icons */
-    margin-right: 10px;
-}
-
-body {
-    color: #222;
-    line-height: 1.6;
-    font-family: 'Nunito', sans-serif;
-    padding: 1em;
-}
 
 .container {
     max-width: 1170px;
@@ -140,6 +133,7 @@ ul {
     letter-spacing: 2px;
     text-transform: uppercase;
     font-size: 14px;
+  border-radius: 20px;
     font-weight: bold;
 }
 
@@ -180,6 +174,57 @@ input[type="radio"]:checked + label {
     background-color: #F84B4B;
     color: white;
     border-color: #F84B4B;
+}
+
+
+.socials {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.socials li {
+  list-style: none;
+}
+
+.socials li a {
+  width: 44px;
+  height: 44px;
+  margin-right: 10px;
+  color: #ffffff;
+  background-color: #ed6666a2;
+  border-radius: 50%;
+  font-size: 20px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-out;
+}
+
+.socials li a:hover {
+  background-color: #f37e7e;
+}
+
+
+.chip {
+  display: inline-flex;  /* Align items in a row */
+  align-items: center;   /* Center content vertically */
+  padding: 10px 15px;   /* Add some padding */
+  border: 2px solid #c4c4c4; /* Outer border */
+  border-radius: 8px;    /* Rounded corners */
+  background-color: #ffffff; /* Background color */
+  transition: background-color 0.3s, box-shadow 0.3s; /* Transition effects */
+  cursor: pointer;       /* Pointer cursor on hover */
+}
+
+.chip:hover {
+  background-color: #f0f0f0; /* Change background on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow on hover */
+}
+
+.footer-icon {
+  margin-right: 8px; /* Space between icon and text */
 }
 
 

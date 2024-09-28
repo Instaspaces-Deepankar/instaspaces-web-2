@@ -38,10 +38,11 @@
   box-shadow: 0 4px 12px rgba(237, 102, 102, 0.5);
   cursor: pointer;
   transition: background-color 0.3s ease;
-  width: 50%;
-  display: block; /* Ensure the button behaves like a block element */
-  margin: 0 auto; /* Center the button */
-  text-align: center; /* Center the text inside the button */
+  width: 100%; /* Set it to full width initially */
+  max-width: 250px; /* Add a max-width to control size on larger screens */
+  display: block;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .phone-btn:hover {
@@ -269,7 +270,7 @@
   .sales-advisor-card {
     padding: 20px;
     margin: 0;
-    width: 70vw;
+    width: 80vw;
     border-radius: 0;
   }
 
@@ -306,5 +307,5 @@
     width: 100%;
     margin: 5px 0;
   }
-  
+
 }

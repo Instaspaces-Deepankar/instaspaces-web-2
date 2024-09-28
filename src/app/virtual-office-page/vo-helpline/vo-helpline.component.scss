@@ -37,6 +37,10 @@
   margin: 20px 65px;
 }
 
+.vo-helpline-right-card {
+  margin: 20px 65px;
+}
+
 /* Typography */
 .vo-helpline-small-text {
   font-size: 16px; /* Increase font size */
@@ -71,10 +75,53 @@ p {
   align-self: center;
 }
 
+.vo-helpline-cta-button a {
+  color: #fff;
+  text-decoration: none;
+}
+
 .vo-helpline-cta-button:hover {
   background-color: #e63946;
 }
 
+/* Popup Styles */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(255 255 255 / 94%); /* White with some transparency */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* Ensure it appears above other content */
+}
+
+.popupContent {
+  border-radius: 10px;
+  width: 80%;
+  max-width: 400px;
+  position: relative;
+}
+
+.closeBtn {
+  position: fixed; /* Makes the button fixed on the screen */
+  top: 20%; /* Centers vertically */
+  left: 50%; /* Centers horizontally */
+  transform: translate(-50%, -50%); /* Offsets to perfectly center the button */
+  background: transparent;
+  border: none;
+  font-size: 48px; /* Increase font size for better visibility */
+  color: #d32f2f; /* Red color for the cross */
+  cursor: pointer;
+}
+
+
+
+.closeBtn:hover {
+  color: #a12a2a;
+}
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
   .vo-helpline-container {
