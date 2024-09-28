@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {RequestCallBackComponent} from "../../forms/contact-popup/request-call-back.component";
 
 
 @Component({
   selector: 'app-vo-locations',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RequestCallBackComponent],
   templateUrl: './vo-locations.component.html',
   styleUrls: ['./vo-locations.component.scss']
 })
