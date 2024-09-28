@@ -1,10 +1,11 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import {ContactService} from "../../services/contact.service";
-import {Success} from "../../forms/success/success";
-import {CallCoordinator} from "../../api-interface/CallCoordinator.model";
+import { ContactService } from "../../services/contact.service";
+import { Success } from "../../forms/success/success";
+import { CallCoordinator } from "../../api-interface/CallCoordinator.model";
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-virtual-office-form',
@@ -20,8 +21,15 @@ export class VirtualOfficeFormComponent implements OnInit {
   errorMessage = '';  // Capture error messages
   successMessage = ''; // Capture success messages
   selectedCoordinator: CallCoordinator | null = null;
+  isBrowser: boolean;
 
-  constructor(private fb: FormBuilder, private virtualOfficeService: ContactService) {}  // Inject the service
+  constructor(
+    private fb: FormBuilder,
+    private virtualOfficeService: ContactService,
+    @Inject(PLATFORM_ID) private platformId: Object // Inject PLATFORM_ID to check if the platform is browser
+  ) {
+    this.isBrowser = isPlatformBrowser(platformId);
+  }
 
   ngOnInit() {
     this.virtualOfficeForm = this.fb.group({
@@ -36,20 +44,20 @@ export class VirtualOfficeFormComponent implements OnInit {
       (data: CallCoordinator[]) => {
         console.log(data);
 
-        // Retrieve the stored coordinator from localStorage
-        const storedCoordinator = localStorage.getItem('selectedCoordinator');
-        if (storedCoordinator) {
-          const parsedCoordinator = JSON.parse(storedCoordinator);
-          this.selectedCoordinator = data.find(coordinator => coordinator.name === parsedCoordinator.name) || null;
-        }
+        if (this.isBrowser) {
+          // Only execute localStorage logic in the browser
+          const storedCoordinator = localStorage.getItem('selectedCoordinator');
+          if (storedCoordinator) {
+            const parsedCoordinator = JSON.parse(storedCoordinator);
+            this.selectedCoordinator = data.find(coordinator => coordinator.name === parsedCoordinator.name) || null;
+          }
 
-        // If no matching coordinator is found, select a random one
-        if (!this.selectedCoordinator && data.length > 0) {
-          const randomIndex = Math.floor(Math.random() * data.length);
-          this.selectedCoordinator = data[randomIndex];
+          if (!this.selectedCoordinator && data.length > 0) {
+            const randomIndex = Math.floor(Math.random() * data.length);
+            this.selectedCoordinator = data[randomIndex];
 
-          // Store the newly selected coordinator in localStorage
-          localStorage.setItem('selectedCoordinator', JSON.stringify(this.selectedCoordinator));
+            localStorage.setItem('selectedCoordinator', JSON.stringify(this.selectedCoordinator));
+          }
         }
       },
       (error) => {
@@ -68,36 +76,26 @@ export class VirtualOfficeFormComponent implements OnInit {
   }
 
   onSubmit() {
-
-
     let ownerId = '';
-    // let calltime = '';
 
     if (this.selectedCoordinator) {
       console.log('Selected coordinator:', this.selectedCoordinator);
       ownerId = this.selectedCoordinator.name;
-      // calltime = String(this.selectedTime1);
     } else {
       console.warn('No active coordinators found.');
     }
 
     const currentUrl = new URL(window.location.href);
     currentUrl.searchParams.set('ownerId', ownerId);
-    // currentUrl.searchParams.set('callTime', calltime);
-    // currentUrl.searchParams.set('subsource', 'WebsiteCall');
-
-    console.log('Updated URL:', currentUrl.href);
 
     if (this.virtualOfficeForm.valid) {
       this.isSubmitting = true;
       this.errorMessage = '';  // Reset error message
       this.successMessage = ''; // Reset success message
 
-      // Get the individual form values
       const { fullName, email, phoneNumber, preferredLocation, planType } = this.virtualOfficeForm.value;
 
-      // Call the service method with individual parameters
-      this.virtualOfficeService.submitForm(fullName, email, phoneNumber,currentUrl.href, preferredLocation, planType,currentUrl.href)
+      this.virtualOfficeService.submitForm(fullName, email, phoneNumber, currentUrl.href, preferredLocation, planType, currentUrl.href)
         .subscribe(
           (response: any) => {
             this.isSubmitting = false;
@@ -108,10 +106,9 @@ export class VirtualOfficeFormComponent implements OnInit {
           (error) => {
             this.isSubmitting = false;
             this.errorMessage = 'An error occurred while submitting the form. Please try again.';
-            console.error(error); // Optional: Logging the error
+            console.error(error);
           }
         );
-
     } else {
       this.virtualOfficeForm.markAllAsTouched(); // Mark all fields as touched to show validation errors
     }
