@@ -3,11 +3,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {ContactService} from "../../services/contact.service";
+import {Success} from "../../forms/success/success";
 
 @Component({
   selector: 'app-virtual-office-form',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, Success],
   templateUrl: './virtual-office-form.component.html',
   styleUrls: ['./virtual-office-form.component.scss']
 })
