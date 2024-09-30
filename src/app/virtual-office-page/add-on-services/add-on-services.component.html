@@ -29,7 +29,7 @@
       <h5 class="text-lg font-semibold">{{ service.title }}</h5>
       <p class="text-sm text-gray-600">{{ service.description }}</p>
       <p *ngIf="service?.recommended" class="text-red-600 font-bold">(Highly Recommended)</p>
-      <div *ngIf="service?.price" class="mt-auto">
+      <div *ngIf="service?.price" class=" price mt-auto">
         <code class="block text-sm text-gray-500">Starts from</code>
         <h5 class="text-lg font-bold">{{ service?.price }}</h5>
       </div>

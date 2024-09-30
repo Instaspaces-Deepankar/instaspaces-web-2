@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {RequestCallBackComponent} from "../../forms/contact-popup/request-call-back.component";
 import {NgIf} from "@angular/common";
+import {RevealNumberComponent} from "../../forms/callback/reveal-number/reveal-number.component";
 
 @Component({
   selector: 'app-vo-helpline',
@@ -8,7 +9,8 @@ import {NgIf} from "@angular/common";
   templateUrl: './vo-helpline.component.html',
   imports: [
     RequestCallBackComponent,
-    NgIf
+    NgIf,
+    RevealNumberComponent
   ],
   styleUrls: ['./vo-helpline.component.scss']
 })

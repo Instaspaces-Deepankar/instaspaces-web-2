@@ -1,13 +1,134 @@
-
-.divider {
-  width: 80%;
-  border: 1px solid #ff5e72;
-  margin: 20px auto;
-  margin-left: 0;
+.container {
+  padding-left: 16px; /* Additional padding for space */
+  padding-right: 16px;
+  @media (min-width: 640px) {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+  @media (min-width: 1024px) {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
 }
+
+
+
 .h2 {
   color: #333;
-  font-size: 1.5rem;
+  font-size: 40px;
+  font-weight: bold;
   font-family: "Nunito", sans-serif;
   margin-bottom: 15px;
+}
+
+.heading {
+  color: #333;
+  font-family: "Nunito", sans-serif;
+  margin-bottom: 15px;
+}
+
+.info-button {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Added transition for button */
+}
+
+.info-button:hover {
+  background-color: #f5c6cb;
+  transform: scale(1.1); /* Slight scaling effect on hover */
+}
+
+.card-container {
+  position: relative;
+  padding-bottom: 50px;
+}
+
+p {
+  max-height: 0;
+  overflow: hidden;
+  font-family: "Nunito", sans-serif;
+  transition: max-height 0.3s ease-out; /* Smooth transition for info text */
+}
+
+.card-container.showInfo p {
+  max-height: 500px; /* Adjust as needed */
+}
+
+
+.info-text-container {
+  display: none; // Hide by default
+  opacity: 0; // Start fully transparent
+  transition: opacity 0.3s ease; // Transition for opacity
+
+  &.showInfo {
+    display: block; // Show the container
+    opacity: 1; // Make it fully visible
+  }
+}
+.request-quote-button {
+  background-color: #dc3545; /* Bootstrap danger color */
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 4px; /* Slightly rounded corners */
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  display: block; /* Ensure it behaves as a block element for centering */
+}
+
+.request-quote-button:hover {
+  background-color: #c82333; /* Darker shade on hover */
+}
+
+
+
+/* Popup Styles */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(255 255 255 / 94%); /* White with some transparency */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* Ensure it appears above other content */
+}
+
+.popupContent {
+  border-radius: 10px;
+  width: 80%;
+  max-width: 400px;
+  position: relative;
+}
+
+.closeBtn {
+  position: fixed; /* Makes the button fixed on the screen */
+  top: 20%; /* Centers vertically */
+  left: 50%; /* Centers horizontally */
+  transform: translate(-50%, -50%); /* Offsets to perfectly center the button */
+  background: transparent;
+  border: none;
+  font-size: 48px; /* Increase font size for better visibility */
+  color: #d32f2f; /* Red color for the cross */
+  cursor: pointer;
+}
+
+
+
+.closeBtn:hover {
+  color: #a12a2a;
 }

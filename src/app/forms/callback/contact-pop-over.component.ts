@@ -119,12 +119,12 @@ export class ContactPopOverComponent implements OnInit {
   }
 
   private handleSuccess(): void {
-    alert('Thank You. Your consultation is scheduled.');
+    // alert('Thank You. Your consultation is scheduled.');
     this.addScript();
   }
 
   private handleError(error: any): void {
-    alert('Error submitting contact form');
+    // alert('Error submitting contact form');
     console.error('Error submitting contact form:', error);
   }
 

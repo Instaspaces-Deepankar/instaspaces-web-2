@@ -110,8 +110,8 @@ footer {
   height: auto;
   background-size: cover;
   padding-top: 80px;
-  background: #ed6666;
-  /* background: url(../../../../assets/benefits/gradient.jpg); */
+  /*background: #ed6666;*/
+   background: url('https://instaspaceweb.s3.ap-southeast-1.amazonaws.com/www-image-icons/benefits/gradient.jpg');
 }
 
 .footer-container {

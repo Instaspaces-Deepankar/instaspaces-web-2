@@ -160,7 +160,7 @@ export class RevealNumberComponent implements OnInit {
   }
 
   private handleSuccess(): void {
-    alert('Thank You. Your consultation is scheduled.');
+    // alert('Thank You. Your consultation is scheduled.');
     this.addScript();
   }
 

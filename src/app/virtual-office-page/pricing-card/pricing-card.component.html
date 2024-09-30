@@ -1,30 +1,55 @@
-<div class="container mx-auto mt-12 font-sans">
+<div class="container mx-auto mt-12 mb-12 font-sans px-4 sm:px-8 lg:px-12">
   <h2 class="text-center">
-    <span class="h2">Our Simple & Transparent Plans</span>
-        <hr class="w-3/4 mx-auto border-1 border-red-600 my-4" />
+    <span style="font-size: 24px">Our</span> <br>
+      <span class="h2" style="color: #ed6666">Simple & Transparent Plans</span>
+    <hr class="w-3/4 mx-auto border-1 border-red-600 my-4" />
   </h2>
+
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-    <div *ngFor="let card of cardData" class="bg-white shadow-lg rounded-lg overflow-hidden transition-transform duration-300 transform hover:scale-105">
+    <div *ngFor="let card of cardData" class="bg-white shadow-lg rounded-lg overflow-hidden transition-transform duration-300 transform card-container">
       <div class="relative h-48 bg-cover bg-center" [ngStyle]="{'background-image': 'url(' + card.image + ')'}">
-        <div class="absolute inset-0 bg-red-600 bg-opacity-50"></div>
+        <div class="absolute inset-0 bg-red-600 bg-opacity-40"></div>
         <h2 class="absolute inset-0 flex items-center justify-center text-white text-2xl font-bold">
           {{ card.planName }}
         </h2>
       </div>
-      <div class="p-6">
-        <h3 class="text-lg font-semibold mb-4">{{ card.heading }}</h3>
-        <ul class="space-y-2 mb-4">
-          <li *ngFor="let feature of card.features" [ngClass]="{'line-through text-gray-400': !feature.available}">
-            <span *ngIf="feature.available" class="text-green-500">&#10003;</span>
-            <span *ngIf="!feature.available" class="text-red-500">&#10008;</span>
-            {{ feature.feature }}
-          </li>
-        </ul>
-        <p class="text-sm text-gray-700">{{ card.infoText }}</p>
+      <!-- Center the Request Quote Button -->
+      <div class="flex justify-center" (click)="openPopup()">
+        <button class="request-quote-button w-10/12 mt-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-500 transition duration-300">
+          Request Quote
+        </button>
       </div>
-<!--      <div class="p-4 bg-red-600 text-center">-->
-<!--        <button class="w-full text-white py-2 px-4 font-semibold hover:bg-red-700">Select Plan</button>-->
-<!--      </div>-->
+
+      <div class="p-6">
+        <ng-container *ngIf="!card.showInfo">
+          <ul class="space-y-2 mb-4">
+            <li *ngFor="let feature of card.features" [ngClass]="{'line-through text-gray-400': !feature.available}">
+              <span *ngIf="feature.available" class="text-green-500">&#10003;</span>
+              <span *ngIf="!feature.available" class="text-red-500">&#10008;</span>
+            <span style="font-family:Nunito,sans-serif">  {{ feature.feature }}</span>
+            </li>
+          </ul>
+        </ng-container>
+
+        <button (click)="toggleInfo(card)" class="info-button transition-all duration-300">
+          <fa-icon [icon]="card.showInfo ? faTimesCircle : faInfoCircle"></fa-icon>
+        </button>
+
+        <div class="info-text-container" [ngClass]="{'showInfo': card.showInfo}">
+          <h3 class="heading text-lg font-semibold mb-4">{{ card.heading }}</h3>
+          <div class="text-sm text-gray-700 mt-4">{{ card.infoText }}</div>
+        </div>
+      </div>
     </div>
   </div>
+
+  <!-- Popup -->
+  <div class="popup" *ngIf="isPopupOpen">
+    <div class="popupContent">
+      <button class="closeBtn" (click)="closePopup()">×</button>
+      <app-request-call-back></app-request-call-back>
+
+    </div>
+  </div>
+
 </div>

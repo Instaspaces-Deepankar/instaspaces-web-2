@@ -1,6 +1,6 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 import  {jwtDecode} from 'jwt-decode';
 import {CallCoordinator} from "../../api-interface/CallCoordinator.model";
 import {ContactService} from "../../services/contact.service";
@@ -18,7 +18,8 @@ declare var ir: Function;
   imports: [
     ReactiveFormsModule,
     Success,
-    CommonModule
+    CommonModule,
+    MatSnackBarModule,
   ],
   styleUrls: ['./request-call-back.component.scss']
 })
@@ -173,12 +174,12 @@ export class RequestCallBackComponent implements OnInit {
     this.triggerConversion();
     this.success = true;
     this.isLoading = false;
-    alert("Thank You. You will receive a callback from 7314•••••• shortly");
-    // this.snackBar.open('Thank You. You will receive a callback from 7314•••••• shortly', 'Close', {
-    //   verticalPosition: 'top',
-    //   horizontalPosition: 'center',
-    //   duration: 5000,
-    // });
+    // alert("Thank You. You will receive a callback from 7314•••••• shortly");
+    this.snackBar.open('Thank You. You will receive a callback from 7314•••••• shortly', 'Close', {
+      verticalPosition: 'top',
+      horizontalPosition: 'center',
+      duration: 5000,
+    });
     this.userForm.reset();
     this.sendData = true;
     this.addScript();
@@ -199,10 +200,10 @@ export class RequestCallBackComponent implements OnInit {
     });
     console.error('Error submitting contact form');
     this.sendData = true;
-    // this.snackBar.open('Error submitting contact form', 'Close', {
-    //   duration: 3000,
-    // });
-    alert("Error submitting contact form");
+    this.snackBar.open('Error submitting contact form', 'Close', {
+      duration: 3000,
+    });
+    // alert("Error submitting contact form");
     this.isLoading = false;
   }
 
@@ -229,10 +230,12 @@ export class RequestCallBackComponent implements OnInit {
     });
   }
 
-  openSnackBar(message: string, panelClass: string): void {
+  openSnackBar(message: string, panelClass: string = ''): void {
     this.snackBar.open(message, 'Close', {
-      duration: 3000, // Set the duration in milliseconds
-      panelClass: panelClass, // Set custom CSS classes for styling
+      duration: 3000,
+      verticalPosition: 'top',
+      horizontalPosition: 'center',
+      panelClass: panelClass ? [panelClass] : undefined
     });
   }
 

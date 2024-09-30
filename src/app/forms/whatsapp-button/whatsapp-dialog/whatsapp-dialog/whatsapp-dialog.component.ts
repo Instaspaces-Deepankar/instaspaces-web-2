@@ -70,7 +70,7 @@ export class WhatsappDialogComponent implements OnInit {
 
       // Open WhatsApp with the pre-filled message
 
-      alert('WhatsApp message sent successfully!');
+      // alert('WhatsApp message sent successfully!');
       this.isSubmitted = true; // Set success state
 
       // Dismiss the form after a brief delay
