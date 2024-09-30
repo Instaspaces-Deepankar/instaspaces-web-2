@@ -1,0 +1,40 @@
+<main class="main">
+  <section class="backgroundContainer">
+<div class="container mx-auto mt-12" >
+  <div class="flex flex-col md:flex-row justify-center">
+    <!-- Left Section -->
+    <div class="text-center md:w-1/3">
+      <h5 class="text-xl text-black">Our Add-On Offerings</h5>
+      <p class="text-2xl text-red-600 font-bold">Business Add-On Services</p>
+      <hr class="w-3/4 mx-auto border-2 border-red-600 my-4" />
+    </div>
+
+    <!-- Vertical Line -->
+    <div class="hidden md:block mx-8">
+      <div class="border-l-2 border-red-600 h-full"></div>
+    </div>
+
+    <!-- Right Section -->
+    <div class="text-center md:w-1/3">
+      <p>
+        At Instaspaces, we understand that every business has unique needs. That's why our Business Services Department offers various add-on services designed to fulfill your business requirements.
+      </p>
+    </div>
+  </div>
+
+  <!-- Add-On Cards -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8 mx-auto w-11/12">
+    <div *ngFor="let service of addOnServices" class="bg-white shadow-lg rounded-lg p-6 relative">
+      <div class="absolute top-0 right-0 bg-red-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold">{{ service.id }}</div>
+      <h5 class="text-lg font-semibold">{{ service.title }}</h5>
+      <p class="text-sm text-gray-600">{{ service.description }}</p>
+      <p *ngIf="service?.recommended" class="text-red-600 font-bold">(Highly Recommended)</p>
+      <div *ngIf="service?.price" class="mt-auto">
+        <code class="block text-sm text-gray-500">Starts from</code>
+        <h5 class="text-lg font-bold">{{ service?.price }}</h5>
+      </div>
+    </div>
+  </div>
+</div>
+  </section>
+</main>

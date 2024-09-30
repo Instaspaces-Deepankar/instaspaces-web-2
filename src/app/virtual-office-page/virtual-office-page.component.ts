@@ -9,12 +9,14 @@ import { VoNeedHelpComponent } from "./vo-need-help/vo-need-help.component";
 import { VoFaqComponent } from "./vo-faq/vo-faq.component";
 import { VirtualOfficePlanComponent } from "./virtual-office-plan/virtual-office-plan.component";
 import {ContactFormComponent} from "../forms/contact-form/contact-form.component";
+import {PricingPlansComponent} from "./pricing-card/pricing-card.component";
+import {AddOnServicesComponent} from "./add-on-services/add-on-services.component";
 // import {RequestCallBackComponent} from "../forms/contact-popup/request-call-back.component";
 
 @Component({
   selector: 'app-virtual-office-page',
   standalone: true,
-  imports: [VirtualOfficeFormComponent, WhatIsVirtualOfficeComponent, BenefitsOfVoComponent, WhyChooseVoComponent, VoLocationsComponent, VoHelplineComponent, VoNeedHelpComponent, VoFaqComponent, VirtualOfficePlanComponent, ContactFormComponent],
+  imports: [VirtualOfficeFormComponent, WhatIsVirtualOfficeComponent, BenefitsOfVoComponent, WhyChooseVoComponent, VoLocationsComponent, VoHelplineComponent, VoNeedHelpComponent, VoFaqComponent, VirtualOfficePlanComponent, ContactFormComponent, PricingPlansComponent, AddOnServicesComponent],
   templateUrl: './virtual-office-page.component.html',
   styleUrls: ['./virtual-office-page.component.scss'],
 })
