@@ -178,7 +178,7 @@ export class ContactFormComponent implements OnInit {
               console.log('response', response);
             });
           console.error('Error submitting contact form:', error);
-          // alert("Error submitting contact form");
+          alert("Error submitting contact form");
         });
     } else {
       this.markFormGroupTouched(this.contactForm);

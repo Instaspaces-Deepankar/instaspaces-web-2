@@ -124,7 +124,7 @@ export class ContactPopOverComponent implements OnInit {
   }
 
   private handleError(error: any): void {
-    // alert('Error submitting contact form');
+    alert('Error submitting contact form');
     console.error('Error submitting contact form:', error);
   }
 
