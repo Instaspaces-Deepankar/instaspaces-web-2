@@ -4,11 +4,14 @@ import {ContactService} from "../../../../services/contact.service";
 declare var gtag: Function;
 declare var ir: Function;
 import {CommonModule} from "@angular/common";
+import {faCheckCircle, faPaperPlane, faPhone} from "@fortawesome/free-solid-svg-icons";
+import {FaIconComponent} from "@fortawesome/angular-fontawesome";
+import {faWhatsapp} from "@fortawesome/free-brands-svg-icons";
 
 @Component({
   selector: 'app-whatsapp-dialog',
   standalone:true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, FaIconComponent],
   templateUrl: './whatsapp-dialog.component.html',
   styleUrls: ['./whatsapp-dialog.component.scss']
 })
@@ -103,4 +106,9 @@ export class WhatsappDialogComponent implements OnInit {
     this.selectedQuestion = question;
     this.comment = question; // Update the comment with the selected question
   }
+
+  public faCheckCircle = faCheckCircle;
+  public faPaperPlane = faPaperPlane;
+  public faWhatsapp = faWhatsapp;
+  public faPhone = faPhone;
 }

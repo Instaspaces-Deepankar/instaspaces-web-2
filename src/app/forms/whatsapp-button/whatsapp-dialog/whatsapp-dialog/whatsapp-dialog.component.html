@@ -3,8 +3,7 @@
     <div class="header">
       <div class="header-title">
         <span class="whatsapp-icon">
-          <!-- <i class="fa fa-whatsapp" aria-hidden="true"></i> -->
-           <img src="https://instaspaceweb.s3.ap-southeast-1.amazonaws.com/www-image-icons/benefits/whatsapp.png" alt="whatsapp support">
+          <fa-icon [icon]="faWhatsapp"></fa-icon>
         </span>
         <span>Whatsapp Support</span>
       </div>
@@ -15,50 +14,49 @@
         <div class="suggested-questions">
           <button class="question" [ngClass]="{'active': selectedQuestion === 'GST Registration'}" (click)="selectQuestion('GST Registration')">
             <span class="question-icon">
-              <i class="fa-solid fa-paper-plane"></i>
+              <fa-icon [icon]="faPaperPlane"></fa-icon>
             </span>
             GST Registration
           </button>
           <button class="question" [ngClass]="{'active': selectedQuestion === 'Business Registration'}" (click)="selectQuestion('Business Registration')">
             <span class="question-icon">
-              <i class="fa-solid fa-paper-plane"></i>
+              <fa-icon [icon]="faPaperPlane"></fa-icon>
             </span>
             Business Registration
           </button>
           <button class="question" [ngClass]="{'active': selectedQuestion === 'Mailing Address'}" (click)="selectQuestion('Mailing Address')">
             <span class="question-icon">
-              <i class="fa-solid fa-paper-plane"></i>
+              <fa-icon [icon]="faPaperPlane"></fa-icon>
             </span>
             Mailing Address
           </button>
           <button class="question" [ngClass]="{'active': selectedQuestion === 'Desk Address for Registration'}" (click)="selectQuestion('Desk Address for Registration')">
             <span class="question-icon">
-              <i class="fa-solid fa-paper-plane"></i>
+              <fa-icon [icon]="faPaperPlane"></fa-icon>
             </span>
             Desk Address for Registration
           </button>
           <button class="question" [ngClass]="{'active': selectedQuestion === 'Bank Account Registration'}" (click)="selectQuestion('Bank Account Registration')">
             <span class="question-icon">
-              <i class="fa-solid fa-paper-plane"></i>
+              <fa-icon [icon]="faPaperPlane"></fa-icon>
             </span>
             Bank Account Registration
           </button>
           <button class="question" [ngClass]="{'active': selectedQuestion === 'Ecommerce Registration'}" (click)="selectQuestion('Ecommerce Registration')">
             <span class="question-icon">
-              <i class="fa-solid fa-paper-plane"></i>
+              <fa-icon [icon]="faPaperPlane"></fa-icon>
             </span>
             Ecommerce Registration
           </button>
           <button class="question" [ngClass]="{'active': selectedQuestion === 'Transferring Address'}" (click)="selectQuestion('Transferring Address')">
             <span class="question-icon">
-              <i class="fa-solid fa-paper-plane"></i>
+              <fa-icon [icon]="faPaperPlane"></fa-icon>
             </span>
             Transferring Address
           </button>
-
           <button class="question" [ngClass]="{'active': selectedQuestion === 'Please Help. Need Clarity.'}" (click)="selectQuestion('Please Help. Need Clarity.')">
             <span class="question-icon">
-              <i class="fa-solid fa-paper-plane"></i>
+              <fa-icon [icon]="faPaperPlane"></fa-icon>
             </span>
             Please Help. Need Clarity.
           </button>
@@ -77,7 +75,7 @@
         <form [formGroup]="phoneForm" (ngSubmit)="onSubmit()">
           <div class="phone-container">
             <div class="phone-input">
-              <span class="phone-icon"><i class="fa fa-phone" aria-hidden="true"></i></span>
+              <span class="phone-icon"><fa-icon [icon]="faPhone"></fa-icon></span>
               <input
                 type="number"
                 formControlName="phoneNumber"
@@ -88,7 +86,7 @@
               />
             </div>
             <button type="submit" class="submit-button">
-              <i class="fa-solid fa-paper-plane"></i>
+              <fa-icon [icon]="faPaperPlane"></fa-icon>
             </button>
           </div>
           <div *ngIf="phoneForm.get('phoneNumber')?.invalid && phoneForm.get('phoneNumber')?.touched">
@@ -105,7 +103,7 @@
         </form>
       </div>
       <div *ngIf="isSubmitted" class="success-message">
-        <i class="fa fa-check-circle" aria-hidden="true"></i>
+        <fa-icon [icon]="faCheckCircle"></fa-icon>
         <p>Form Submitted Successfully!</p>
       </div>
     </div>

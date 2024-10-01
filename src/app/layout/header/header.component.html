@@ -1,123 +1,94 @@
 <header
-  class="fixed top-0 left-0 w-full bg-white  z-50 transition-all duration-300"
+  class="fixed top-0 left-0 w-full bg-white z-50 transition-all duration-300">
+  <div class="container mx-auto px-4 py-4 flex justify-between items-center">
 
->
-  <div class="container mx-auto px-4 py-4 flex justify-between items-center ">
     <!-- Logo -->
-      <div class="lg:hidden">
-        <a href="https://www.instaspaces.in/"
+    <div class="lg:hidden">
+      <a href="https://www.instaspaces.in/"
+         class="flex items-center space-x-3 rtl:space-x-reverse transition duration-500 hover:scale-110">
+        <img src="https://instaspaceweb.s3.ap-southeast-1.amazonaws.com/webimage/favicon.png" alt="Instaspaces Logo"
+             style="width: 80px;padding: 15px" />
+      </a>
+    </div>
 
-          class="flex items-center space-x-3 rtl:space-x-reverse transition duration-500 hover:scale-110">
-          <img src="https://instaspaceweb.s3.ap-southeast-1.amazonaws.com/webimage/favicon.png" alt="Instaspaces Logo"
-               style="width: 80px;padding: 15px" />
-        </a>
-      </div>
-
-      <div class="hidden lg:block">
-        <a
-          href="https://www.instaspaces.in/"
-          class="flex items-center space-x-3 rtl:space-x-reverse transition duration-500 hover:scale-110">
-          <img src="https://isicons.gumlet.io/logo/is_logo.png?&mode=crop&width=200&height=auto" style="width: 240px;padding: 15px"
-               alt="Instaspaces Logo" />
-        </a>
-      </div>
+    <div class="hidden lg:block">
+      <a href="https://www.instaspaces.in/"
+         class="flex items-center space-x-3 rtl:space-x-reverse transition duration-500 hover:scale-110">
+        <img src="https://isicons.gumlet.io/logo/is_logo.png?&mode=crop&width=200&height=auto"
+             style="width: 240px;padding: 15px" alt="Instaspaces Logo" />
+      </a>
+    </div>
 
     <!-- Desktop Menu -->
     <nav class="hidden md:flex space-x-6 items-center">
       <ul class="nav__list">
-
         <li class="nav__item">
           <a href="https://www.instaspaces.in/virtual-offices/" class="nav__link" target="_blank" rel="noopener noreferrer">
             Book Business Address
           </a>
         </li>
-
         <li class="nav__item">
           <a href="https://www.instaspaces.in/partner/" class="nav__link" target="_blank" rel="noopener noreferrer">
             Partner With Us</a>
         </li>
-
-        <li class="nav__item cursor-pointer">
-          <a href="https://www.desk.instaspaces.in/" class="nav__link" target="_blank" rel="noopener noreferrer">
-            Desk Address</a>        </li>
-
-        <li class="nav__item">
-          <a href="https://www.instaspaces.in/virtual-office/" class="nav__link" target="_blank" rel="noopener noreferrer">
-          Get Quote</a>
-        </li>
-        <li class="nav__item">
-          <a class="nav__link"  (click)="toggleContact()">
-            <fa-icon class="p-icon" [icon]="faPhone"></fa-icon>
-          </a>
-
-
-        </li>
-      </ul>
-    </nav>
-
-<div class="mx-auto px-4 py-4 flex justify-between items-center ">
-    <a  class="md:hidden text-gray-600 focus:outline-none"
-             (click)="toggleContact()">
-      <fa-icon class="p-icon" [icon]="faPhone"></fa-icon>
-    </a>
-    <button
-      class="md:hidden text-gray-600 focus:outline-none "
-      (click)="toggleMobileMenu()"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="h-6 w-6"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M4 6h16M4 12h16m-7 6h7"
-        />
-      </svg>
-    </button>
-</div>
-
-  </div>
-
-  <!-- Mobile Menu -->
-  <div
-    class="md:hidden bg-white text-black w-full transition-all duration-300 p-4"
-    [ngClass]="{ hidden: !isMenuOpen, block: isMenuOpen }"
-  >
-    <nav class="flex flex-col space-y-4 p-4">
-      <ul class="nav__list">
-
-        <li class="nav__item">
-          <a href="https://www.instaspaces.in/virtual-offices/" class="nav__link" target="_blank" rel="noopener noreferrer">
-            Book Business Address
-          </a>
-
-        </li>
-
-        <li class="nav__item">
-          <a href="https://www.instaspaces.in/partner/" class="nav__link" target="_blank" rel="noopener noreferrer">
-            Partner With Us</a>
-        </li>
-
         <li class="nav__item cursor-pointer">
           <a href="https://www.desk.instaspaces.in/" class="nav__link" target="_blank" rel="noopener noreferrer">
             Desk Address</a>
         </li>
-
         <li class="nav__item">
           <a href="https://www.instaspaces.in/virtual-office/" class="nav__link" target="_blank" rel="noopener noreferrer">
-            Get Quote</a> </li>
+            Get Quote</a>
+        </li>
+        <li class="nav__item">
+          <a class="nav__link" (click)="toggleContact()">
+            <fa-icon class="p-icon" [icon]="faPhone"></fa-icon>
+          </a>
+        </li>
       </ul>
-
     </nav>
 
+    <!-- Phone Icon and Toggle Menu (Mobile) -->
+    <div class="flex items-center space-x-4 md:hidden">
+      <a class="text-gray-600 focus:outline-none" (click)="toggleContact()">
+        <fa-icon class="p-icon" [icon]="faPhone"></fa-icon>
+      </a>
+      <button class="text-gray-600 focus:outline-none" (click)="toggleMobileMenu()">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+        </svg>
+      </button>
+    </div>
 
   </div>
+
+  <!-- Mobile Menu -->
+  <div class="md:hidden bg-white text-black w-full transition-all duration-300 p-4"
+       [ngClass]="{ hidden: !isMenuOpen, block: isMenuOpen }">
+    <nav class="flex flex-col space-y-4 p-4">
+      <ul class="nav__list">
+        <li class="nav__item">
+          <a href="https://www.instaspaces.in/virtual-offices/" class="nav__link" target="_blank" rel="noopener noreferrer">
+            Book Business Address
+          </a>
+        </li>
+        <li class="nav__item">
+          <a href="https://www.instaspaces.in/partner/" class="nav__link" target="_blank" rel="noopener noreferrer">
+            Partner With Us</a>
+        </li>
+        <li class="nav__item cursor-pointer">
+          <a href="https://www.desk.instaspaces.in/" class="nav__link" target="_blank" rel="noopener noreferrer">
+            Desk Address</a>
+        </li>
+        <li class="nav__item">
+          <a href="https://www.instaspaces.in/virtual-office/" class="nav__link" target="_blank" rel="noopener noreferrer">
+            Get Quote</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
 </header>
+
+<!-- Contact Pop-over -->
 <div class="search" id="contact" [class.show-help]="showContact">
   <div class="search_container">
     <app-contact-pop-over (toggleContactEvent)="handletoggleContactEvent($event)"></app-contact-pop-over>
