@@ -11,6 +11,7 @@ import { VirtualOfficePlanComponent } from "./virtual-office-plan/virtual-office
 import {ContactFormComponent} from "../forms/contact-form/contact-form.component";
 import {PricingPlansComponent} from "./pricing-card/pricing-card.component";
 import {AddOnServicesComponent} from "./add-on-services/add-on-services.component";
+import {Meta, Title} from "@angular/platform-browser";
 // import {RequestCallBackComponent} from "../forms/contact-popup/request-call-back.component";
 
 @Component({
@@ -21,10 +22,14 @@ import {AddOnServicesComponent} from "./add-on-services/add-on-services.componen
   styleUrls: ['./virtual-office-page.component.scss'],
 })
 export class VirtualOfficePageComponent implements OnInit{
+  title = 'Virtual Office for GST Registration PAN India | Instaspaces';
 
-    constructor() {}
+    constructor(   private titleService: Title,
+                   private metaTagService: Meta,) {}
 
     ngOnInit(): void {
+
+      this.titleService.setTitle(this.title);
 
     }
 

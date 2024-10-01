@@ -11,10 +11,10 @@
   transition: all 0.3s ease;
 }
 
-.sales-advisor-card h2,
+.sales-advisor-card .connect,
 .sales-advisor-card h3 {
   font-size: 1.25em;
-  font-weight: 500;
+  font-weight: 600;
   color: #333;
   margin-bottom: 20px;
   text-align: center;
@@ -232,7 +232,7 @@
 
   }
 
-  .sales-advisor-card h2,
+  .sales-advisor-card .connect,
   .sales-advisor-card h3 {
     font-size: 1.1em;
   }
@@ -274,7 +274,7 @@
     border-radius: 0;
   }
 
-  .sales-advisor-card h2,
+  .sales-advisor-card .connect,
   .sales-advisor-card h3 {
     font-size: 1em;
   }

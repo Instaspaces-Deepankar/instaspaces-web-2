@@ -12,7 +12,7 @@
   text-align: center;
 }
 
-.why-choose-us h2 {
+.why-choose-us h4 {
   color: #333;
   font-size: 1.5rem;
   font-family: "Nunito", sans-serif;
@@ -25,7 +25,7 @@
   margin: 20px auto;
 }
 
-.why-choose-us h2 span {
+.why-choose-us h4 span {
   display: block;
   color: #ed6666;
   font-size: 2.5rem;
@@ -56,7 +56,7 @@
   border-radius: 10px;
 }
 
-.column h2 {
+.column h4 {
   color: #ed6666;
   font-size: 1.8em;
   margin-bottom: 0.5em;
@@ -84,21 +84,21 @@
     margin-bottom: 20px;
   }
 
-  .why-choose-us h2 {
+  .why-choose-us h4 {
     font-size: 1.3rem;
   }
 
-  .why-choose-us h2 span {
+  .why-choose-us h4 span {
     font-size: 2rem;
   }
 }
 
 @media (max-width: 480px) {
-  .why-choose-us h2 {
+  .why-choose-us h4 {
     font-size: 1.2rem;
   }
 
-  .why-choose-us h2 span {
+  .why-choose-us h4 span {
     font-size: 1.8rem;
   }
 
