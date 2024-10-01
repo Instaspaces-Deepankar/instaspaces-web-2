@@ -203,7 +203,7 @@ export class RequestCallBackComponent implements OnInit {
     this.snackBar.open('Error submitting contact form', 'Close', {
       duration: 3000,
     });
-    // alert("Error submitting contact form");
+    alert("Error submitting contact form");
     this.isLoading = false;
   }
 
