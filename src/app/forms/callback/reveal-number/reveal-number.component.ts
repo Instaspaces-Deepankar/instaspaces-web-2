@@ -21,7 +21,7 @@ export class RevealNumberComponent implements OnInit {
   callbackForm!: FormGroup;
   showForm = false;
   formSubmitted = false;
-  isLoading = false; // New state variable for loading spinner
+  isLoading = false;
   isSuccess = false;
   selectedTime: string = '';
   selectedCoordinator: CallCoordinator | null = null;

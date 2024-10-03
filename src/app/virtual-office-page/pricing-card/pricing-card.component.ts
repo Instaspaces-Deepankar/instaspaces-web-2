@@ -26,7 +26,7 @@ export class PricingPlansComponent {
       ],
       image: 'https://isicons.gumlet.io/north-east/professional-handshakes.avif',
       heading: 'Virtual Office Space for Mailing Address',
-      infoText: 'Get a prestigious Assam mailing address through our virtual office service. Perfect for courier handling, displaying on visiting cards, and enhancing your business presence online.',
+      infoText: 'Get a prestigious mailing address through our virtual office service. Perfect for courier handling, displaying on visiting cards, and enhancing your business presence online.',
       showInfo: false // To toggle between infoText and features
     },
     {
@@ -40,7 +40,7 @@ export class PricingPlansComponent {
       ],
       image: 'https://isicons.gumlet.io/north-east/tax-preparation.avif',
       heading: 'Virtual Office Address for GST Registration',
-      infoText: 'Register for GST in Assam with a virtual office address. Our service provides essential documents like NOC, Agreement, Signage, and Electricity Bill for seamless GST registration.',
+      infoText: 'Register for GST with a virtual office address. Our service provides essential documents like NOC, Agreement, Signage, and Electricity Bill for seamless GST registration.',
       showInfo: false
     },
     {
