@@ -75,7 +75,7 @@ export class WhatsappDialogComponent implements OnInit {
 
       // alert('WhatsApp message sent successfully!');
       this.isSubmitted = true; // Set success state
-
+this.triggerConversion();
       // Dismiss the form after a brief delay
       setTimeout(() => {
         this.isSubmitted = false; // Reset success state

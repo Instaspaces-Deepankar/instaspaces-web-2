@@ -362,3 +362,72 @@ img {
   opacity: 1;
   pointer-events: initial;
 }
+
+/* Base Styles - Mobile-first Approach */
+
+/* Responsive for Tablets */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .header {
+    padding: 1rem 2rem;
+  }
+
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Ensure flex behavior for tablet */
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* Tablet-specific adjustments */
+  nav {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .nav__list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  /* Adjust padding and icon sizes */
+  .nav__link {
+    padding: 0.5rem 1rem;
+    font-size: 1rem; /* Adjust font size */
+  }
+
+  /* Ensure logo adjusts size for tablets */
+  .lg\\:hidden {
+    display: block; /* Ensure logo is visible */
+  }
+
+  /* Show menu for tablets */
+  .md\\:flex {
+    display: flex;
+  }
+
+  .md\\:hidden {
+    display: none;
+  }
+
+  /* Adjust mobile menu for tablet devices */
+  .isMenuOpen {
+    display: block;
+  }
+
+  .search__close {
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  .search {
+    padding: 1rem;
+  }
+}
+
