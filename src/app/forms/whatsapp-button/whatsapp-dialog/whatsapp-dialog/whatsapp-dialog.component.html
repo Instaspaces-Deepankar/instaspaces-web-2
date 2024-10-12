@@ -1,5 +1,6 @@
 <div class="wrapper">
   <div class="container">
+    <!-- Header Section -->
     <div class="header">
       <div class="header-title">
         <span class="whatsapp-icon">
@@ -8,71 +9,73 @@
         <span>Whatsapp Support</span>
       </div>
     </div>
+
+    <!-- Form Section -->
     <div class="content">
+      <!-- Show the form if it is not submitted -->
       <div *ngIf="!isSubmitted">
+        <!-- Suggested Questions Section -->
         <p class="suggested-text">I’m interested in:</p>
         <div class="suggested-questions">
           <button class="question" [ngClass]="{'active': selectedQuestion === 'GST Registration'}" (click)="selectQuestion('GST Registration')">
-            <span class="question-icon">
-              <fa-icon [icon]="faPaperPlane"></fa-icon>
-            </span>
-            GST Registration
+            <span class="question-icon"><fa-icon [icon]="faPaperPlane"></fa-icon></span> GST Registration
           </button>
           <button class="question" [ngClass]="{'active': selectedQuestion === 'Business Registration'}" (click)="selectQuestion('Business Registration')">
-            <span class="question-icon">
-              <fa-icon [icon]="faPaperPlane"></fa-icon>
-            </span>
-            Business Registration
+            <span class="question-icon"><fa-icon [icon]="faPaperPlane"></fa-icon></span> Business Registration
           </button>
           <button class="question" [ngClass]="{'active': selectedQuestion === 'Mailing Address'}" (click)="selectQuestion('Mailing Address')">
-            <span class="question-icon">
-              <fa-icon [icon]="faPaperPlane"></fa-icon>
-            </span>
-            Mailing Address
+            <span class="question-icon"><fa-icon [icon]="faPaperPlane"></fa-icon></span> Mailing Address
           </button>
           <button class="question" [ngClass]="{'active': selectedQuestion === 'Desk Address for Registration'}" (click)="selectQuestion('Desk Address for Registration')">
-            <span class="question-icon">
-              <fa-icon [icon]="faPaperPlane"></fa-icon>
-            </span>
-            Desk Address for Registration
+            <span class="question-icon"><fa-icon [icon]="faPaperPlane"></fa-icon></span> Desk Address for Registration
           </button>
           <button class="question" [ngClass]="{'active': selectedQuestion === 'Bank Account Registration'}" (click)="selectQuestion('Bank Account Registration')">
-            <span class="question-icon">
-              <fa-icon [icon]="faPaperPlane"></fa-icon>
-            </span>
-            Bank Account Registration
+            <span class="question-icon"><fa-icon [icon]="faPaperPlane"></fa-icon></span> Bank Account Registration
           </button>
           <button class="question" [ngClass]="{'active': selectedQuestion === 'Ecommerce Registration'}" (click)="selectQuestion('Ecommerce Registration')">
-            <span class="question-icon">
-              <fa-icon [icon]="faPaperPlane"></fa-icon>
-            </span>
-            Ecommerce Registration
+            <span class="question-icon"><fa-icon [icon]="faPaperPlane"></fa-icon></span> Ecommerce Registration
           </button>
           <button class="question" [ngClass]="{'active': selectedQuestion === 'Transferring Address'}" (click)="selectQuestion('Transferring Address')">
-            <span class="question-icon">
-              <fa-icon [icon]="faPaperPlane"></fa-icon>
-            </span>
-            Transferring Address
+            <span class="question-icon"><fa-icon [icon]="faPaperPlane"></fa-icon></span> Transferring Address
           </button>
           <button class="question" [ngClass]="{'active': selectedQuestion === 'Please Help. Need Clarity.'}" (click)="selectQuestion('Please Help. Need Clarity.')">
-            <span class="question-icon">
-              <fa-icon [icon]="faPaperPlane"></fa-icon>
-            </span>
-            Please Help. Need Clarity.
+            <span class="question-icon"><fa-icon [icon]="faPaperPlane"></fa-icon></span> Please Help. Need Clarity.
           </button>
         </div>
-        <div class="name-input">
-          <input
-            type="text"
-            placeholder="Enter Your Name"
-            class="custom-input"
-            [(ngModel)]="name"
-          />
-        </div>
-        <div class="comment-box mt-2">
-          <textarea [(ngModel)]="comment" placeholder="Enter your comments here or Select from above..." name="comment"></textarea>
-        </div>
+
+        <!-- Form Fields Section -->
         <form [formGroup]="phoneForm" (ngSubmit)="onSubmit()">
+
+          <!-- Name Input Field -->
+          <div class="name-input">
+            <input
+              type="text"
+              formControlName="name"
+              placeholder="Enter Your Name"
+              class="custom-input"
+              [ngClass]="{'is-invalid': phoneForm.get('name')?.invalid && phoneForm.get('name')?.touched}"
+            />
+            <div *ngIf="phoneForm.get('name')?.invalid && phoneForm.get('name')?.touched" class="error-message">
+              <p *ngIf="phoneForm.get('name')?.errors?.['required']">Name is required.</p>
+              <p *ngIf="phoneForm.get('name')?.errors?.['minlength']">Name must be at least 3 characters long.</p>
+            </div>
+          </div>
+
+          <!-- Comment Input (Textarea) -->
+          <div class="comment-box mt-2">
+            <textarea
+              formControlName="comment"
+              placeholder="Enter your comments here or Select from above..."
+              class="custom-textarea"
+              [ngClass]="{'is-invalid': phoneForm.get('comment')?.invalid && phoneForm.get('comment')?.touched}">
+            </textarea>
+            <div *ngIf="phoneForm.get('comment')?.invalid && phoneForm.get('comment')?.touched" class="error-message">
+              <p *ngIf="phoneForm.get('comment')?.errors?.['required']">Message is required.</p>
+              <p *ngIf="phoneForm.get('comment')?.errors?.['minlength']">Message must be at least 10 characters long.</p>
+            </div>
+          </div>
+
+          <!-- Phone Input Field -->
           <div class="phone-container">
             <div class="phone-input">
               <span class="phone-icon"><fa-icon [icon]="faPhone"></fa-icon></span>
@@ -81,31 +84,38 @@
                 formControlName="phoneNumber"
                 placeholder="Enter Your Phone Number"
                 (input)="onPhoneNumberInput($event)"
-                [(ngModel)]="userNumber"
+                [ngClass]="{'is-invalid': phoneForm.get('phoneNumber')?.invalid && phoneForm.get('phoneNumber')?.touched}"
                 class="custom-input"
               />
             </div>
-            <button type="submit" class="submit-button">
-              <fa-icon [icon]="faPaperPlane"></fa-icon>
-            </button>
+            <!-- Validation messages for Phone Number -->
+
+
+            <!-- Submit Button -->
+            <div class="submit-section">
+              <button type="submit" class="submit-button">
+                <fa-icon [icon]="faPaperPlane"></fa-icon>
+              </button>
+            </div>
+
           </div>
-          <div *ngIf="phoneForm.get('phoneNumber')?.invalid && phoneForm.get('phoneNumber')?.touched">
-            <p class="error-message" *ngIf="phoneForm.get('phoneNumber')?.errors?.['required']">
-              Phone number is required.
-            </p>
-            <p class="error-message" *ngIf="phoneForm.get('phoneNumber')?.errors?.['pattern']">
-              Please enter a valid 10-digit phone number.
-            </p>
-            <p class="error-message" *ngIf="phoneForm.get('phoneNumber')?.errors?.['maxlength']">
-              Phone number must be exactly 10 digits long.
-            </p>
+
+          <div *ngIf="phoneForm.get('phoneNumber')?.invalid && phoneForm.get('phoneNumber')?.touched" class="error-message">
+            <p *ngIf="phoneForm.get('phoneNumber')?.errors?.['required']">Phone number is required.</p>
+            <p *ngIf="phoneForm.get('phoneNumber')?.errors?.['pattern']">Please enter a valid 10-digit phone number.</p>
           </div>
+
+
+
         </form>
       </div>
+
+      <!-- Success Message -->
       <div *ngIf="isSubmitted" class="success-message">
         <fa-icon [icon]="faCheckCircle"></fa-icon>
         <p>Form Submitted Successfully!</p>
       </div>
+
     </div>
   </div>
 </div>
