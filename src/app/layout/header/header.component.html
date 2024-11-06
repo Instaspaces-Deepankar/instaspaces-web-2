@@ -18,6 +18,10 @@
              style="width: 240px;padding: 15px" title="logo" alt="Instaspaces Logo" />
       </a>
     </div>
+      <a class="nav__link__call" (click)="toggleContact()">
+        <fa-icon class="call-icon" [icon]="faPhone"></fa-icon>
+        Request Call
+      </a>
 
     <!-- Desktop Menu -->
     <nav class="hidden md:flex space-x-6 items-center">
@@ -39,19 +43,14 @@
 <!--          <a href="https://www.instaspaces.in/virtual-office/" class="nav__link" target="_blank" rel="noopener noreferrer">-->
 <!--            Get Quote</a>-->
 <!--        </li>-->
-        <li class="nav__item">
-          <a class="nav__link" (click)="toggleContact()">
-            <fa-icon class="p-icon" [icon]="faPhone"></fa-icon>
-          </a>
-        </li>
       </ul>
     </nav>
 
     <!-- Phone Icon and Toggle Menu (Mobile) -->
     <div class="flex items-center space-x-4 md:hidden">
-      <a class="text-gray-600 focus:outline-none" (click)="toggleContact()">
-        <fa-icon class="p-icon" [icon]="faPhone"></fa-icon>
-      </a>
+<!--      <a class="text-gray-600 focus:outline-none" (click)="toggleContact()">-->
+<!--        <fa-icon class="p-icon" [icon]="faPhone"></fa-icon>-->
+<!--      </a>-->
       <button class="text-gray-600 focus:outline-none" (click)="toggleMobileMenu()">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
