@@ -41,8 +41,8 @@ export class WhatsappDialogComponent implements OnInit {
         '',
         [
           Validators.required,
-          Validators.pattern(/^\d{10}$/), // Ensure phone number is 10 digits
-        ],
+          Validators.pattern(/^[6-9]\d{9}$/) // Ensure phone number starts with 6, 7, 8, or 9 and has exactly 10 digits
+        ]
       ],
     });
   }
@@ -82,7 +82,7 @@ export class WhatsappDialogComponent implements OnInit {
         .submitForm(
           this.phoneForm.value.name,
           '',
-          this.userNumber,
+          this.phoneForm.value.phoneNumber,
           message + ' -> ' + currentUrl + ';',
           '',
           this.selectedQuestion,
@@ -133,3 +133,4 @@ export class WhatsappDialogComponent implements OnInit {
     this.phoneForm.get('comment')?.setValue(question); // Set the selected question in the comment field
   }
 }
+
