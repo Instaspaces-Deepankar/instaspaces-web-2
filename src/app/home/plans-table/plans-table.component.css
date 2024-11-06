@@ -1,0 +1,57 @@
+
+.checkbox:checked {
+  right: 0;
+}
+.checkbox:checked + .toggle-label {
+
+  background-color: #4c51bf;
+}
+
+.scrollable-div {
+  overflow-y: auto;
+  max-height: fit-content;
+}
+
+.sticky-div {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+::-webkit-scrollbar {
+  width: 1px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ff6666;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1163de;
+}
+
+span{
+  color: #ed6666;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 640px) {
+  span {
+    font-size: 9px;
+  }
+
+  .img-plan {
+      max-width: 50%;
+      height: auto;
+  }
+
+}

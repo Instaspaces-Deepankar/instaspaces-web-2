@@ -1,0 +1,30 @@
+
+
+<div class="container">
+  <div class="head-content">
+    <h1 class="ms-head">Most Selling <span>Virtual Office</span></h1>
+    <p class="ms-para">Our Best Selling Business Addresses in India</p>
+  </div>
+
+  <div class="grid-container">
+    <div class="grid-item" *ngFor="let workspace of recentlyAddedWorkspaces">
+      <div class="card">
+        <div class="imgBx" [ngStyle]="{ 'background-image': 'url(' + workspace.imageUrl + ')' }">
+          <img [src]="workspace.imageUrl" (error)="handleImageError($event, workspace)" >
+          <div class="overlay">
+            <!-- <a [routerLink]="['/virtual-offices/' + workspace.state, workspace.spaceId]" class="view-details-btn">View Details</a> -->
+          </div>
+        </div>
+        <!-- <div class="content" [routerLink]="['/virtual-offices/' + workspace.state, workspace.spaceId]"> -->
+          <div class="content">
+
+          <p class="card-details">{{ workspace.details.name }}</p>
+          <p class="card-p" style="min-inline-size: 2;">{{ workspace.description }}</p>
+          <p class="card-p">{{ workspace.locality }}</p>
+          <p class="card-price">₹{{ workspace.plans[0].price }}/<span>Onwards</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

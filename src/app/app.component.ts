@@ -2,7 +2,6 @@ import {Component, HostListener, Inject, OnInit, Renderer2} from '@angular/core'
 import {Router, RouterOutlet} from '@angular/router';
 import {VirtualOfficePageComponent} from './virtual-office-page/virtual-office-page.component';
 import {FooterComponent} from "./layout/footer/footer.component";
-import {HeaderComponent} from './layout/header/header.component';
 import {WhatsappButtonComponent} from "./forms/whatsapp-button/whatsapp-button.component";
 import {BreakpointObserver} from "@angular/cdk/layout";
 import {MatSnackBar} from "@angular/material/snack-bar";
@@ -10,11 +9,13 @@ import {Meta, Title} from "@angular/platform-browser";
 import {ContactService} from "./services/contact.service";
 import {isPlatformBrowser} from '@angular/common';
 import {PLATFORM_ID} from '@angular/core';
+import { HomeComponent } from "./home/home.component";
+import { HeaderComponent } from './layout/header/header.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, VirtualOfficePageComponent, FooterComponent, HeaderComponent, WhatsappButtonComponent],
+  imports: [RouterOutlet, VirtualOfficePageComponent,HeaderComponent, FooterComponent, WhatsappButtonComponent, HomeComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })

@@ -1,0 +1,108 @@
+
+
+.map-container {
+  display: flex;
+  background:url('https://instaspaceweb.s3.ap-southeast-1.amazonaws.com/www-image-icons/Bg.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: 80px 30px 0px 30px;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 90px;
+  height: 75vh;
+  border-radius: 40px;
+  position: relative;
+  opacity: 0;
+  transform: translateY(100px); 
+  transition: opacity 1s ease-out, transform 1s ease-out; 
+}
+
+.map-container.visible {
+  opacity: 1; /* Visible state */
+  transform: translateY(0); /* Visible state */
+}
+
+.india-map {
+  margin-top: -140px;
+  width: 57%;
+  height: 100vh;
+  fill: #ed6666;
+  stroke: #fff;
+  stroke-width: 1.5px;
+}
+
+.map-info {
+  position: absolute;
+  width: 31%;
+  top: 30%;
+  left: 62%;
+  transform: translate(-65%, 57%);
+  opacity: 0; /* Initial state */
+  transform: translateX(100px); /* Initial state */
+  transition: opacity 1s ease-out, transform 1s ease-out; /* Transition properties */
+}
+
+.map-info.visible {
+  opacity: 1; /* Visible state */
+  transform: translateX(0); /* Visible state */
+}
+
+.info {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  margin-top: 15px;
+  height: 70px;
+  justify-content: flex-start;
+}
+
+h2 {
+  margin-bottom: 0;
+}
+
+h4 {
+  font-size: 18px;
+  letter-spacing: 1px;
+  color: #333;
+}
+
+#state-name {
+  margin: 0;
+  padding-left: 8px;
+  letter-spacing: 1px;
+  font-size: 27px;
+  line-height: 35px;
+  text-align: center;
+  color: #ed6666;
+  font-weight: 500;
+}
+
+#number {
+  font-size: 40px;
+  text-align: center;
+  font-weight: 600;
+  color: #ed6666;
+}
+
+#details {
+  font-size: 17px;
+  margin-left: 10px;
+  line-height: 20px;
+  letter-spacing: 1px;
+  font-weight: 500;
+  color: #717171;
+}
+
+.india-map path {
+  cursor: pointer;
+  transition: fill 0.3s ease, transform 0.3s ease, filter 0.3s ease;
+}
+
+.india-map path:hover {
+  fill: #f5909093;
+  transition: fill 0.5s ease, transform 0.5s ease;
+}
+
+.location-icon {
+  color: #ed6666;
+}

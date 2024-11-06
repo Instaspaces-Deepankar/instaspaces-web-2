@@ -1,0 +1,111 @@
+.slider-container {
+  position: relative;
+  width: 90%;
+  height: 80vh;
+  margin: auto;
+}
+
+.slider {
+  position: relative;
+  width: 95%;
+  height: 70vh;
+  overflow: hidden;
+  margin: 90px auto; 
+  border-radius: 30px;
+}
+
+.slider img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  filter: brightness(0.7); /* Adjusts brightness, making the image darker */
+}
+
+.slider img.active {
+  opacity: 1;
+}
+
+.image-headings {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  width: 90%;
+  transform: translateX(-50%);
+  transition: opacity 1s ease-in-out;
+  font-family: 'Nunito', sans-serif;
+  text-align: center;
+  color: #fff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.image-headings h1 {
+  font-size: 20px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.image-headings h2 {
+  font-size: 40px;
+  font-weight: bold;
+  margin: 5px 0 0;
+}
+
+
+.image-section-overlay {
+  position: absolute;
+  bottom: 0; 
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  max-width: 100%;
+  padding: 20px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  z-index: 10; /* Added z-index to ensure it overlays above the slider images */
+}
+
+
+
+@media (max-width: 768px) {
+
+  .image-headings h1 {
+    font-size: 14px;
+  }
+  .image-headings h2 {
+    font-size: 28px;
+  }
+  .image-section-overlay {
+    padding: 15px;
+    width: 70%;
+  }
+}
+
+@media (max-width: 576px) {
+
+  .image-headings h1 {
+    font-size: 12px;
+  }
+  .image-headings h2 {
+    font-size: 20px;
+  }
+  .image-section-overlay {
+    padding: 12px;
+    bottom: 80px; 
+    width: 85%;
+  }
+}
+
+@media (max-width: 375px) {
+  .image-headings h1 {
+    font-size: 10px;
+  }
+  .image-headings h2 {
+    font-size: 19px;
+  }
+}

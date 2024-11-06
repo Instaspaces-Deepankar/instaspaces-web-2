@@ -1,0 +1,151 @@
+/* why-choose-us.component.css */
+
+.vob {
+  font-family: 'Nunito', sans-serif;
+}
+
+.main-container {
+  margin: 40px;
+  border-radius: 40px;
+  background-color: #f8cdd5;
+  padding: 90px 80px;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;  /* Initially hidden */
+  transform: translateY(100px); /* Initially positioned below */
+  transition: opacity 1s ease-out, transform 1s ease-out; /* Smooth transition */
+}
+
+.main-container.visible {
+  opacity: 1;  /* Fully visible */
+  transform: translateY(0);  /* Position reset */
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 30px 0px;
+}
+
+.grid-item {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  opacity: 0;  /* Initially hidden */
+  transform: translateX(-100px); /* Initially positioned off screen to the left */
+  animation: slide-in 0.8s forwards; /* Apply the animation */
+}
+
+@keyframes slide-in {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.grid-item:nth-child(1) {
+  animation-delay: 0.3s;
+}
+
+.grid-item:nth-child(2) {
+  animation-delay: 0.6s;
+}
+
+.grid-item:nth-child(3) {
+  animation-delay: 0.9s;
+}
+
+.grid-item:nth-child(4) {
+  animation-delay: 1.2s;
+}
+
+.grid-item:nth-child(5) {
+  animation-delay: 1.5s;
+}
+
+.grid-item:nth-child(6) {
+  animation-delay: 1.8s;
+}
+
+.grid-item img {
+  margin-right: 30px;
+  max-width: 100%;
+  max-height: 50%;
+}
+
+h4 {
+  font-size: 20px;
+  font-weight: 400;
+  color: #717171e1;
+  letter-spacing: 2px;
+}
+
+h3 {
+  font-size: 20px;
+  color: #222;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.vob-head {
+  font-size: 20px;
+  color: #222;
+  font-weight: 500;
+  letter-spacing: 2px;
+}
+
+h1 {
+  font-size: 30px;
+  color: #222;
+  font-weight: 500;
+  letter-spacing: 2px;
+}
+
+p {
+  font-size: 20px;
+  align-items: start;
+  letter-spacing: 1px;
+  color: #222222d3;
+}
+
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  .grid-item {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .grid-item img {
+    margin-bottom: 10px;
+  }
+
+  .main-container {
+    margin: 40px;
+    border-radius: 20px;
+    padding: 30px 10px;
+  }
+
+  .grid-item img {
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    max-width: 100%;
+    max-height: 50%;
+  }
+
+  h4, h1, h3 {
+    text-align: center;
+    align-items: center;
+  }
+
+  h3 {
+    font-size: 16px;
+  }
+}

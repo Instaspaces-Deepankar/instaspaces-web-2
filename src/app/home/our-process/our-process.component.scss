@@ -1,0 +1,227 @@
+
+
+
+/* Ensure Font Awesome is loaded */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+
+.o-process {
+  font-family: "Nunito", sans-serif;
+}
+
+.process-h1 {
+  font-size: 30px;
+  font-weight: 700;
+  font-family: "Nunito", sans-serif;
+}
+
+h2 {
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+ul {
+  list-style: none;
+}
+
+.tabs {
+  width: 90%;
+  max-width: 1200px;
+  height: 80px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  box-shadow: 10px 10px 19px rgba(255, 255, 255, 0.3),
+    -10px -10px 19px rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+  border-radius: 15px;
+  background-color: #f8f9fa;
+}
+
+.tabs li {
+  background-color: #ed6666;
+  width: 25%;
+  height: 100%;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-family: "Poppins", sans-serif;
+  transition: background 0.5s, box-shadow 0.5s, color 0.5s;
+  cursor: pointer;
+  position: relative; /* Required for positioning the pseudo-element */
+}
+
+.tabs li::before {
+  content: ""; /* Required to display the icon */
+  font-family: "Font Awesome 6 Free"; /* Font Awesome font */
+  font-weight: 900; /* Font Awesome uses bold weight for icons */
+  font-size: 20px; /* Adjust size as needed */
+  display: none; /* Hide icons by default on larger screens */
+  position: absolute; /* Position absolutely within the li element */
+  top: 10px; /* Adjust as needed */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Center horizontally */
+  margin-bottom: 5px; /* Adjust spacing */
+}
+
+.tabs li .tab-text {
+  display: block; /* Show text by default */
+}
+
+.tabs li:hover,
+.tabs li.active {
+  background: linear-gradient(145deg, #fdf1f1, #fdf1f1);
+  color: #ed6666;
+}
+
+.tabs li.active::before {
+  color: #ed6666; /* Active icon color */
+}
+
+.tabs li::before {
+  color: #ffffff; /* Inactive icon color */
+}
+
+.contents {
+  width: 90%;
+  max-width: 1200px;
+  margin: 50px auto;
+  display: flex;
+  padding-right: 30px;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.box {
+  display: flex;
+  gap: 20px;
+  background: linear-gradient(145deg, #fdf1f1, #fff);
+  box-shadow: 10px 10px 19px rgba(255, 255, 255, 0.3),
+    -10px -10px 19px rgba(255, 255, 255, 0.3);
+  border-radius: 15px;
+  padding: 20px;
+  width: 100%;
+  animation: moving 1s ease;
+  box-sizing: border-box;
+  flex-direction: row; /* Default for larger screens */
+}
+
+.box img {
+  width: 350px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.box h3 {
+  color: #333;
+  font-family: "Nunito", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.box p {
+  color: #333;
+  letter-spacing: 1px;
+  font-family: "Nunito", sans-serif;
+  font-size: 1rem;
+}
+
+.show {
+  display: flex;
+}
+
+.hide {
+  display: none;
+}
+
+@keyframes moving {
+  from {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Media Query for screens with a maximum width of 640px */
+@media screen and (max-width: 640px) {
+  .tabs {
+    height: auto;
+    flex-direction: row;
+  }
+
+  .tabs li {
+    width: 25%; /* Adjust to fit 4 tabs */
+    padding: 20px 0;
+    text-align: center; /* Center text for mobile */
+    position: relative; /* Required for positioning the pseudo-element */
+  }
+
+  .tabs li::before {
+    display: inline-block; /* Show icons on mobile */
+  }
+
+  
+  .tabs li[data-icon="0"]::before {
+    content: "\f124"; /* Unicode for fa-location-arrow */
+  }
+
+  .tabs li[data-icon="1"]::before {
+    content: "\f09d"; /* Unicode for fa-credit-card */
+  }
+
+  .tabs li[data-icon="2"]::before {
+    content: "\f164"; /* Unicode for fa-thumbs-up */
+  }
+
+  .tabs li[data-icon="3"]::before {
+    content: "\f135"; /* Unicode for fa-rocket */
+  }
+
+
+  .tabs li .tab-text {
+    display: none; /* Hide text on mobile */
+  }
+
+  .contents {
+    flex-direction: column;
+    padding-right: 0;
+  }
+
+  .box {
+    flex-direction: column; /* Stack elements vertically on mobile */
+    align-items: center; /* Center items horizontally */
+    padding: 15px;
+    height: 550px; /* Set a fixed height for the box on mobile */
+    overflow: hidden; /* Hide any overflowing content */
+  }
+
+  .box img {
+    width: 70%;
+    height: auto;
+    margin-bottom: 15px;
+  }
+
+  .box h3,
+  .box p {
+    text-align: center; /* Center text for better alignment */
+  }
+}
+
+/* Media Query for screens with a minimum width of 1024px */
+@media screen and (min-width: 1024px) {
+  .tabs {
+    height: 80px;
+  }
+
+  .box {
+    padding: 20px;
+    height: auto; /* Reset height to auto for larger screens */
+  }
+}

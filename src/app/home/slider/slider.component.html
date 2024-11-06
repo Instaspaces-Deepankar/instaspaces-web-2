@@ -1,0 +1,17 @@
+<div class="slider-container">
+  <!-- Image Slider -->
+  <div class="slider">
+    <img *ngFor="let image of images; let i = index" 
+         [src]="image" 
+         [class.active]="i === currentIndex" />
+
+    <!-- Headings for the active image -->
+    <div *ngIf="headings[currentIndex]" class="image-headings">
+      <h1>{{ headings[currentIndex].heading1 }}</h1>
+      <h2>{{ headings[currentIndex].heading2 }}</h2>
+    </div>
+  </div>
+
+  <!-- ImageSection Overlay (Add the selector of ImageSectionComponent) -->
+  <app-sliderform class="image-section-overlay"></app-sliderform>
+</div>

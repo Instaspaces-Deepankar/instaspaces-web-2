@@ -1,0 +1,36 @@
+
+<section class="o-process text-center py-12 px-0 flex flex-col justify-center">
+  <span class="text-black text-lg max-w-lg mx-auto mb-2 capitalize flex items-center">
+    Our Priority 
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+      class="text-pink-400 ml-3 w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+    </svg>
+  </span>
+  <h1 class="process-h1 mx-auto mb-10">
+    Your Time and Trust
+  </h1>
+
+  <ul class="tabs">
+    <li *ngFor="let tab of tabs; let i = index" 
+        [class.active]="selectedTab === tab.id"
+        (click)="onTabClick(tab.id)"
+        (mouseover)="selectedTab = tab.id"
+        [attr.data-icon]="tab.id">
+      <span class="tab-text">{{ tab.label }}</span>
+    </li>
+  </ul>
+
+  <div class="contents">
+    <div *ngFor="let content of contents" 
+         [class.show]="selectedTab === content.id"
+         [class.hide]="selectedTab !== content.id" 
+         class="box">
+      <img [src]="content.image" alt="">
+      <div>
+        <h3>{{ content.title }}</h3>
+        <p>{{ content.text }}</p>
+      </div>
+    </div>
+  </div>
+</section>

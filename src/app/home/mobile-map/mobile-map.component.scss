@@ -1,0 +1,117 @@
+.slider-container {
+  width: 100%;
+  padding: 0 15px;
+  box-sizing: border-box;
+  background: #ffffff;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden; /* Prevents overflow issues */
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 25px;
+}
+
+.map-span {
+  color: #ed6666;
+}
+
+.slider-wrapper {
+  overflow: hidden; /* Hide the horizontal scrollbar */
+  position: relative;
+}
+
+.horizontal-slider {
+  display: flex;
+  flex-direction: row; /* Arrange items horizontally */
+  width: fit-content;
+  animation: scroll-left 30s linear infinite; /* Adjust duration as needed */
+}
+
+.slider-row {
+  display: flex;
+  flex-wrap: nowrap; /* Ensure items stay in a single row */
+}
+
+.slider-item {
+  flex: 0 0 auto; /* Prevent items from stretching */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 160px; /* Width of each item */
+  height: 220px; /* Height of each item */
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.item-circle {
+  width: 140px; /* Diameter of the circle */
+  height: 140px; /* Diameter of the circle */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 150px;
+  background: #ffffff;
+  box-shadow: 5px 5px 24px #e6e6e6, -5px -5px 24px #ffffff;
+  overflow: hidden; /* Ensure images are not overflowing */
+}
+
+.item-circle img {
+  width: 120px; /* Width of the image */
+  height: 120px; /* Height of the image */
+  object-fit: cover; /* Ensure the image covers the circle */
+  border-radius: 50%; /* Circular image */
+}
+
+p {
+  margin-top: 10px;
+  font-size: 16px; /* Font size of the state name */
+  color: #333;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Mobile Styles */
+@media (max-width: 767px) {
+  .slider-item {
+    width: 140px;
+    height: 150px;
+    margin: 10px 0;
+  }
+
+  .item-circle {
+    width: 110px;
+    height: 120px;
+  }
+
+  .item-circle img {
+    width: 100px;
+    height: 100px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .popover-content {
+    gap: 10px;
+  }
+
+  .horizontal-slider {
+  }
+}
