@@ -95,14 +95,12 @@ export class ContactFormComponent implements OnInit {
           });
 
         } catch (error) {
-          console.error('Error decoding token:', error);
         }
       }
 
       // Fetch active coordinators and store the selected one if necessary
       this.contactService.getActiveCoordinators().subscribe(
         (data: CallCoordinator[]) => {
-          console.log(data);
 
           const storedCoordinator = localStorage.getItem('selectedCoordinator');
           if (storedCoordinator) {
@@ -117,7 +115,6 @@ export class ContactFormComponent implements OnInit {
           }
         },
         (error) => {
-          console.error('Error:', error);
         }
       );
     }
@@ -140,10 +137,8 @@ export class ContactFormComponent implements OnInit {
   onSubmit() {
     let ownerId = '';
     if (this.selectedCoordinator) {
-      console.log('Selected coordinator:', this.selectedCoordinator);
       ownerId = this.selectedCoordinator.name;
     } else {
-      console.warn('No active coordinators found.');
     }
 
     const currentUrl = new URL(window.location.href);
@@ -170,16 +165,32 @@ export class ContactFormComponent implements OnInit {
           // alert("Thank You. You will receive callback from 7314•••••• shortly");
           this.contactForm.reset();
           this.sendData = true;
-        }, error => {
-          this.success = false;
-          this.sendData = true;
-          this.contactService.fallBackSubmitForm(fullName, email, mobile, messages, preferredLocation, selectedPlan, timestamp)
-            .subscribe(response => {
-              console.log('response', response);
-            });
-          console.error('Error submitting contact form:', error);
-          alert("Error submitting contact form");
-        });
+        },
+          (error) => {
+
+            if (error.status === 429) {
+              this.success = false;
+              this.sendData = true;
+              this.contactService.fallBackSubmitForm(fullName, email, mobile, messages, preferredLocation, selectedPlan, timestamp)
+                .subscribe(response => {
+                });
+              // alert("Error submitting contact form");
+              alert('We have received your submission. Due to high traffic, please wait a moment before attempting another entry. Thank you for your patience.');
+              // Handle 429 Too Many Requests error
+              // alert('We have received your submission. Due to high traffic, please wait a moment before attempting another entry. Thank you for your patience.');
+            } else {
+              // alert('An error occurred while submitting the form. Please try again.');
+
+              this.success = false;
+              this.sendData = true;
+              this.contactService.fallBackSubmitForm(fullName, email, mobile, messages, preferredLocation, selectedPlan, timestamp)
+                .subscribe(response => {
+                });
+              // alert("Error submitting contact form");
+
+              alert('An error occurred while submitting the form. Please try again.');
+            }
+          });
     } else {
       this.markFormGroupTouched(this.contactForm);
     }

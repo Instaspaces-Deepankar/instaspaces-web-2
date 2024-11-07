@@ -5,6 +5,8 @@ import { RouterLink } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CallCoordinator } from '../../../api-interface/CallCoordinator.model';
 import { ContactService } from '../../../services/contact.service';
+import {MatSnackBar} from "@angular/material/snack-bar";
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 declare var gtag: Function;
 declare var ir: Function;
@@ -12,7 +14,7 @@ declare var ir: Function;
 @Component({
   selector: 'app-reveal-number',
   standalone: true,
-  imports: [CommonModule, RouterLink, FontAwesomeModule, ReactiveFormsModule],
+  imports: [CommonModule, RouterLink, FontAwesomeModule, ReactiveFormsModule,MatSnackBarModule],
   templateUrl: './reveal-number.component.html',
   styleUrls: ['./reveal-number.component.scss']
 })
@@ -34,6 +36,7 @@ export class RevealNumberComponent implements OnInit {
     private fb: FormBuilder,
     private renderer: Renderer2,
     private service: ContactService,
+    private snackBar: MatSnackBar,
     @Inject(PLATFORM_ID) private platformId: Object  // Inject PLATFORM_ID to check if code is running in the browser
   ) { }
 
@@ -43,7 +46,6 @@ export class RevealNumberComponent implements OnInit {
     if (isPlatformBrowser(this.platformId)) {
       this.service.getActiveCoordinators().subscribe(
         (data: CallCoordinator[]) => {
-          console.log(data);
 
           // Retrieve the stored coordinator from localStorage
           const storedCoordinator = localStorage.getItem('selectedCoordinator');
@@ -62,11 +64,9 @@ export class RevealNumberComponent implements OnInit {
           }
         },
         (error) => {
-          console.error('Error:', error);
         }
       );
     } else {
-      console.log('localStorage is not available because this is not a browser environment.');
     }
 
     this.callbackForm = this.fb.group({
@@ -101,11 +101,9 @@ export class RevealNumberComponent implements OnInit {
     let calltime = '';
 
     if (this.selectedCoordinator) {
-      console.log('Selected coordinator:', this.selectedCoordinator);
       ownerId = this.selectedCoordinator.name;
       calltime = String(this.selectedTime1);
     } else {
-      console.warn('No active coordinators found.');
     }
 
     const currentUrl = new URL(window.location.href);
@@ -113,8 +111,6 @@ export class RevealNumberComponent implements OnInit {
     currentUrl.searchParams.set('callTime', calltime);
     currentUrl.searchParams.set('subsource', 'WebsiteCall');
 
-    console.log('Updated URL:', currentUrl.href);
-    console.log(this.callbackForm.value);
 
     this.service.submitForm(
       this.callbackForm.value.userName,
@@ -128,11 +124,26 @@ export class RevealNumberComponent implements OnInit {
       this.isLoading = false;
       this.isSuccess = true;
       this.handleSuccess();
-    }, (error) => {
-      this.isLoading = false;
-      this.handleError(error);
-    });
+    },
+
+      (error) => {
+        this.isLoading = false;
+        this.handleError(error);
+        if (isPlatformBrowser(this.platformId)) {
+
+          if (error.status === 429) {
+            alert('We have received your submission. Due to high traffic, please wait a moment before attempting another entry. Thank you for your patience.');
+            // Handle 429 Too Many Requests error
+            // alert('We have received your submission. Due to high traffic, please wait a moment before attempting another entry. Thank you for your patience.');
+          } else {
+            // alert('An error occurred while submitting the form. Please try again.');
+            alert('An error occurred while submitting the form. Please try again.');
+          }
+        }
+      }
+    );
   }
+
 
   showErrorMessage() {
     alert('Please fill out all required fields with valid information.');
@@ -165,8 +176,7 @@ export class RevealNumberComponent implements OnInit {
   }
 
   private handleError(error: any): void {
-    alert('Error submitting contact form');
-    console.error('Error submitting contact form:', error);
+    // alert('Error submitting contact form');
   }
 
   addScript(): void {

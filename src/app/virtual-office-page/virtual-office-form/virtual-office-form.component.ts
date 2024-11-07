@@ -47,7 +47,6 @@ export class VirtualOfficeFormComponent implements OnInit {
       // Fetch active coordinators and store the selected one if necessary
       this.virtualOfficeService.getActiveCoordinators().subscribe(
         (data: CallCoordinator[]) => {
-          console.log(data);
 
           const storedCoordinator = localStorage.getItem('selectedCoordinator');
           if (storedCoordinator) {
@@ -62,7 +61,6 @@ export class VirtualOfficeFormComponent implements OnInit {
           }
         },
         (error) => {
-          console.error('Error:', error);
         }
       );
     }
@@ -82,19 +80,14 @@ export class VirtualOfficeFormComponent implements OnInit {
     // let calltime = '';
 
     if (this.selectedCoordinator) {
-      console.log('Selected coordinator:', this.selectedCoordinator);
       ownerId = this.selectedCoordinator.name;
-      // calltime = String(this.selectedTime1);
     } else {
-      console.warn('No active coordinators found.');
     }
 
     const currentUrl = new URL(window.location.href);
     currentUrl.searchParams.set('ownerId', ownerId);
     // currentUrl.searchParams.set('callTime', calltime);
     // currentUrl.searchParams.set('subsource', 'WebsiteCall');
-
-    console.log('Updated URL:', currentUrl.href);
 
     if (this.virtualOfficeForm.valid) {
       this.isSubmitting = true;
@@ -115,12 +108,15 @@ export class VirtualOfficeFormComponent implements OnInit {
             this.isSubmitting = false;
             this.successMessage = 'Form submitted successfully!';
             this.formSubmitted = true;
-            console.log(response);
           },
           (error) => {
             this.isSubmitting = false;
-            this.errorMessage = 'An error occurred while submitting the form. Please try again.';
-            console.error(error); // Optional: Logging the error
+            if (error.status === 429) {
+              // Handle 429 Too Many Requests error
+              alert('We have received your submission. Due to high traffic, please wait a moment before attempting another entry. Thank you for your patience.');
+            } else {
+              alert('An error occurred while submitting the form. Please try again.');
+            }
           }
         );
 

@@ -45,7 +45,6 @@ export class RequestCallBackComponent implements OnInit {
 
     this.contactService.getActiveCoordinators().subscribe(
       (data: CallCoordinator[]) => {
-        console.log(data);
 
         // Retrieve the stored coordinator from localStorage
         const storedCoordinator = localStorage.getItem('selectedCoordinator');
@@ -64,7 +63,6 @@ export class RequestCallBackComponent implements OnInit {
         }
       },
       (error) => {
-        console.error('Error:', error);
       }
     );
   }
@@ -85,7 +83,6 @@ export class RequestCallBackComponent implements OnInit {
     if (token) {
       try {
         const decodedToken = jwtDecode<DecodedToken>(token); // Use generic to specify the token type
-        console.log(decodedToken);
         const userName = decodedToken.user_name;
         const userEmail = decodedToken.user_email;
         let userPno = decodedToken.user_pno.toString();
@@ -97,7 +94,6 @@ export class RequestCallBackComponent implements OnInit {
           email: userEmail
         });
       } catch (error) {
-        console.error('Error decoding token:', error);
       }
     }
   }
@@ -131,11 +127,9 @@ export class RequestCallBackComponent implements OnInit {
     // let calltime = '';
 
     if (this.selectedCoordinator) {
-      console.log('Selected coordinator:', this.selectedCoordinator);
       ownerId = this.selectedCoordinator.name;
       // calltime = String(this.selectedTime1);
     } else {
-      console.warn('No active coordinators found.');
     }
 
     const currentUrl = new URL(window.location.href);
@@ -143,7 +137,6 @@ export class RequestCallBackComponent implements OnInit {
     // currentUrl.searchParams.set('callTime', calltime);
     // currentUrl.searchParams.set('subsource', 'WebsiteCall');
 
-    console.log('Updated URL:', currentUrl.href);
     // console.log(this.callbackForm.value);
 
 
@@ -162,9 +155,21 @@ export class RequestCallBackComponent implements OnInit {
         currentUrl.href
       ).subscribe(response => {
         this.handleSuccess();
-      }, error => {
-        this.handleError();
-      });
+      },
+        (error) => {
+          this.handleError();
+
+          if (error.status === 429) {
+            alert('We have received your submission. Due to high traffic, please wait a moment before attempting another entry. Thank you for your patience.');
+            // Handle 429 Too Many Requests error
+            // alert('We have received your submission. Due to high traffic, please wait a moment before attempting another entry. Thank you for your patience.');
+          } else {
+            // alert('An error occurred while submitting the form. Please try again.');
+            alert('An error occurred while submitting the form. Please try again.');
+          }
+        }
+
+      );
     } else {
       this.markFormAsTouched(this.userForm);
     }
@@ -196,14 +201,8 @@ export class RequestCallBackComponent implements OnInit {
       "",
       new Date().toISOString()
     ).subscribe(response => {
-      console.log('response', response);
     });
-    console.error('Error submitting contact form');
     this.sendData = true;
-    this.snackBar.open('Error submitting contact form', 'Close', {
-      duration: 3000,
-    });
-    alert("Error submitting contact form");
     this.isLoading = false;
   }
 
