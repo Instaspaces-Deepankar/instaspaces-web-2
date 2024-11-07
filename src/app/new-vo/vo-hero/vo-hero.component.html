@@ -4,24 +4,26 @@
 
   <div class="form-container">
     <form class="quote-form">
+      
       <div class="form-group">
-        <i class="bi bi-person"></i>
-        <input type="text" placeholder="Full Name"/>
+        <fa-icon [icon]="faUser"></fa-icon>
+        <input type="text" [placeholder]="namePlaceholder" />
       </div>
       <div class="form-group">
-        <i class="bi bi-telephone"></i>
-        <input type="tel" placeholder="Phone Number"/>
+        <fa-icon [icon]="faPhone"></fa-icon>
+        <input type="tel" [placeholder]="phonePlaceholder" />
       </div>
       <div class="form-group">
-        <i class="fa fa-envelope"></i>
-        <input type="email" placeholder="Email ID"/>
+        <fa-icon [icon]="faEnvelope"></fa-icon>
+        <input type="email" [placeholder]="emailPlaceholder" />
       </div>
       <div class="form-group">
-        <i class="fa fa-map-marker-alt"></i>
-        <input type="text" placeholder="Preferred state / city"/>
+        <fa-icon [icon]="faMapMarkerAlt"></fa-icon>
+        <input type="text" [placeholder]="locationPlaceholder" />
       </div>
+      
       <div class="form-group">
-        <i class="fa fa-list"></i>
+        <fa-icon [icon]="faList"></fa-icon>
         <select>
           <option>Plan</option>
           <option>GST Registration</option>
@@ -36,7 +38,7 @@
         </select>
       </div>
       <div class="button">
-      <button type="submit" class="submit-btn">Request Quote</button>
+        <button type="submit" class="submit-btn">Request Quote</button>
       </div>
     </form>
   </div>

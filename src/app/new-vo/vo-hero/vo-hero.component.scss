@@ -21,16 +21,52 @@
   }
 }
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .image-text {
   text-align: center;
   position: relative;
-  z-index: 1; /* Place it above the background but below ::before */
+  z-index: 1;
   top: 15%;
   font-size: 36px;
   font-weight: 800;
   color: white;
   font-family: "Nunito", sans-serif;
+  animation: fadeIn 1.5s ease-in-out forwards;
 }
+
+@keyframes placeholderTyping {
+  0% {
+    content: "Full Name";
+  }
+  33% {
+    content: "John Doe";
+  }
+  66% {
+    content: "Jane Smith";
+  }
+  100% {
+    content: "Full Name"; 
+  }
+}
+
+.form-group input::placeholder {
+  animation: placeholderTyping 8s ease-in-out infinite;
+  color: rgba(0, 0, 0, 0.8);
+  transition: color 0.5s ease-in-out;
+}
+
+
+
 .form-container {
   display: flex;
   justify-content: center;
@@ -60,7 +96,7 @@
   display: flex;
   align-items: center;
   background: #f9f9f9;
-  border-radius: 15px;
+  border-radius: 10px;
   padding: 10px 15px;
   box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.35) inset;
 
@@ -79,7 +115,13 @@
   }
 }
 
-.button{
+fa-icon {
+  color: #ed6666;      /* Set icon color */
+  padding-right: 10px;  /* Add padding to the right */
+  font-size: 1.0rem;    /* Optional: Change size if needed */
+}
+
+.button {
   background-color: #ed6666;
   color: white;
   border: none;
@@ -89,7 +131,7 @@
   border-radius: 20px;
   cursor: pointer;
   text-align: center;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.2s ease;
   width: 50%;
   display: flex;
   justify-content: center;
@@ -98,8 +140,12 @@
 
   &:hover {
     background-color: #ff4444;
+    transform: translateY(-2px);
   }
 }
+
+
+
 @media (max-width: 768px) {
   .button {
     width: 100%;
