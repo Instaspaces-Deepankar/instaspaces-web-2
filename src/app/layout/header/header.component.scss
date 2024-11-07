@@ -30,6 +30,7 @@ header {
     margin-left: 2.5rem !important;
     display: block;
   }
+
 }
 
 .helpButton {
@@ -174,6 +175,20 @@ img {
 .nav__link:hover::after {
   width: 100%;
 }
+.nav__link__call{
+  background-color: #ed6666;
+  color: white;
+  padding: 15px 30px;
+  position: relative;
+  top: -14px;
+  height: 55px;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  margin-left: 120px;
+}
 
 .active {
   font-weight: bold;
@@ -281,6 +296,10 @@ img {
   color: #ed6666;
   cursor: pointer;
 }
+.call-icon{
+  color: white;
+  cursor: pointer;
+}
 
 /*=============== BREAKPOINTS ===============*/
 /* For medium devices */
@@ -314,6 +333,16 @@ img {
   .login__form {
     max-width: 400px;
     margin-inline: auto;
+  }
+
+}
+@media screen and (max-width: 768px) {
+  .nav__link__call{
+    font-size: 15px;
+    width: 40%;
+    padding-bottom: 50px;
+    display: flex;
+    margin: 0 auto;
   }
 }
 

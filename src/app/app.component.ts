@@ -11,11 +11,12 @@ import {isPlatformBrowser} from '@angular/common';
 import {PLATFORM_ID} from '@angular/core';
 import { HomeComponent } from "./home/home.component";
 import { HeaderComponent } from './layout/header/header.component';
+import { NewVoComponent } from "./new-vo/new-vo.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, VirtualOfficePageComponent,HeaderComponent, FooterComponent, WhatsappButtonComponent, HomeComponent],
+  imports: [RouterOutlet, VirtualOfficePageComponent, HeaderComponent, FooterComponent, WhatsappButtonComponent, HomeComponent, NewVoComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
