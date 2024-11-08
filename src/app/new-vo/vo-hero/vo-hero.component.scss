@@ -3,10 +3,13 @@
 .header-div {
   position: relative;
   width: 100%;
-  height: 100%;
-  background: url("https://isicons.gumlet.io/hero-image/Reception%20Image%203.webp") center;
+  height: 100vh;
+  background: url("https://isicons.gumlet.io/hero-image/Reception%20Image%203.webp") no-repeat center center;
+  background-size: cover; 
+  background-attachment: fixed; 
+  overflow: hidden;
 
-  /* Use a pseudo-element to apply brightness only to the background */
+ 
   &::before {
     content: "";
     position: absolute;
@@ -14,9 +17,11 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: inherit; /* Use the same background image */
+    background: inherit; 
     filter: brightness(40%);
     z-index: 1;
+    background-size: cover; 
+    background-repeat: no-repeat; 
   }
 }
 
@@ -143,6 +148,37 @@ fa-icon {
   }
 }
 
+.suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  max-height: 200px;
+  overflow-y: auto;
+  width: 100%;
+  border-radius: 10px 10px 10px 10px;
+  z-index: 10;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: block;
+}
+
+.suggestions ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.suggestions li {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.suggestions li:hover {
+  background-color: #f0f0f0;
+}
+
+
 
 
 @media (max-width: 768px) {
@@ -161,6 +197,7 @@ fa-icon {
     font-size: 1.3em
   }
 }
+
 /* Error Styling */
 .form-group.error {
   border: 1px solid #ff4444; /* Red border for errors */
@@ -227,3 +264,73 @@ fa-icon {
   transform: translateY(-2px);
 }
 
+/* Error Container Styling */
+.error-container {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 14px;
+  color: #721c24;
+  animation: fadeInError 0.5s ease;
+}
+
+/* Error Icon Styling */
+.error-icon {
+  margin-right: 10px;
+  font-size: 16px;
+  color: #721c24;
+}
+
+.error-message {
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* Input Focus & Error Styling */
+input.ng-touched.ng-invalid {
+  border-color: #f44336; /* Red border when invalid */
+  background-color: #f9f3f3;
+}
+
+input.ng-touched.ng-valid {
+  border-color: #4CAF50; /* Green border when valid */
+}
+
+/* Animations for Error Messages */
+@keyframes fadeInError {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Success Icon for Valid Input (optional) */
+input.ng-touched.ng-valid + .success-icon {
+  display: block;
+}
+
+.success-icon {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 18px;
+  color: green;
+}
+
+/* Responsive error messages */
+@media screen and (max-width: 768px) {
+  .error-container {
+    font-size: 12px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .error-message {
+    margin-left: 25px;
+  }
+}

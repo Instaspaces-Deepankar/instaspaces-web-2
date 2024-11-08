@@ -222,6 +222,7 @@ img {
 .login__close {
   position: absolute;
   top: 2rem;
+  color: white;
   right: 2rem;
   font-size: 1.5rem;
   color: var(--title-color);
@@ -326,6 +327,8 @@ img {
     top: 1rem;
     left: 0;
     right: 0;
+    color: white;
+
     margin-inline: auto;
     font-size: 2rem;
   }

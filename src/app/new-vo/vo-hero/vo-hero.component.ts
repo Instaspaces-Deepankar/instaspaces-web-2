@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject, PLATFORM_ID, AfterViewInit } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faUser, faPhone, faEnvelope, faMapMarkerAlt, faList } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faPhone, faEnvelope, faMapMarkerAlt, faList, faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ContactService } from "../../services/contact.service";
 import { CallCoordinator } from "../../api-interface/CallCoordinator.model";
@@ -27,6 +27,8 @@ export class VoHeroComponent implements OnInit, AfterViewInit {
   faEnvelope = faEnvelope;
   faMapMarkerAlt = faMapMarkerAlt;
   faList = faList;
+  faExclamationCircle = faExclamationCircle;
+
 
   quoteForm!: FormGroup;
   isSubmitting = false;
@@ -36,45 +38,19 @@ export class VoHeroComponent implements OnInit, AfterViewInit {
   formSubmitted = false;
 
   selectedCoordinator: CallCoordinator | null = null;
+  locationInputValue: string = ''; // Track the current input value
+
+  filteredLocations: string[] = []; // To store filtered location suggestions
+
   private locationTexts = [
-    "Preferred state / city",
-    "Andhra Pradesh",
-    "Arunachal Pradesh",
-    "Assam",
-    "Bihar",
-    "Chhattisgarh",
-    "Goa",
-    "Gujarat",
-    "Haryana",
-    "Himachal Pradesh",
-    "Jharkhand",
-    "Karnataka",
-    "Kerala",
-    "Madhya Pradesh",
-    "Maharashtra",
-    "Manipur",
-    "Meghalaya",
-    "Mizoram",
-    "Nagaland",
-    "Odisha",
-    "Punjab",
-    "Rajasthan",
-    "Sikkim",
-    "Tamil Nadu",
-    "Telangana",
-    "Tripura",
-    "Uttar Pradesh",
-    "Uttarakhand",
-    "West Bengal",
-    "Andaman and Nicobar Islands",
-    "Chandigarh",
-    "Daman and Diu",
-    "Lakshadweep",
-    "Delhi",
-    "Puducherry",
-    "Jammu and Kashmir",
-    "Ladakh"
+    "Preferred state / city", "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar",
+    "Chhattisgarh", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka",
+    "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland",
+    "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttar Pradesh",
+    "Uttarakhand", "West Bengal", "Andaman and Nicobar Islands", "Chandigarh", "Daman and Diu",
+    "Lakshadweep", "Delhi", "Puducherry", "Jammu and Kashmir", "Ladakh"
   ];
+
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
     private fb: FormBuilder,
@@ -102,6 +78,37 @@ export class VoHeroComponent implements OnInit, AfterViewInit {
       this.startTypingEffect(this.locationTexts, (text) => this.locationPlaceholder = text, 50, 200);
     }
   }
+
+  onLocationInput(event: Event): void {
+    const input = (event.target as HTMLInputElement).value.toLowerCase();
+    this.locationInputValue = input;
+
+    this.filteredLocations = this.locationTexts.filter(location =>
+      location.toLowerCase().startsWith(input)
+    );
+  }
+
+  onFocus(): void {
+    if (this.locationInputValue) {
+      this.filteredLocations = this.locationTexts.filter(location =>
+        location.toLowerCase().startsWith(this.locationInputValue.toLowerCase())
+      );
+    }
+  }
+
+
+  onBlur(): void {
+    setTimeout(() => {
+      this.filteredLocations = [];
+    }, 200);
+  }
+
+  onLocationSelect(location: string): void {
+    this.quoteForm.get('location')?.setValue(location);
+    this.filteredLocations = []; 
+    this.locationInputValue = location; 
+  }
+
 
   private fetchActiveCoordinators(): void {
     this.contactService.getActiveCoordinators().subscribe(
