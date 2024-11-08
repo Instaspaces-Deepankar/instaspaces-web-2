@@ -175,19 +175,28 @@ img {
 .nav__link:hover::after {
   width: 100%;
 }
+
 .nav__link__call{
   background-color: #ed6666;
   color: white;
   padding: 15px 30px;
   position: relative;
+  text-align: center;
   top: -14px;
   height: 55px;
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 300;
   cursor: pointer;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
   margin-left: 120px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+
+}
+
+.nav__link__call:hover{
+  background-color: #ff4444;
+  transform: translateY(3px);
 }
 
 .active {
@@ -297,8 +306,10 @@ img {
   color: #ed6666;
   cursor: pointer;
 }
+
 .call-icon{
   color: white;
+  padding-right: 10px;
   cursor: pointer;
 }
 
@@ -337,12 +348,12 @@ img {
     max-width: 400px;
     margin-inline: auto;
   }
+  
 
 }
 @media screen and (max-width: 768px) {
   .nav__link__call{
     font-size: 15px;
-    width: 40%;
     padding-bottom: 50px;
     display: flex;
     margin: 0 auto;
@@ -373,6 +384,7 @@ img {
   .login__form {
     padding: 3rem 2rem 3.5rem;
   }
+
 }
 
 @media screen and (min-width: 1150px) {
