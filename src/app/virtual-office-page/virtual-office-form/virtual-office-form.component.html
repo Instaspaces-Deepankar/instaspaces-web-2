@@ -69,5 +69,18 @@
         </div>
       </div>
     </div>
+
+    <!-- Show success message after form submission -->
+    <div *ngIf="formSubmitted" class="submitted-section">
+      <!--          <div class="success-icon">&#10003;</div>-->
+      <!--          <h3>Form Submitted Successfully!</h3>-->
+      <!--          <p>Thank you for your submission. Here are your details:</p>-->
+      <!--          <div class="submitted-details">-->
+      <!--            <p>You will receive a callback from Our Sales Coordinator <strong>Manisha</strong> at the selected time.</p>-->
+      <!--            <p>Feel free to reach out to them at <strong>07314620020</strong> during working hours.</p>-->
+      <!--          </div>-->
+
+      <app-success></app-success>
+    </div>
   </div>
 </div>

@@ -101,6 +101,8 @@ export class VirtualOfficeFormComponent implements OnInit {
       this.virtualOfficeService.submitForm(fullName, email, phoneNumber,"", preferredLocation,planType,currentUrl.href)
         .subscribe(
           (response: any) => {
+            this.formSubmitted=true;
+
             this.triggerConversion();
             if (window.innerWidth > 768) {
               this.addScript();

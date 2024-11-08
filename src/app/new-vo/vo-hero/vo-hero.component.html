@@ -3,29 +3,45 @@
     without bearing its Actual Cost</p></h2>
 
   <div class="form-container">
-    <form class="quote-form">
-      
+    <form  *ngIf="!formSubmitted" [formGroup]="quoteForm" (ngSubmit)="onSubmit()" class="quote-form">
+
       <div class="form-group">
         <fa-icon [icon]="faUser"></fa-icon>
-        <input type="text" [placeholder]="namePlaceholder" />
+        <input type="text" [placeholder]="namePlaceholder" formControlName="name" />
+
+      </div>
+      <div *ngIf="quoteForm.get('name')?.invalid && quoteForm.get('name')?.touched" class="error">
+        Full name is required and should be at least 3 characters.
       </div>
       <div class="form-group">
         <fa-icon [icon]="faPhone"></fa-icon>
-        <input type="tel" [placeholder]="phonePlaceholder" />
+        <input type="tel" [placeholder]="phonePlaceholder" formControlName="phone" />
+
+      </div>
+      <div *ngIf="quoteForm.get('phone')?.invalid && quoteForm.get('phone')?.touched" class="error">
+        Please enter a valid 10-digit phone number.
       </div>
       <div class="form-group">
         <fa-icon [icon]="faEnvelope"></fa-icon>
-        <input type="email" [placeholder]="emailPlaceholder" />
+        <input type="email" [placeholder]="emailPlaceholder" formControlName="email" />
+
       </div>
+      <div *ngIf="quoteForm.get('email')?.invalid && quoteForm.get('email')?.touched" class="error">
+        Please enter a valid email address.
+      </div>
+
       <div class="form-group">
         <fa-icon [icon]="faMapMarkerAlt"></fa-icon>
-        <input type="text" [placeholder]="locationPlaceholder" />
+        <input type="text" [placeholder]="locationPlaceholder" formControlName="location" />
+
       </div>
-      
+      <div *ngIf="quoteForm.get('location')?.invalid && quoteForm.get('location')?.touched" class="error">
+        Please select your preferred state or city.
+      </div>
       <div class="form-group">
         <fa-icon [icon]="faList"></fa-icon>
-        <select>
-          <option>Plan</option>
+        <select formControlName="service">
+          <option value="">Select Service</option>
           <option>GST Registration</option>
           <option>Mailing Address</option>
           <option>Business Registration</option>
@@ -34,12 +50,27 @@
           <option>Transferring Address</option>
           <option>Ecommerce Registration</option>
           <option>Please Help, Need Clarity</option>
-          <!-- Add additional options as needed -->
         </select>
+
+      </div>
+      <div *ngIf="quoteForm.get('service')?.invalid && quoteForm.get('service')?.touched" class="error">
+        Please select a service.
       </div>
       <div class="button">
-        <button type="submit" class="submit-btn">Request Quote</button>
+        <button type="submit" class="submit-btn" [disabled]="quoteForm.invalid">Request Quote</button>
       </div>
     </form>
+    <!-- Show success message after form submission -->
+    <div *ngIf="formSubmitted" class=" quote-form">
+      <!--          <div class="success-icon">&#10003;</div>-->
+      <!--          <h3>Form Submitted Successfully!</h3>-->
+      <!--          <p>Thank you for your submission. Here are your details:</p>-->
+      <!--          <div class="submitted-details">-->
+      <!--            <p>You will receive a callback from Our Sales Coordinator <strong>Manisha</strong> at the selected time.</p>-->
+      <!--            <p>Feel free to reach out to them at <strong>07314620020</strong> during working hours.</p>-->
+      <!--          </div>-->
+
+      <app-success></app-success>
+    </div>
   </div>
 </div>

@@ -12,12 +12,13 @@ import {ContactFormComponent} from "../forms/contact-form/contact-form.component
 import {PricingPlansComponent} from "./pricing-card/pricing-card.component";
 import {AddOnServicesComponent} from "./add-on-services/add-on-services.component";
 import {Meta, Title} from "@angular/platform-browser";
+import {NewVoComponent} from "../new-vo/new-vo.component";
 // import {RequestCallBackComponent} from "../forms/contact-popup/request-call-back.component";
 
 @Component({
   selector: 'app-virtual-office-page',
   standalone: true,
-  imports: [VirtualOfficeFormComponent, WhatIsVirtualOfficeComponent, BenefitsOfVoComponent, WhyChooseVoComponent, VoLocationsComponent, VoHelplineComponent, VoNeedHelpComponent, VoFaqComponent, VirtualOfficePlanComponent, ContactFormComponent, PricingPlansComponent, AddOnServicesComponent],
+    imports: [VirtualOfficeFormComponent, WhatIsVirtualOfficeComponent, BenefitsOfVoComponent, WhyChooseVoComponent, VoLocationsComponent, VoHelplineComponent, VoNeedHelpComponent, VoFaqComponent, VirtualOfficePlanComponent, ContactFormComponent, PricingPlansComponent, AddOnServicesComponent, NewVoComponent],
   templateUrl: './virtual-office-page.component.html',
   styleUrls: ['./virtual-office-page.component.scss'],
 })
