@@ -44,7 +44,7 @@ export class VoHeroComponent implements OnInit, AfterViewInit {
   filteredLocations: string[] = []; // To store filtered location suggestions
 
   private locationTexts = [
-    "Preferred state / city", "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar",
+    "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar",
     "Chhattisgarh", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka",
     "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland",
     "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttar Pradesh",
