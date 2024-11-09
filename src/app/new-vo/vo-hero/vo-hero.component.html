@@ -5,47 +5,29 @@
   <div class="form-container">
     <form *ngIf="!formSubmitted" [formGroup]="quoteForm" (ngSubmit)="onSubmit()" class="quote-form">
 
-      <div class="form-group">
+      <div class="form-group" style="position: relative;">
         <fa-icon [icon]="faUser"></fa-icon>
         <input type="text" [placeholder]="namePlaceholder" formControlName="name" />
+        <fa-icon *ngIf="quoteForm.get('name')?.invalid && quoteForm.get('name')?.touched" 
+                  class="info-icon" [icon]="faInfoCircle" title="Full name is required and should be at least 3 characters."></fa-icon>
       </div>
-      <div *ngIf="quoteForm.get('name')?.invalid && quoteForm.get('name')?.touched" class="error-container">
-        <div class="error-icon">
-          <!-- Updated Icon -->
-          <fa-icon [icon]="faExclamationCircle"></fa-icon>
-        </div>
-        <div class="error-message">
-          Full name is required and should be at least 3 characters.
-        </div>
-      </div>
+     
 
-      <div class="form-group">
+      <div class="form-group" style="position: relative;">
         <fa-icon [icon]="faPhone"></fa-icon>
         <input type="tel" [placeholder]="phonePlaceholder" formControlName="phone" />
+        <fa-icon *ngIf="quoteForm.get('phone')?.invalid && quoteForm.get('phone')?.touched" 
+                  class="info-icon" [icon]="faInfoCircle" title="Please enter a valid 10-digit phone number."></fa-icon>
       </div>
-      <div *ngIf="quoteForm.get('phone')?.invalid && quoteForm.get('phone')?.touched" class="error-container">
-        <div class="error-icon">
-          <!-- Updated Icon -->
-          <fa-icon [icon]="faExclamationCircle"></fa-icon>
-        </div>
-        <div class="error-message">
-          Please enter a valid 10-digit phone number.
-        </div>
-      </div>
+  
 
-      <div class="form-group">
+      <div class="form-group" style="position: relative;">
         <fa-icon [icon]="faEnvelope"></fa-icon>
         <input type="email" [placeholder]="emailPlaceholder" formControlName="email" />
+        <fa-icon *ngIf="quoteForm.get('email')?.invalid && quoteForm.get('email')?.touched" 
+                  class="info-icon" [icon]="faInfoCircle" title="Please enter a valid email address."></fa-icon>
       </div>
-      <div *ngIf="quoteForm.get('email')?.invalid && quoteForm.get('email')?.touched" class="error-container">
-        <div class="error-icon">
-          <!-- Updated Icon -->
-          <fa-icon [icon]="faExclamationCircle"></fa-icon>
-        </div>
-        <div class="error-message">
-          Please enter a valid email address.
-        </div>
-      </div>
+
 
       <div class="form-group" style="position: relative;">
         <fa-icon [icon]="faMapMarkerAlt"></fa-icon>
@@ -55,6 +37,8 @@
                (input)="onLocationInput($event)" 
                (focus)="onFocus()" 
                (blur)="onBlur()"/>
+        <fa-icon *ngIf="quoteForm.get('location')?.invalid && quoteForm.get('location')?.touched" 
+                  class="info-icon" [icon]="faInfoCircle" title="Please select your preferred state or city."></fa-icon>
         <div *ngIf="filteredLocations.length > 0 && locationInputValue" class="suggestions">
           <ul>
             <li *ngFor="let location of filteredLocations" (click)="onLocationSelect(location)">
@@ -63,17 +47,9 @@
           </ul>
         </div>
       </div>
-      <div *ngIf="quoteForm.get('location')?.invalid && quoteForm.get('location')?.touched" class="error-container">
-        <div class="error-icon">
-          <!-- Updated Icon -->
-          <fa-icon [icon]="faExclamationCircle"></fa-icon>
-        </div>
-        <div class="error-message">
-          Please select your preferred state or city.
-        </div>
-      </div>
+    
 
-      <div class="form-group">
+      <div class="form-group" style="position: relative;">
         <fa-icon [icon]="faList"></fa-icon>
         <select formControlName="service">
           <option value="">Select Service</option>
@@ -86,23 +62,22 @@
           <option>Ecommerce Registration</option>
           <option>Please Help, Need Clarity</option>
         </select>
-      </div>
-      <div *ngIf="quoteForm.get('service')?.invalid && quoteForm.get('service')?.touched" class="error-container">
-        <div class="error-icon">
-          <!-- Updated Icon -->
-          <fa-icon [icon]="faExclamationCircle"></fa-icon>
-        </div>
-        <div class="error-message">
-          Please select a service.
-        </div>
+        <fa-icon *ngIf="quoteForm.get('service')?.invalid && quoteForm.get('service')?.touched" 
+                  class="info-icon" [icon]="faInfoCircle" title="Please select a service."></fa-icon>
       </div>
 
-      <div class="button">
-        <button type="submit" class="submit-btn" [disabled]="quoteForm.invalid">Request Quote</button>
-      </div>
+
+<div class="button">
+  <button type="submit" class="submit-btn" [disabled]="quoteForm.invalid" (click)="onSubmit()">
+    <span *ngIf="isSubmitting" class="spinner"></span>
+    <span *ngIf="!isSubmitting">Request Quote</span>
+  </button>
+</div>
+
     </form>
 
     <div *ngIf="formSubmitted" class="quote-form">
+      
       <app-success></app-success>
     </div>
   </div>

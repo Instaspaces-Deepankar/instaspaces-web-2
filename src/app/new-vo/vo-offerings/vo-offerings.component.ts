@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
-import { faEnvelope, faClipboardCheck, faBuilding, faChair, faCheckCircle, faTimesCircle, faArrowRight, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faClipboardCheck, faCheckCircle, faTimesCircle, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-vo-offerings',
@@ -12,12 +12,9 @@ import { faEnvelope, faClipboardCheck, faBuilding, faChair, faCheckCircle, faTim
   styleUrls: ['./vo-offerings.component.scss']
 })
 export class VoOfferingsComponent {
-  // Icons for each card type
   faCheckCircle = faCheckCircle;
   faTimesCircle = faTimesCircle;
   faArrowRight = faArrowRight;
-  faChevronDown = faChevronDown;
-  faChevronUp = faChevronUp;
 
   offerings = [
     {
@@ -34,8 +31,7 @@ export class VoOfferingsComponent {
         { text: 'Maintain privacy by not exposing personal address.', available: true },
         { text: 'Useful for initial brand-building efforts.', available: true },
         { text: 'Simplifies communication with clients and partners.', available: true }
-      ],
-      showBenefits: false
+      ]
     },
     {
       title: 'GST Registration',
@@ -51,13 +47,8 @@ export class VoOfferingsComponent {
         { text: 'Eligible for input tax credits.', available: true },
         { text: 'Compliance with tax regulations.', available: true },
         { text: 'Easy to handle transactions under GST framework.', available: true }
-      ],
-      showBenefits: false
+      ]
     },
     // Additional offerings as needed
   ];
-
-  toggleDetails(index: number) {
-    this.offerings[index].showBenefits = !this.offerings[index].showBenefits;
-  }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject, PLATFORM_ID, AfterViewInit } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faUser, faPhone, faEnvelope, faMapMarkerAlt, faList, faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faPhone, faEnvelope, faMapMarkerAlt, faList, faExclamationCircle, faInfoCircle} from '@fortawesome/free-solid-svg-icons';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ContactService } from "../../services/contact.service";
 import { CallCoordinator } from "../../api-interface/CallCoordinator.model";
@@ -27,6 +27,7 @@ export class VoHeroComponent implements OnInit, AfterViewInit {
   faEnvelope = faEnvelope;
   faMapMarkerAlt = faMapMarkerAlt;
   faList = faList;
+  faInfoCircle =faInfoCircle;
   faExclamationCircle = faExclamationCircle;
 
 
@@ -226,4 +227,5 @@ export class VoHeroComponent implements OnInit, AfterViewInit {
     const control = this.quoteForm.get(controlName);
     return !!(control && control.invalid && control.touched);
   }
+  
 }
