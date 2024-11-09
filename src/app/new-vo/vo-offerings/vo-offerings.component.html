@@ -1,0 +1,27 @@
+<div class="offerings-container">
+    <div *ngFor="let offering of offerings; let i = index" class="offer-card">
+      <div class="icon-title">
+        <fa-icon [icon]="offering.icon" class="icon"></fa-icon>
+        <h2>{{ offering.title }}</h2>
+      </div>
+  
+      <h3>{{ offering.showBenefits ? 'Benefits' : 'Features' }}</h3>
+      <ul>
+        <li *ngFor="let item of (offering.showBenefits ? offering.benefits : offering.features)" [ngClass]="{'available': item.available}">
+          <fa-icon [icon]="item.available ? faCheckCircle : faTimesCircle" 
+                   [class.available]="item.available" 
+                   [class.unavailable]="!item.available"></fa-icon>
+          <span [class.unavailable]="!item.available">{{ item.text }}</span>
+        </li>
+      </ul>
+  
+      <!-- Toggle button to switch between features and benefits -->
+      <button class="toggle-details-btn" (click)="toggleDetails(i)">
+        {{ offering.showBenefits ? 'Show Features' : 'Show Benefits' }}
+        <fa-icon [icon]="offering.showBenefits ? faChevronUp : faChevronDown"></fa-icon>
+      </button>
+  
+      <button class="request-quote-btn">Request Quote <fa-icon [icon]="faArrowRight"></fa-icon></button>
+    </div>
+  </div>
+  
