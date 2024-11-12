@@ -53,7 +53,7 @@ export class ContactPopOverComponent implements OnInit {
     if (isPlatformBrowser(this.platformId)) {
       this.service.getActiveCoordinators().subscribe(
         (data: CallCoordinator[]) => {
-          console.log(data);
+          // console.log(data);
 
           // Retrieve the stored coordinator from localStorage
           const storedCoordinator = localStorage.getItem('selectedCoordinator');

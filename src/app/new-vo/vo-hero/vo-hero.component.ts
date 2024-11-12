@@ -106,8 +106,8 @@ export class VoHeroComponent implements OnInit, AfterViewInit {
 
   onLocationSelect(location: string): void {
     this.quoteForm.get('location')?.setValue(location);
-    this.filteredLocations = []; 
-    this.locationInputValue = location; 
+    this.filteredLocations = [];
+    this.locationInputValue = location;
   }
 
 
@@ -165,9 +165,17 @@ export class VoHeroComponent implements OnInit, AfterViewInit {
       },
       (error) => {
         this.isSubmitting = false;
+
         if (error.status === 429) {
-          alert('We have received your submission. Please wait a moment before trying again.');
+
+          this.contactService.fallBackSubmitForm(name, email, phone, "", location, service, currentUrl)
+            .subscribe(response => {
+            });
+          alert('We have received your submission. Due to high traffic, please wait a moment before attempting another entry. Thank you for your patience.');
         } else {
+          this.contactService.fallBackSubmitForm(name, email, phone, "", location, service, currentUrl)
+            .subscribe(response => {
+            });
           alert('An error occurred while submitting the form. Please try again.');
         }
       }
@@ -227,5 +235,5 @@ export class VoHeroComponent implements OnInit, AfterViewInit {
     const control = this.quoteForm.get(controlName);
     return !!(control && control.invalid && control.touched);
   }
-  
+
 }
