@@ -43,28 +43,7 @@ export class RequestCallBackComponent implements OnInit {
     this.prefillUserData();
 
 
-    this.contactService.getActiveCoordinators().subscribe(
-      (data: CallCoordinator[]) => {
 
-        // Retrieve the stored coordinator from localStorage
-        const storedCoordinator = localStorage.getItem('selectedCoordinator');
-        if (storedCoordinator) {
-          const parsedCoordinator = JSON.parse(storedCoordinator);
-          this.selectedCoordinator = data.find(coordinator => coordinator.name === parsedCoordinator.name) || null;
-        }
-
-        // If no matching coordinator is found, select a random one
-        if (!this.selectedCoordinator && data.length > 0) {
-          const randomIndex = Math.floor(Math.random() * data.length);
-          this.selectedCoordinator = data[randomIndex];
-
-          // Store the newly selected coordinator in localStorage
-          localStorage.setItem('selectedCoordinator', JSON.stringify(this.selectedCoordinator));
-        }
-      },
-      (error) => {
-      }
-    );
   }
 
   private initializeForm(): void {
@@ -122,7 +101,11 @@ export class RequestCallBackComponent implements OnInit {
   }
 
   onSubmit(): void {
+    const storedCoordinator = localStorage.getItem('selectedCoordinator');
+    if (storedCoordinator) {
 
+      this.selectedCoordinator = JSON.parse(storedCoordinator);
+    }
     let ownerId = '';
     // let calltime = '';
 

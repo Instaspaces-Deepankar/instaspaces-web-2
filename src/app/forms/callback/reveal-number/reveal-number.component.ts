@@ -43,31 +43,7 @@ export class RevealNumberComponent implements OnInit {
   ngOnInit() {
     this.calculateExactTimes();
 
-    if (isPlatformBrowser(this.platformId)) {
-      this.service.getActiveCoordinators().subscribe(
-        (data: CallCoordinator[]) => {
 
-          // Retrieve the stored coordinator from localStorage
-          const storedCoordinator = localStorage.getItem('selectedCoordinator');
-          if (storedCoordinator) {
-            const parsedCoordinator = JSON.parse(storedCoordinator);
-            this.selectedCoordinator = data.find(coordinator => coordinator.name === parsedCoordinator.name) || null;
-          }
-
-          // If no matching coordinator is found, select a random one
-          if (!this.selectedCoordinator && data.length > 0) {
-            const randomIndex = Math.floor(Math.random() * data.length);
-            this.selectedCoordinator = data[randomIndex];
-
-            // Store the newly selected coordinator in localStorage
-            localStorage.setItem('selectedCoordinator', JSON.stringify(this.selectedCoordinator));
-          }
-        },
-        (error) => {
-        }
-      );
-    } else {
-    }
 
     this.callbackForm = this.fb.group({
       userName: ['', Validators.required],
@@ -85,6 +61,7 @@ export class RevealNumberComponent implements OnInit {
   }
 
   onSubmit() {
+
     if (this.callbackForm.valid) {
       this.formSubmitted = true;
       this.showForm = false;
@@ -96,7 +73,14 @@ export class RevealNumberComponent implements OnInit {
 
   confirmSchedule() {
     this.isLoading = true; // This triggers the loading spinner
+    if (isPlatformBrowser(this.platformId)) {
+      const storedCoordinator = localStorage.getItem('selectedCoordinator');
+      if (storedCoordinator) {
 
+        this.selectedCoordinator = JSON.parse(storedCoordinator);
+      }
+    } else {
+    }
     let ownerId = '';
     let calltime = '';
 

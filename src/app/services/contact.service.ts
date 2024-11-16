@@ -54,4 +54,9 @@ export class ContactService {
       })
     });
   }
+  getNextCoordinator(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/api/sales-coordinator/next-coordinator`);
+  }
+
+
 }
