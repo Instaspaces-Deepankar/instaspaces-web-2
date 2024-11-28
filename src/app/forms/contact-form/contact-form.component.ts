@@ -116,8 +116,25 @@ export class ContactFormComponent implements OnInit {
   }
 
   sendData: boolean = true;
+  saveToLocalStorage(): void {
+    let mobile = this.contactForm.get('mobile')?.value;
 
+    mobile = typeof mobile === 'string' || typeof mobile === 'number'
+      ? String(mobile).replace(/\D/g, '').slice(-10)
+      : '';
+
+
+
+    const user = {
+      name: this.contactForm.get('fullName')?.value,
+      email:this.contactForm.get('email')?.value,
+      telephone: mobile
+    };
+
+    localStorage.setItem('user', JSON.stringify(user));
+  }
   onSubmit() {
+    this.saveToLocalStorage();
     const storedCoordinator = localStorage.getItem('selectedCoordinator');
     if (storedCoordinator) {
 

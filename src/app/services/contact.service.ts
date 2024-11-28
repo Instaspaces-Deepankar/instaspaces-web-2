@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
+import {catchError, map, Observable, throwError} from 'rxjs';
 import {environment} from "../environments/environment";
 import {CallCoordinator} from "../api-interface/CallCoordinator.model";
 
@@ -51,8 +51,28 @@ export class ContactService {
     return this.http.post<any>(this.apiUrl + '/fallback/Contact', contactDetails, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
+      }),    observe: 'response'
+    }
+  ).pipe(
+      map((response:any) => {
+        // Handle successful response
+        // alert( response.body)
+
+        return response.body; // Return the body for normal subscribers
+      }),
+      catchError(error => {
+        const connectionHeader = error;
+        alert(connectionHeader);
+        if (connectionHeader === 'close') {
+          alert('The server has closed the connection.');
+        } else if (!navigator.onLine) {
+          alert('Connection is closed. Please check your internet connection.');
+        } else {
+          alert('An error occurred: ' + (error.message || 'Unknown error'));
+        }
+        return throwError(error); // Re-throw the error after handling it
       })
-    });
+    );;
   }
   getNextCoordinator(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/api/sales-coordinator/next-coordinator`);

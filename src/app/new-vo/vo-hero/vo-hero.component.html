@@ -92,12 +92,24 @@
       </div>
 
 
-<div class="button">
-  <button type="submit" class="submit-btn" [disabled]="quoteForm.invalid" (click)="onSubmit()">
-    <span *ngIf="isSubmitting" class="spinner"></span>
-    <span *ngIf="!isSubmitting">Request Quote</span>
-  </button>
-</div>
+      <div class="button">
+        <button
+          type="submit"
+          class="submit-btn"
+          [disabled]="quoteForm.invalid || isSubmitting"
+          (click)="!isSubmitting && onSubmit()"
+          [attr.aria-label]="isSubmitting ? 'Submitting your request' : 'Request a quote'">
+
+          <ng-container *ngIf="isSubmitting">
+            <span>Submitting...</span>
+          </ng-container>
+
+          <ng-container *ngIf="!isSubmitting">
+            <span>Request Quote</span>
+          </ng-container>
+        </button>
+      </div>
+
 
     </form>
 

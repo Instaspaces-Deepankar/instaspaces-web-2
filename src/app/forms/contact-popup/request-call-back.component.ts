@@ -99,7 +99,23 @@ export class RequestCallBackComponent implements OnInit {
       this.userForm.get('telephone')?.setValue(inputValue);
     }
   }
+  saveToLocalStorage(): void {
+    let mobile = this.userForm.get('telephone')?.value;
 
+    mobile = typeof mobile === 'string' || typeof mobile === 'number'
+      ? String(mobile).replace(/\D/g, '').slice(-10)
+      : '';
+
+
+
+    const user = {
+      name: this.userForm.get('name')?.value,
+      email: this.userForm.get('email')?.value,
+      telephone: mobile
+    };
+
+    localStorage.setItem('user', JSON.stringify(user));
+  }
   onSubmit(): void {
     const storedCoordinator = localStorage.getItem('selectedCoordinator');
     if (storedCoordinator) {

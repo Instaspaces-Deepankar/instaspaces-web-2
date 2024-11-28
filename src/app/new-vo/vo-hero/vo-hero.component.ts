@@ -65,13 +65,11 @@ export class VoHeroComponent implements OnInit, AfterViewInit {
       name: ['', [Validators.required, Validators.minLength(3)]],
       phone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
       email: ['', [Validators.required, Validators.email]],
-      location: ['', Validators.required],
-      service: ['', Validators.required]
+      location: [''],
+      service: ['']
     });
 
-    if (this.isBrowser) {
-      this.fetchActiveCoordinators();
-    }
+
   }
 
   ngAfterViewInit(): void {
@@ -110,31 +108,36 @@ export class VoHeroComponent implements OnInit, AfterViewInit {
     this.locationInputValue = location;
   }
 
+  saveToLocalStorage(): void {
+    let mobile = this.quoteForm.get('phone')?.value;
 
-  private fetchActiveCoordinators(): void {
-    this.contactService.getActiveCoordinators().subscribe(
-      (data: CallCoordinator[]) => {
-        if (this.isBrowser) {
-          const storedCoordinator = localStorage.getItem('selectedCoordinator');
-          if (storedCoordinator) {
-            const parsedCoordinator = JSON.parse(storedCoordinator);
-            this.selectedCoordinator = data.find(coordinator => coordinator.name === parsedCoordinator.name) || null;
-          }
+    mobile = typeof mobile === 'string' || typeof mobile === 'number'
+      ? String(mobile).replace(/\D/g, '').slice(-10)
+      : '';
 
-          if (!this.selectedCoordinator && data.length > 0) {
-            const randomIndex = Math.floor(Math.random() * data.length);
-            this.selectedCoordinator = data[randomIndex];
-            localStorage.setItem('selectedCoordinator', JSON.stringify(this.selectedCoordinator));
-          }
-        }
-      },
-      (error) => {
-        console.error('Error fetching coordinators:', error);
-      }
-    );
+
+
+    const user = {
+      name: this.quoteForm.get('name')?.value,
+      email:this.quoteForm.get('email')?.value,
+      telephone: mobile
+    };
+
+    localStorage.setItem('user', JSON.stringify(user));
   }
 
+
   onSubmit(): void {
+    this.saveToLocalStorage();
+    if (this.isBrowser) {
+      const storedCoordinator = localStorage.getItem('selectedCoordinator');
+      if (storedCoordinator) {
+
+        this.selectedCoordinator = JSON.parse(storedCoordinator);
+      }
+    } else {
+
+    }
     let ownerId = '';
     if (this.selectedCoordinator) {
       ownerId = this.selectedCoordinator.name;
@@ -162,31 +165,39 @@ export class VoHeroComponent implements OnInit, AfterViewInit {
         this.isSubmitting = false;
         this.successMessage = 'Form submitted successfully!';
         this.triggerConversion();
+        // alert(response);
       },
       (error) => {
         this.isSubmitting = false;
+        // alert(error.status);
 
-        if (error.status === 429) {
+        if (error.status === 429 || error.response?.status === 429) {
 
-          this.contactService.fallBackSubmitForm(name, email, phone, "", location, service, currentUrl)
-            .subscribe(response => {
-            });
-          alert('We have received your submission. Due to high traffic, please wait a moment before attempting another entry. Thank you for your patience.');
+          // this.contactService.fallBackSubmitForm(name, email, phone, "", location, service, currentUrl)
+          //   .subscribe(response => {
+          //   });
+          // alert('We have received your submission. Due to high traffic, please wait few hours before attempting again. Thank you for your patience.');
         } else {
-          this.contactService.fallBackSubmitForm(name, email, phone, "", location, service, currentUrl)
-            .subscribe(response => {
-            });
-          alert('An error occurred while submitting the form. Please try again.');
+          // this.contactService.fallBackSubmitForm(name, email, phone, "", location, service, currentUrl)
+          //   .subscribe(response => {
+          //   });
+          // alert('An error occurred while submitting the form. Please try again.');
         }
       }
     );
   }
 
   triggerConversion(): void {
-    if (this.isBrowser) {
-      gtag('event', 'conversion', { 'send_to': 'AW-XXXXX/XXX' });
-      ir('track', { /* Tracking params */ });
-    }
+    gtag('event', 'conversion', { 'send_to': 'AW-921070112/IFT_CNSZ6ZIZEKDUmbcD' });
+
+    ir('track', {
+      orderID: `${this.quoteForm.value.mobile}`,
+      event: "register",
+      fname: `${this.quoteForm.value.fullName}`,
+      email: `${this.quoteForm.value.email}`,
+      mobile: `${this.quoteForm.value.mobile}`,
+      order_custom_val: ''
+    });
   }
 
   private startTypingEffect(

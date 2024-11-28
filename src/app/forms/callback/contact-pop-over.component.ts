@@ -49,35 +49,6 @@ export class ContactPopOverComponent implements OnInit {
     this.initializeForm();
     this.calculateExactTimes();
 
-    // Check if running in the browser before accessing localStorage
-    if (isPlatformBrowser(this.platformId)) {
-      this.service.getActiveCoordinators().subscribe(
-        (data: CallCoordinator[]) => {
-          // console.log(data);
-
-          // Retrieve the stored coordinator from localStorage
-          const storedCoordinator = localStorage.getItem('selectedCoordinator');
-          if (storedCoordinator) {
-            const parsedCoordinator = JSON.parse(storedCoordinator);
-            this.selectedCoordinator = data.find(coordinator => coordinator.name === parsedCoordinator.name) || null;
-          }
-
-          // If no matching coordinator is found, select a random one
-          if (!this.selectedCoordinator && data.length > 0) {
-            const randomIndex = Math.floor(Math.random() * data.length);
-            this.selectedCoordinator = data[randomIndex];
-
-            // Store the newly selected coordinator in localStorage
-            localStorage.setItem('selectedCoordinator', JSON.stringify(this.selectedCoordinator));
-          }
-        },
-        (error) => {
-          console.error('Error:', error);
-        }
-      );
-    } else {
-      console.log('This code is running on the server.');
-    }
   }
 
   calculateExactTimes(): void {

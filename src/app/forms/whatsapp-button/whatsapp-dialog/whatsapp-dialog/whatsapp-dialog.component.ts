@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit, PLATFORM_ID} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import { ContactService } from '../../../../services/contact.service';
-import { CommonModule } from '@angular/common';
+import {CommonModule, isPlatformBrowser} from '@angular/common';
 import { faCheckCircle, faPaperPlane, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import {CallCoordinator} from "../../../../api-interface/CallCoordinator.model";
 declare var gtag: Function;
 declare var ir: Function;
 
@@ -23,6 +24,7 @@ export class WhatsappDialogComponent implements OnInit {
   selectedQuestion: string = '';
   name: string = '';
   userNumber: string = '';
+  selectedCoordinator: CallCoordinator | null = null;
 
   // Icons
   public faCheckCircle = faCheckCircle;
@@ -30,9 +32,14 @@ export class WhatsappDialogComponent implements OnInit {
   public faWhatsapp = faWhatsapp;
   public faPhone = faPhone;
 
-  constructor(private fb: FormBuilder, private contactService: ContactService) {}
+  constructor(private fb: FormBuilder, private contactService: ContactService,    @Inject(PLATFORM_ID) private platformId: Object  // Inject PLATFORM_ID to check if code is running in the browser
+  ) {}
 
   ngOnInit(): void {
+
+
+
+
     // Initialize the form group with validation
     this.phoneForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]], // Name is required with a minimum length of 3 characters
@@ -67,14 +74,36 @@ export class WhatsappDialogComponent implements OnInit {
     return parsedUrl.toString();
   }
 
+
   // Form submission handler
   onSubmit() {
+    if (isPlatformBrowser(this.platformId)) {
+      const storedCoordinator = localStorage.getItem('selectedCoordinator');
+      if (storedCoordinator) {
+
+        this.selectedCoordinator = JSON.parse(storedCoordinator);
+      }
+    } else {
+    }
+    let ownerId = '';
+
+    if (this.selectedCoordinator) {
+      ownerId = this.selectedCoordinator.name;
+    } else {
+    }
+
+    const currentUrl = new URL(window.location.href);
+    currentUrl.searchParams.set('ownerId', ownerId);
+    currentUrl.searchParams.set('subsource', 'Whatsapp');
+
+
+
     if (this.phoneForm.valid) {
       const phoneNumber = '+918882702020';
       const message = `Hi, I'm ${this.phoneForm.value.name}. I need assistance with ${this.phoneForm.value.comment}.`;
       const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-      let currentUrl = window.location.href;
-      currentUrl = this.addSubsourceToURL(currentUrl, 'subsource', 'Whatsapp');
+      // let currentUrl = window.location.href;
+      // currentUrl = this.addSubsourceToURL(currentUrl, 'subsource', 'Whatsapp');
       this.triggerConversion();
 
       // Submit the form data to the service

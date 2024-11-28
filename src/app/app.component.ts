@@ -67,46 +67,46 @@ export class AppComponent implements OnInit{
     const isSunday = today.getDay() === 0;
     this.isSunday = isSunday;
     // Retrieve selected coordinator from localStorage if available
-    const storedCoordinator = localStorage.getItem('selectedCoordinator');
-    if (storedCoordinator) {
-      this.selectedCoordinator = JSON.parse(storedCoordinator);
-    }
+    if (isPlatformBrowser(this.platformId)) {
+      const storedCoordinator = localStorage.getItem('selectedCoordinator');
+      if (storedCoordinator) {
+        this.selectedCoordinator = JSON.parse(storedCoordinator);
+      }
 
-    if (isSunday && this.selectedCoordinator) {
-      console.log("Using stored coordinator:", this.selectedCoordinator);
-    } else if (this.selectedCoordinator) {
-      console.log("Using stored coordinator:", this.selectedCoordinator);
-    } else {
+      if (isSunday && this.selectedCoordinator) {
+        console.log("Using stored coordinator:", this.selectedCoordinator);
+      } else {
+        this.commonService.getActiveCoordinators().subscribe(
+          (data: CallCoordinator[]) => {
+            const storedCoordinator = localStorage.getItem('selectedCoordinator');
+            if (storedCoordinator) {
+              const parsedCoordinator = JSON.parse(storedCoordinator);
+              this.selectedCoordinator = data.find(coordinator => coordinator.name === parsedCoordinator.name) || null;
+            }
 
-      this.commonService.getActiveCoordinators().subscribe(
-        (data: CallCoordinator[]) => {
-          if (data && data.length > 0) {
-            this.commonService.getNextCoordinator().subscribe({
-              next: (response) => {
-                this.nextCoordinator = response;
-                localStorage.setItem('selectedCoordinator', JSON.stringify(this.nextCoordinator));
+            // If no matching coordinator is found, select a random one
+            if (!this.selectedCoordinator && data.length > 0) {
+              this.commonService.getNextCoordinator().subscribe({
+                next: (response) => {
+                  this.nextCoordinator = response;
+                  localStorage.setItem('selectedCoordinator', JSON.stringify(this.nextCoordinator));
 
-                console.log('Next Coordinator:', response);
-              },
-              error: (error) => {
-                console.error('Error fetching next coordinator:', error);
-              }
-            });
-            this.selectedCoordinator =this.nextCoordinator;
-            console.log(this.nextCoordinator);
-            if (this.selectedCoordinator) {
+                  console.log('Next Coordinator:', response);
+                },
+                error: (error) => {
+                  console.error('Error fetching next coordinator:', error);
+                }
+              });
+
+              // Store the newly selected coordinator in localStorage
               localStorage.setItem('selectedCoordinator', JSON.stringify(this.selectedCoordinator));
             }
-          } else if (isSunday) {
-
+          },
+          (error) => {
+            console.error('Error fetching active coordinators:', error);
           }
-
-
-        },
-        (error) => {
-          console.error('Error fetching active coordinators:', error);
-        }
-      );
+        );
+      }
     }
 
     this.metaTagService.addTag({ name: 'robots', content: 'index, follow' });

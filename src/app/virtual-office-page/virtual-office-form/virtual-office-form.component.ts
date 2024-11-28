@@ -45,24 +45,6 @@ export class VirtualOfficeFormComponent implements OnInit {
 
 
       // Fetch active coordinators and store the selected one if necessary
-      this.virtualOfficeService.getActiveCoordinators().subscribe(
-        (data: CallCoordinator[]) => {
-
-          const storedCoordinator = localStorage.getItem('selectedCoordinator');
-          if (storedCoordinator) {
-            const parsedCoordinator = JSON.parse(storedCoordinator);
-            this.selectedCoordinator = data.find(coordinator => coordinator.name === parsedCoordinator.name) || null;
-          }
-
-          if (!this.selectedCoordinator && data.length > 0) {
-            const randomIndex = Math.floor(Math.random() * data.length);
-            this.selectedCoordinator = data[randomIndex];
-            localStorage.setItem('selectedCoordinator', JSON.stringify(this.selectedCoordinator));
-          }
-        },
-        (error) => {
-        }
-      );
     }
   }
 

@@ -71,8 +71,28 @@ export class RevealNumberComponent implements OnInit {
     }
   }
 
+
+  saveToLocalStorage(): void {
+    let mobile = this.callbackForm.get('userPhone')?.value;
+
+    mobile = typeof mobile === 'string' || typeof mobile === 'number'
+      ? String(mobile).replace(/\D/g, '').slice(-10)
+      : '';
+
+
+
+    const user = {
+      name: this.callbackForm.get('userName')?.value,
+      email:'',
+      telephone: mobile
+    };
+
+    localStorage.setItem('user', JSON.stringify(user));
+  }
+
   confirmSchedule() {
     this.isLoading = true; // This triggers the loading spinner
+    this.saveToLocalStorage();
     if (isPlatformBrowser(this.platformId)) {
       const storedCoordinator = localStorage.getItem('selectedCoordinator');
       if (storedCoordinator) {

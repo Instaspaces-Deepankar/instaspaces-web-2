@@ -16,7 +16,7 @@
     <strong class="text-green-800">
       {{ selectedCoordinator?.name === 'mac' ? 'Manisha' :
       selectedCoordinator?.name === 'mat' ? 'Manisha' :
-        selectedCoordinator?.name === 'rupal' ? 'Rupal' : 'Not Available' }}
+        selectedCoordinator?.name === 'rupal' ? 'Rupal' : selectedCoordinator?.name }}
     </strong>
     .<br> Feel free to reach out to them at
     <strong class="text-green-800">{{ selectedCoordinator?.callerId || 'Not Available' }}</strong> during working hours.
@@ -30,11 +30,19 @@
       <i class="fas fa-check-circle text-green-500 text-4xl animate-bounce"></i>
     </div>
     <h2 class="text-3xl font-bold text-green-800 mb-4">Thank You!</h2>
-    <p class="text-lg text-gray-700">
-      We couldn't connect you with a Business Solution Specialist at the moment.
-      Your query has been saved, and we will arrange a call during the upcoming business hours.
+    <p class="text-lg text-gray-700 mb-6">
+      Unfortunately, we were unable to connect you with a Business Solutions Specialist at this time. Rest assured, your inquiry has been recorded, and we will arrange a call during the next available business hours. In the meantime, feel free to dive into our website, uncover a variety of options waiting for you, and instantly secure your favorite virtual office.
     </p>
+    <a
+      href="https://www.instaspaces.in/virtual-offices"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-50"
+    >
+      Discover Business Address Solutions
+    </a>
   </div>
+
 </ng-template>
 </div>
 </body>
