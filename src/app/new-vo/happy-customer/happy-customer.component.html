@@ -1,0 +1,22 @@
+<div class="happy-customer-section">
+  <h2 class="section-title">Happy Customers</h2>
+  <div class="carousel">
+    <div class="carousel-inner" [style.transform]="'translateX(' + (-currentIndex * (100 / itemsToShow)) + '%)'">
+      <!-- Loop through the customers array -->
+      <div class="carousel-item" *ngFor="let customer of customers; let i = index">
+        <div class="carousel-box">
+          <h3>{{ customer.name }}</h3>
+          <div class="brand-images">
+            <!-- Loop through the images for each customer -->
+            <img *ngFor="let img of customer.images" [src]="img" alt="Brand {{ i + 1 }}">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="controls">
+    <button class="control-button" (click)="updateCarousel(-1)">&#8249;</button>
+    <button class="control-button" (click)="updateCarousel(1)" *ngIf="currentIndex < totalItems - itemsToShow">&#8250;</button>
+  </div>
+</div>
+ 

@@ -1,0 +1,26 @@
+.stats-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: linear-gradient(to right, #e83e4e, #f86e6b);
+    color: white;
+    padding: 20px 0;
+  }
+  
+  .stats-item {
+    text-align: center;
+  }
+  
+  .stats-item h2 {
+    font-size: 2rem;
+    margin: 0;
+    font-weight: bold;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .stats-item p {
+    font-size: 1rem;
+    margin: 5px 0 0;
+    font-weight: 300;
+  }
+  
