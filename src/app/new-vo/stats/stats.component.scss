@@ -1,26 +1,55 @@
 .stats-container {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background: linear-gradient(to right, #e83e4e, #f86e6b);
-    color: white;
-    padding: 20px 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: linear-gradient(to right, #e83e4e, #f86e6b);
+  color: white;
+  padding: 20px 5%;
+  flex-wrap: wrap;
+  gap: 15px;
+  font-family: 'Nunito', sans-serif;
+}
+
+.stats-item {
+  text-align: center;
+  flex: 1 1 150px;
+  max-width: 200px;
+}
+
+.stats-item h2 {
+  font-size: 1.8rem;
+  margin: 0;
+  font-weight: bold;
+  transition: all 0.2s ease-in-out;
+}
+
+.stats-item p {
+  font-size: 0.9rem;
+  margin: 5px 0 0;
+  font-weight: 300;
+}
+
+@media (max-width: 768px) {
+  .stats-container {
+    justify-content: center;
+    padding: 15px 10px;
   }
-  
-  .stats-item {
-    text-align: center;
-  }
-  
+
   .stats-item h2 {
-    font-size: 2rem;
-    margin: 0;
-    font-weight: bold;
-    transition: all 0.2s ease-in-out;
+    font-size: 1.6rem;
   }
-  
+
   .stats-item p {
-    font-size: 1rem;
-    margin: 5px 0 0;
-    font-weight: 300;
+    font-size: 0.8rem;
   }
-  
+}
+
+@media (max-width: 480px) {
+  .stats-item h2 {
+    font-size: 1.4rem;
+  }
+
+  .stats-item p {
+    font-size: 0.7rem;
+  }
+}

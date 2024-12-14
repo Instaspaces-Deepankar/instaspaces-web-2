@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
+
 @Component({
   selector: 'app-happy-customer',
   standalone: true,
@@ -12,6 +13,8 @@ export class HappyCustomerComponent {
   currentIndex: number = 0;
   totalItems: number = 6; // Total number of items in the carousel
   itemsToShow: number = 3; // Number of items visible at a time
+
+
 
   // Array of customer data with headings and images
   customers = [

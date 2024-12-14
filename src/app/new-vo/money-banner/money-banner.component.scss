@@ -1,0 +1,112 @@
+
+/* Banner Container */
+.money-banner {
+  width: 100%;
+  background: linear-gradient(to right, #e63946, #f77f6e);
+  color: white;
+  padding: 17px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly; 
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+  font-family: 'Nunito', sans-serif;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.money-banner::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent 60%);
+  transform: rotate(45deg);
+  opacity: 0.5;
+  z-index: 0;
+}
+
+
+
+/* Content Section */
+.money-banner-content {
+  text-align: center;
+  z-index: 1;
+  max-width: 70%;
+}
+
+.money-banner-title {
+  font-size: 2.5rem; /* Larger font size */
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: 0.05em; /* Slight letter spacing */
+}
+
+.money-banner-subtitle {
+  font-size: 1.2rem; /* Larger subtitle font */
+  margin: 10px 0 0;
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+/* Image Section */
+.money-banner-icon {
+  z-index: 1;
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.money-banner-icon img {
+  // width: 100px; /* Increase size for emphasis */
+  // height: 100px;
+  // border-radius: 50%; /* Circular image */
+  // box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  // transition: transform 0.3s ease;
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .money-banner {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .money-banner-content {
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .money-banner-title {
+    font-size: 2rem;
+  }
+
+  .money-banner-subtitle {
+    font-size: 1rem;
+  }
+
+  .money-banner-icon img {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .money-banner-title {
+    font-size: 1.8rem;
+  }
+
+  .money-banner-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .money-banner-icon img {
+    width: 70px;
+    height: 70px;
+  }
+}

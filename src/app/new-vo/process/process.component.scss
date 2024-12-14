@@ -1,0 +1,88 @@
+/* Resetting and applying box-sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  /* Main container for the process */
+  .process-container {
+    max-width: 1200px;
+    margin: 50px auto;
+    text-align: center;
+    padding: 0 20px;
+  }
+  
+  /* Title style */
+  .process-title {
+    font-size: 36px;
+    color: #2c3e50;
+    font-weight: 600;
+    margin-bottom: 40px;
+  }
+  
+  .process-title span {
+    color: #ed6666; /* Red shade for emphasis */
+    font-style: italic;
+  }
+  
+  /* Styling for the steps container */
+  .process-steps {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+  }
+  
+  /* Individual step styling */
+  .process-step {
+    background: linear-gradient(135deg, #ed6666, #d35f5f); /* Red gradient */
+    color: #fff;
+    padding: 25px;
+    flex: 1 1 250px;
+    max-width: 270px;
+    position: relative;
+    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 50%, calc(100% - 20px) 100%, 0 100%);
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+  
+
+  
+  /* Icon styling */
+  .process-step i {
+    font-size: 40px;
+    margin-bottom: 15px;
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  /* Description text for each step */
+  .process-step p {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  
+  /* Delete hover effect with a deeper red color */
+  .process-step.delete:hover {
+    background-color: #e04e4e; /* Slightly deeper red */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .process-steps {
+      flex-direction: column;
+      gap: 20px;
+    }
+  
+    .process-step {
+      max-width: 100%;
+      clip-path: none;
+      border-radius: 12px;
+    }
+  }
+  
