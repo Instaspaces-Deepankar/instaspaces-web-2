@@ -1,0 +1,211 @@
+.trust-review {
+  margin: 0;
+  color: #fff;
+  font-family: sans-serif;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 3rem 1rem;
+  position: relative; /* Added to enable positioning */
+}
+
+.trust-heading {
+  font-size: 30px;
+  font-weight: 600;
+  color: #333;
+  margin-top: 50px; /* Adjust this value to increase or decrease spacing from the top */
+  margin-bottom: 2rem;
+  position: absolute;
+  font-family: 'Nunito', sans-serif;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+.slider {
+  width: 100%;
+}
+
+.slider input {
+  display: none;
+}
+
+.testimonials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-top: 100px;
+  min-height: 290px;  
+  perspective: 1000px;
+  overflow: hidden;
+}
+
+.testimonials .item {
+  width: 450px;
+  padding: 30px;
+  border-radius: 10px;
+  background: linear-gradient(to right, #e63946, #f77f6e);
+  position: absolute;
+  top: 0;
+  box-sizing: border-box;
+  text-align: center;
+  transition: transform 0.4s;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  user-select: none;
+  cursor: pointer;
+}
+
+.testimonials .item img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid #fddbdb;
+}
+
+.testimonials .item p {
+  color: #fff;
+}
+
+.testimonials .item h2 {
+  font-size: 14px;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dots label {
+  height: 5px;
+  width: 5px;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: #413B52;
+  margin: 7px;
+  transition-duration: 0.2s;
+}
+
+/* Active Dot Styling */
+#t-1:checked ~ .dots label[for="t-1"],
+#t-2:checked ~ .dots label[for="t-2"],
+#t-3:checked ~ .dots label[for="t-3"],
+#t-4:checked ~ .dots label[for="t-4"],
+#t-5:checked ~ .dots label[for="t-5"] {
+  transform: scale(2);
+  background-color: #000;
+}
+
+#t-1:checked ~ .dots label[for="t-2"],
+#t-2:checked ~ .dots label[for="t-1"],
+#t-2:checked ~ .dots label[for="t-3"],
+#t-3:checked ~ .dots label[for="t-2"],
+#t-3:checked ~ .dots label[for="t-4"],
+#t-4:checked ~ .dots label[for="t-3"],
+#t-4:checked ~ .dots label[for="t-5"],
+#t-5:checked ~ .dots label[for="t-4"] {
+  transform: scale(1.5);
+}
+
+/* 3D Transformation for Items */
+#t-1:checked ~ .testimonials label[for="t-5"] {
+  transform: translate3d(1200px, 0, -360px) rotateY(-45deg);
+}
+
+#t-1:checked ~ .testimonials label[for="t-4"],
+#t-2:checked ~ .testimonials label[for="t-5"] {
+  transform: translate3d(900px, 0, -270px) rotateY(-35deg);
+  z-index: 1;
+}
+
+#t-1:checked ~ .testimonials label[for="t-3"],
+#t-2:checked ~ .testimonials label[for="t-4"],
+#t-3:checked ~ .testimonials label[for="t-5"] {
+  transform: translate3d(600px, 0, -180px) rotateY(-25deg);
+  z-index: 2;
+}
+
+#t-1:checked ~ .testimonials label[for="t-2"],
+#t-2:checked ~ .testimonials label[for="t-3"],
+#t-3:checked ~ .testimonials label[for="t-4"],
+#t-4:checked ~ .testimonials label[for="t-5"] {
+  transform: translate3d(300px, 0, -90px) rotateY(-15deg);
+  z-index: 3;
+}
+
+#t-2:checked ~ .testimonials label[for="t-1"],
+#t-3:checked ~ .testimonials label[for="t-2"],
+#t-4:checked ~ .testimonials label[for="t-3"],
+#t-5:checked ~ .testimonials label[for="t-4"] {
+  transform: translate3d(-300px, 0, -90px) rotateY(15deg);
+  z-index: 3;
+}
+
+#t-3:checked ~ .testimonials label[for="t-1"],
+#t-4:checked ~ .testimonials label[for="t-2"],
+#t-5:checked ~ .testimonials label[for="t-3"] {
+  transform: translate3d(-600px, 0, -180px) rotateY(25deg);
+}
+
+#t-5:checked ~ .testimonials label[for="t-2"],
+#t-4:checked ~ .testimonials label[for="t-1"] {
+  transform: translate3d(-900px, 0, -270px) rotateY(35deg);
+}
+
+#t-5:checked ~ .testimonials label[for="t-1"] {
+  transform: translate3d(-1200px, 0, -360px) rotateY(45deg);
+}
+
+#t-1:checked ~ .testimonials label[for="t-1"],
+#t-2:checked ~ .testimonials label[for="t-2"],
+#t-3:checked ~ .testimonials label[for="t-3"],
+#t-4:checked ~ .testimonials label[for="t-4"],
+#t-5:checked ~ .testimonials label[for="t-4"],
+#t-5:checked ~ .testimonials label[for="t-5"] {
+  z-index: 4;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .trust-heading {
+    font-size: 1.5rem;
+  }
+
+  .testimonials .item {
+    width: 300px; /* Adjust size for mobile */
+    padding: 20px;
+  }
+
+  .testimonials .item img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .dots label {
+    margin: 5px;
+    width: 6px;
+    height: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .testimonials .item {
+    width: 250px; /* Further adjust size for small screens */
+    padding: 15px;
+  }
+
+  .testimonials .item img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .dots label {
+    margin: 4px;
+    width: 5px;
+    height: 5px;
+  }
+}

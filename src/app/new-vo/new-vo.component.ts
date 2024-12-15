@@ -6,11 +6,13 @@ import { HappyCustomerComponent } from './happy-customer/happy-customer.componen
 import { WhyChooseUsComponent } from "../home/why-choose-us/why-choose-us.component";
 import { MoneyBannerComponent } from "./money-banner/money-banner.component";
 import { ProcessComponent } from "./process/process.component";
+import { UniqueFeaturesComponent } from "./unique-features/unique-features.component";
+import { TrustedReviewsComponent } from "./trusted-reviews/trusted-reviews.component";
 
 @Component({
   selector: 'app-new-vo',
   standalone: true,
-  imports: [VoHeroComponent, VoOfferingsComponent, StatsComponent, HappyCustomerComponent, WhyChooseUsComponent, MoneyBannerComponent, ProcessComponent],
+  imports: [VoHeroComponent, VoOfferingsComponent, StatsComponent, HappyCustomerComponent, WhyChooseUsComponent, MoneyBannerComponent, ProcessComponent, UniqueFeaturesComponent, TrustedReviewsComponent],
   templateUrl: './new-vo.component.html',
   styleUrl: './new-vo.component.scss'
 })
