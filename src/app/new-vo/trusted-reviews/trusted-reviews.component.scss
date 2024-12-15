@@ -38,13 +38,14 @@
   justify-content: center;
   position: relative;
   margin-top: 100px;
-  min-height: 290px;  
+  min-height: 360px;  
   perspective: 1000px;
   overflow: hidden;
 }
 
 .testimonials .item {
   width: 450px;
+  height: -webkit-fill-available;
   padding: 30px;
   border-radius: 10px;
   background: linear-gradient(to right, #e63946, #f77f6e);
@@ -71,13 +72,15 @@
 }
 
 .testimonials .item h2 {
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .dots {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 30px;
+
 }
 
 .dots label {
