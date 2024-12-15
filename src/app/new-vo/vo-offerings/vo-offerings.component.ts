@@ -12,43 +12,66 @@ import { faEnvelope, faClipboardCheck, faCheckCircle, faTimesCircle, faArrowRigh
   styleUrls: ['./vo-offerings.component.scss']
 })
 export class VoOfferingsComponent {
-  faCheckCircle = faCheckCircle;
-  faTimesCircle = faTimesCircle;
-  faArrowRight = faArrowRight;
-
-  offerings = [
+  plans = [
     {
-      title: 'Mailing Address',
-      icon: faEnvelope,
-      features: [
-        { text: 'Mention the Address on Websites, Visiting Cards, Letterheads, etc.', available: true },
-        { text: 'Use the Address for GST Registration for new GSTIN, ABOB, VPOB, etc.', available: false },
-        { text: 'Use the Address for MCA Portal Registration', available: false },
-        { text: 'Demarcated Space for 100% Compliance', available: false }
-      ],
+      name: 'Mailing Address Plan',
       benefits: [
-        { text: 'Professional mailing address to enhance credibility.', available: true },
-        { text: 'Maintain privacy by not exposing personal address.', available: true },
-        { text: 'Useful for initial brand-building efforts.', available: true },
-        { text: 'Simplifies communication with clients and partners.', available: true }
-      ]
+        { text: 'Mention the Address on Websites, Visiting Cards, Letterheads, etc.', icon: 'check' },
+        { text: 'Use the Address for GST Registration for new GSTIN, APOB, VPOB, etc.', icon: 'close' },
+        { text: 'Use the Address for MCA Portal Registration', icon: 'close' },
+        { text: 'Demarcated Space for 100% Compliance', icon: 'close' },
+      ],
+      features: [
+        { text: 'Courier Receiving and Forwarding service', icon: 'check' },
+        { text: 'Permanent Signage in the Premises (chargeable)', icon: 'close' },
+        { text: 'Use Address for Opening Current Account', icon: 'close' },
+        { text: 'GST Certificate on Desk', icon: 'close' },
+      ],
     },
     {
-      title: 'GST Registration',
-      icon: faClipboardCheck,
-      features: [
-        { text: 'Mention the Address on Websites, Visiting Cards, Letterheads, etc.', available: true },
-        { text: 'Use the Address for GST Registration for new GSTIN, ABOB, VPOB, etc.', available: true },
-        { text: 'Use the Address for MCA Portal Registration', available: false },
-        { text: 'Demarcated Space for 100% Compliance', available: false }
-      ],
+      name: 'GST Registration Plan',
       benefits: [
-        { text: 'Allows for GST compliance, building trust.', available: true },
-        { text: 'Eligible for input tax credits.', available: true },
-        { text: 'Compliance with tax regulations.', available: true },
-        { text: 'Easy to handle transactions under GST framework.', available: true }
-      ]
+        { text: 'Mention the Address on Websites, Visiting Cards, Letterheads, etc.', icon: 'check' },
+        { text: 'Use the Address for GST Registration for new GSTIN, APOB, VPOB, etc.', icon: 'check' },
+        { text: 'Use the Address for MCA Portal Registration', icon: 'close' },
+        { text: 'Demarcated Space for 100% Compliance', icon: 'close' },
+      ],
+      features: [
+        { text: 'Courier Receiving and Forwarding service', icon: 'check' },
+        { text: 'Permanent Signage in the Premises (chargeable)', icon: 'close' },
+        { text: 'Use Address for Opening Current Account', icon: 'close' },
+        { text: 'GST Certificate on Desk', icon: 'close' },
+      ],
     },
-    // Additional offerings as needed
+    {
+      name: 'Business Registration Plan',
+      benefits: [
+        { text: 'Mention the Address on Websites, Visiting Cards, Letterheads, etc.', icon: 'check' },
+        { text: 'Use the Address for GST Registration for new GSTIN, APOB, VPOB, etc.', icon: 'check' },
+        { text: 'Use the Address for MCA Portal Registration', icon: 'check' },
+        { text: 'Demarcated Space for 100% Compliance', icon: 'close' },
+      ],
+      features: [
+        { text: 'Courier Receiving and Forwarding service', icon: 'check' },
+        { text: 'Permanent Signage in the Premises (chargeable)', icon: 'check' },
+        { text: 'Use Address for Opening Current Account', icon: 'check' },
+        { text: 'GST Certificate on Desk', icon: 'close' },
+      ],
+    },
+    {
+      name: 'Desk Address Plan',
+      benefits: [
+        { text: 'Mention the Address on Websites, Visiting Cards, Letterheads, etc.', icon: 'check' },
+        { text: 'Use the Address for GST Registration for new GSTIN, APOB, VPOB, etc.', icon: 'check' },
+        { text: 'Use the Address for MCA Portal Registration', icon: 'check' },
+        { text: 'Demarcated Space for 100% Compliance', icon: 'check' },
+      ],
+      features: [
+        { text: 'Courier Receiving and Forwarding service', icon: 'check' },
+        { text: 'Permanent Signage in the Premises (chargeable)', icon: 'check' },
+        { text: 'Use Address for Opening Current Account', icon: 'check' },
+        { text: 'GST Certificate on Desk', icon: 'check' },
+      ],
+    },
   ];
 }
