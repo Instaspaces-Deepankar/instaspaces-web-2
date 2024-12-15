@@ -25,7 +25,7 @@
 
 .carousel-inner {
   display: flex;
-  transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.5, 1);
+  transition: transform 0.5s ease;
 }
 
 .carousel-item {
@@ -87,6 +87,7 @@
   gap: 20px;
 }
 
+
 .control-button {
   background: #ed6666;
   border: none;
@@ -105,6 +106,7 @@
 
 .control-button:hover {
   transform: scale(1.1);
+  color: #fff;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 

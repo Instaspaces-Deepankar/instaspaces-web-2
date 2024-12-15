@@ -12,14 +12,13 @@
       </div>
     </div>
   </div>
+  
   <div class="controls">
     <button class="control-button" (click)="updateCarousel(-1)">
-      <i class="fas fa-chevron-left"></i>
+      <fa-icon [icon]="faChevronLeft"></fa-icon> <!-- Left arrow icon -->
     </button>
     <button class="control-button" (click)="updateCarousel(1)">
-      <i class="fas fa-chevron-right"></i>
+      <fa-icon [icon]="faChevronRight"></fa-icon> <!-- Right arrow icon -->
     </button>
   </div>
-
-  
 </div>

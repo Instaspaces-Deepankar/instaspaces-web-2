@@ -1,22 +1,23 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'; 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'; // Import FontAwesomeModule
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-happy-customer',
   standalone: true,
-  imports: [CommonModule],
+  imports: [FontAwesomeModule, CommonModule], // Add FontAwesomeModule here
   templateUrl: './happy-customer.component.html',
   styleUrls: ['./happy-customer.component.scss']
 })
 export class HappyCustomerComponent {
   currentIndex: number = 0;
-  totalItems: number = 6; // Total number of items in the carousel
-  itemsToShow: number = 3; // Number of items visible at a time
+  totalItems: number = 6;
+  itemsToShow: number = 3;
 
+  faChevronLeft = faChevronLeft;
+  faChevronRight = faChevronRight;
 
-
-  // Array of customer data with headings and images
   customers = [
     {
       name: 'Customer 1',
