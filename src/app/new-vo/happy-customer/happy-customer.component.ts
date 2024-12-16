@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
 export class HappyCustomerComponent {
   currentIndex: number = 0;
   totalItems: number = 8;
-  itemsToShow: number = 8;
+  itemsToShow: number = 1
 
   faChevronLeft = faChevronLeft;
   faChevronRight = faChevronRight;
