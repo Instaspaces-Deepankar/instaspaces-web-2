@@ -92,3 +92,11 @@ h5 {
 .faq svg.svg-animation {
   transform: rotate(180deg); /* Rotation when expanded */
 }
+
+
+.question-separator {
+  height: 2px; /* Line height */
+  background-color: #ED6666; /* Line color */
+  margin: 5px 0; /* Space above and below the line */
+  width: 100%; /* Full width */
+}

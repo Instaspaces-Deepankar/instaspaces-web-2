@@ -6,24 +6,24 @@
         <h2>Frequently Asked Questions</h2>
 
         <div class="q-a" *ngFor="let qa of faqs; let i = index">
-          
           <div class="q-wrapper" (click)="toggleAnswer(i)" tabindex="0">
-            
             <h3 [ngClass]="{'h3-active': activeIndex === i}">
               {{ qa.question }}
             </h3>
-            
             <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg" [ngClass]="{'svg-animation': activeIndex === i}">
               <path *ngIf="activeIndex !== i" d="M1 .799l4 4 4-4" stroke="#ED6666" stroke-width="2" fill="none" fill-rule="evenodd" />
               <path *ngIf="activeIndex === i" d="M9.201 1l-4 4-4-4" stroke="#ED6666" stroke-width="2" fill="none" fill-rule="evenodd" />
             </svg>
           </div>
-
+        
           <h5 *ngIf="activeIndex === i">
             {{ qa.answer }}
           </h5>
-          
+        
+          <!-- Line after the question -->
+          <div class="question-separator"></div>
         </div>
+        
       </div>
     </article>
   </div>
