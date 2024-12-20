@@ -27,8 +27,8 @@ export class StatsComponent implements OnInit {
       const increment = stat.value / 100; // Adjust "100" for animation duration
       const interval = setInterval(() => {
         if (stat.currentValue < stat.value) {
-          stat.currentValue += increment;
-          if (stat.currentValue > stat.value) {
+          stat.currentValue = +(stat.currentValue + increment).toFixed(2); // Ensure precision
+          if (stat.currentValue >= stat.value) {
             stat.currentValue = stat.value; // Prevent exceeding target value
           }
         } else {
@@ -36,5 +36,9 @@ export class StatsComponent implements OnInit {
         }
       }, 20); // Adjust speed for smoother or faster animation
     });
+  }
+
+  formatNumber(value: number): string {
+    return value % 1 === 0 ? value.toString() : value.toFixed(1);
   }
 }

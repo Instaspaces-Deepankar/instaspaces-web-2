@@ -48,7 +48,7 @@ export class HappyCustomerComponent {
       images: [
         'https://isicons.gumlet.io/logo_wall/Book-My-show.png',
         'https://isicons.gumlet.io/logo_wall/dharma.png',
-        'https://isicons.gumlet.io/logo_wall/Exotel.png'
+        'https://isicons.gumlet.io/logo_wall/Rohit-Shetty-Picturez.png'
       ]
     },
     {
@@ -62,7 +62,7 @@ export class HappyCustomerComponent {
     {
       name: 'Tour and Travel',
       images: [
-        'https://isicons.gumlet.io/logo_wall/Jagat-Pharma.png',
+        'https://isicons.gumlet.io/logo_wall/Exotel.png',
         'https://isicons.gumlet.io/logo_wall/Kaia-Tourism.png',
         'https://isicons.gumlet.io/logo_wall/TRAVLOGUE.png'
       ]

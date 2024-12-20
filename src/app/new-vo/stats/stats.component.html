@@ -1,7 +1,6 @@
 <div class="stats-container">
-    <div class="stats-item" *ngFor="let stat of stats">
-      <h2>{{ stat.currentValue | number: '1.0-0' }}+</h2>
-      <p>{{ stat.label }}</p>
-    </div>
+  <div class="stats-item" *ngFor="let stat of stats">
+    <h2>{{ formatNumber(stat.currentValue) }}+</h2>
+    <p>{{ stat.label }}</p>
   </div>
-  
+</div>
